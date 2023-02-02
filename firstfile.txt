@@ -1,1 +1,3 @@
-Hello World. This is my first Git file.
+Hello Small World. This is my first Git file.
+
+Look! Here's a second line in this file
