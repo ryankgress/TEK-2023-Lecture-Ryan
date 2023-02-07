@@ -1,6 +1,7 @@
 package com.perscholas.java_basics;
 
 import java.util.Arrays;
+import java.util.StringJoiner;
 
 public class JavaStringMethods {
 
@@ -143,6 +144,15 @@ public class JavaStringMethods {
 	    System.out.println(s1.compareTo(s2));	
 	    System.out.println(s1.compareTo(s3));	
 	    System.out.println(s3.compareTo(s1));	
+	    
+	    StringJoiner joinNames = new StringJoiner(",");
+	    
+	    joinNames.add("Java");
+	    joinNames.add("Python");
+	    joinNames.add("HTML");
+	    joinNames.add("JavaScript");
+	    
+	    System.out.println("\nNew String: " + joinNames);
 	    
 	}
 
