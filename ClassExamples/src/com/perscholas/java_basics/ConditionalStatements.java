@@ -90,7 +90,6 @@ public class ConditionalStatements {
 		}
 		
 		// 7
-		
 		System.out.print("Filing Status: Single (1), Married Filing Jointly (2), Married Filing Separately (3), Head of Household (4): ");
 		int stat = keyboard.nextInt();
 		
