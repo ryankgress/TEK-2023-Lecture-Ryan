@@ -13,13 +13,17 @@ import java.util.Scanner;
 public class CoffeeShop {
 	
 	private Scanner keyboard = new Scanner(System.in);
-	public static final int PRINT_MENU = 1;
 	public static final int EXIT = 0;
+	public static final int PRINT_MENU = 1;
 	public static final int ORDER_ITEM = 2;
+	public static final int VIEW_CART = 3;
 	
 	private List<MenuItem> menuItems = new ArrayList<>();
 	private List<MenuItem> cart = new ArrayList<MenuItem>();
 	
+	/**
+	 * Initializes the MenuItems in the Coffee Shop
+	 */
 	public void initialize() {
 		MenuItem item1 = new MenuItem();
 		item1.setName("Small Coffee");
@@ -42,26 +46,30 @@ public class CoffeeShop {
 		
 	}
 	
+	/**
+	 * Displays the menu 
+	 */
 	public void printMenuItems() {
-		String t = "###,###.00";
-		DecimalFormat moneyFormat = new DecimalFormat(t);
-		
 		System.out.println("\n==============================================");
 		System.out.println("Item Name\t\tStock\t\tPrice");
-		System.out.println("-----------------------------------------------");
+		System.out.println("----------------------------------------------");
 		
 		for( MenuItem item : menuItems) {
-			System.out.println(item.getName() + "      \t" + item.getInStock() + "\t\t$" + moneyFormat.format(item.getPrice()));
+			System.out.println(item.getName() + "      \t" + item.getInStock() + "\t\t$" + formatPrice(item.getPrice()));
 		}
 		System.out.println("==============================================\n");
 	}
 	
-	public int menuPrompt() {
-		
+	/**
+	 * Displays the menu and prompts for a selection
+	 * @return int matching the selection from the menu
+	 */
+	public int menuPrompt() {		
 		System.out.println("Welcome to Ryan's Coffee Shop.\n");
 		System.out.println("   " + PRINT_MENU + ") Print Menu");
 		System.out.println("   " + ORDER_ITEM + ") Order Item");
-		System.out.println("   " + EXIT		  + ") Exit Coffee Shop");
+		System.out.println("   " + VIEW_CART  + ") View Cart");
+		System.out.println("   " + EXIT		  + ") Exit");
 		System.out.print("\nMake Selection: ");
 		
 		int selection = keyboard.nextInt();
@@ -69,6 +77,9 @@ public class CoffeeShop {
 		return selection;
 	}
 	
+	/**
+	 * Right now, it just adds an item to the ArrayList 'cart' if findMenuItem confirms it matches
+	 */
 	public void orderItem() {
 		printMenuItems();
 		
@@ -77,14 +88,38 @@ public class CoffeeShop {
 		String itemName = keyboard.nextLine();
 		
 		if(findMenuItem(itemName) != null) {
-			System.out.println("\n" + itemName + " is valid.");
+			System.out.println("\n" + findMenuItem(itemName).getName() + " was added to cart.");
 			cart.add(findMenuItem(itemName));
 		} else {
-			System.out.println(itemName + " was not found");
+			System.out.println(itemName + " was not found\n");
 		}
 	}
 	
-
+	/**
+	 * Will print the cart into the console
+	 */
+	public void viewCart() {
+		double totalPrice = 0;
+		
+		System.out.println("\nThere are " + cart.size() + " items in your Cart\n");
+		System.out.println("==============================================");
+		System.out.println("Item Name\t\tPrice\t\tTotal");
+		System.out.println("----------------------------------------------");
+		
+		for( MenuItem item : cart) {
+			totalPrice += item.getPrice();
+			System.out.println(item.getName() + "      \t$" + formatPrice(item.getPrice()) +"      \t$" + formatPrice(totalPrice));
+		}
+		
+		System.out.println("==============================================\n");
+		System.out.println("Total Price: $" + formatPrice(totalPrice) + "\n");
+	}
+	
+	/**
+	 * Checks the list of menu items for the inputted item, case inensitive
+	 * @param itemName User input
+	 * @return null if not found, the matching MenuItem object if found
+	 */
 	private MenuItem findMenuItem(String itemName) {
 		if(itemName == null) {
 			return null;
@@ -98,6 +133,14 @@ public class CoffeeShop {
 		return null;
 	}
 	
+	private String formatPrice(double price) {
+		DecimalFormat moneyFormat = new DecimalFormat("###,###.00");
+		return moneyFormat.format(price);
+	}
+	
+	/**
+	 * Closes the keyboard input stream
+	 */
 	public void close() {
 		keyboard.close();
 	}
