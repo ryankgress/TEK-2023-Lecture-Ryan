@@ -1,11 +1,26 @@
 package com.tek.java.coffee;
 
-public class Main {
+public class CoffeeMain {
 
 	public static void main(String[] args) {
 		CoffeeShop cs = new CoffeeShop();
 		cs.initialize();
-		cs.printMenuItems();
+		
+		
+		while(true) {
+			int select = cs.menuPrompt();
+			
+			if(select == CoffeeShop.PRINT_MENU) {
+				cs.printMenuItems();
+			} else if(select == CoffeeShop.ORDER_ITEM) {
+				cs.orderItem();
+			} else if(select == CoffeeShop.EXIT) {
+				System.out.println("\nThank you for coming. Have a nice day!");
+				System.exit(0);
+			} 
+		}
+		
+		
 	}
 
 }

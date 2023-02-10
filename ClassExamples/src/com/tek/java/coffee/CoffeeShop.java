@@ -3,6 +3,7 @@ package com.tek.java.coffee;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Will contain all functionality for working with our coffee shop. 
@@ -10,6 +11,11 @@ import java.util.List;
  *
  */
 public class CoffeeShop {
+	
+	private Scanner keyboard = new Scanner(System.in);
+	public static final int PRINT_MENU = 1;
+	public static final int EXIT = 0;
+	public static final int ORDER_ITEM = 2;
 	
 	private List<MenuItem> menuItems = new ArrayList<>();
 	
@@ -39,10 +45,62 @@ public class CoffeeShop {
 		String t = "###,###.00";
 		DecimalFormat moneyFormat = new DecimalFormat(t);
 		
-		System.out.println("Item\t\t\tStock\t\tPrice");
+		System.out.println("\n==============================================");
+		System.out.println("Item Name\t\tStock\t\tPrice");
+		System.out.println("-----------------------------------------------");
 		
 		for( MenuItem item : menuItems) {
 			System.out.println(item.getName() + "      \t" + item.getInStock() + "\t\t$" + moneyFormat.format(item.getPrice()));
 		}
+		System.out.println("==============================================\n");
+	}
+	
+	public int menuPrompt() {
+		
+		System.out.println("Welcome to Ryan's Coffee Shop.\n");
+		System.out.println("   " + PRINT_MENU + ") Print Menu");
+		System.out.println("   " + ORDER_ITEM + ") Order Item");
+		System.out.println("   " + EXIT		  + ") Exit Coffee Shop");
+		System.out.print("\nMake Selection: ");
+		
+		int selection = keyboard.nextInt();
+		
+		return selection;
+	}
+	
+	public void orderItem() {
+		printMenuItems();
+		
+		System.out.print("Enter Item Name: ");
+		keyboard.nextLine();
+		String itemName = keyboard.nextLine();
+		
+		if(menuItemExists(itemName)) {
+			System.out.println("\n" + itemName + " is valid.");
+		} else {
+			System.out.println(itemName + " is not a valid selection");
+		}
+	}
+	
+	private boolean menuItemExists(String itemName) {
+		
+		// Check to make sure the entered item is on the menu
+		for( MenuItem item : menuItems) {
+			if(item.getName().equalsIgnoreCase(itemName)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public void close() {
+		keyboard.close();
 	}
 }
+
+
+
+
+
+
+
