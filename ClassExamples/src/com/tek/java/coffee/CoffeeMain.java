@@ -16,6 +16,7 @@ public class CoffeeMain {
 				cs.orderItem();
 			} else if(select == CoffeeShop.EXIT) {
 				System.out.println("\nThank you for coming. Have a nice day!");
+				cs.close();
 				System.exit(0);
 			} 
 		}

@@ -18,6 +18,7 @@ public class CoffeeShop {
 	public static final int ORDER_ITEM = 2;
 	
 	private List<MenuItem> menuItems = new ArrayList<>();
+	private List<MenuItem> cart = new ArrayList<MenuItem>();
 	
 	public void initialize() {
 		MenuItem item1 = new MenuItem();
@@ -75,22 +76,26 @@ public class CoffeeShop {
 		keyboard.nextLine();
 		String itemName = keyboard.nextLine();
 		
-		if(menuItemExists(itemName)) {
+		if(findMenuItem(itemName) != null) {
 			System.out.println("\n" + itemName + " is valid.");
+			cart.add(findMenuItem(itemName));
 		} else {
-			System.out.println(itemName + " is not a valid selection");
+			System.out.println(itemName + " was not found");
 		}
 	}
 	
-	private boolean menuItemExists(String itemName) {
-		
-		// Check to make sure the entered item is on the menu
-		for( MenuItem item : menuItems) {
-			if(item.getName().equalsIgnoreCase(itemName)) {
-				return true;
-			}
+
+	private MenuItem findMenuItem(String itemName) {
+		if(itemName == null) {
+			return null;
 		}
-		return false;
+		
+		for( MenuItem item : menuItems) {
+			if(item.getName().equalsIgnoreCase(itemName.trim())) 
+				return item;	
+		}
+		
+		return null;
 	}
 	
 	public void close() {
