@@ -10,6 +10,12 @@ public abstract class Shape implements AreaCalculation {
 	public String getShapeName() {
 		return name;
 	}
+	
+	// Default toString override
+	@Override
+	public String toString() {
+		return "The area of " + getShapeName() + " is " + calculateArea();
+	}
 
 
 }

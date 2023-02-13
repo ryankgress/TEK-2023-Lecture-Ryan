@@ -6,6 +6,8 @@ import java.util.List;
 public class ImplementsMain {
 
 	public static void main(String[] args) {
+//		Shape sh = new Shape();		Can't do this, as Shape is an abstract class
+		
 		Square s = new Square();
 		s.setShapeName("Square");
 		s.setHeight(10);
@@ -25,19 +27,24 @@ public class ImplementsMain {
 		t1.setShapeName("Triangle");
 		t1.setBase(7);
 		t1.setHeight(4);
+		
+		Circle c = new Circle();
+		c.setShapeName("Circle");
+		c.setRadius(5);
+		
+		Circle c1 = new Circle();
+		c1.setShapeName("Circle 1");
+		c1.setRadius(3);
 
 		List<Shape> shapes = new ArrayList<>();
 		shapes.add(s1);
 		shapes.add(t1);
 		shapes.add(s);
 		shapes.add(t);
+		shapes.add(c);
+		shapes.add(c1);
 
 		for (Shape shape : shapes) {
-//			String name = shape.getShapeName(); // this is inherited from Shape class
-//
-//			double area = shape.calculateArea(); 	// this implementation is mandatory due to the
-//													// AreaCalculation
-//			System.out.println("The area of " + name + " is " + area);
 			System.out.println(shape.toString());
 
 		}
