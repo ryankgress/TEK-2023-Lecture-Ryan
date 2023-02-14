@@ -145,7 +145,7 @@ public class JavaStringMethods {
 	    System.out.println(s1.compareTo(s3));	
 	    System.out.println(s3.compareTo(s1));	
 	    
-	    StringJoiner joinNames = new StringJoiner(",");
+	    StringJoiner joinNames = new StringJoiner(",", "{", "}");
 	    
 	    joinNames.add("Java");
 	    joinNames.add("Python");
@@ -153,6 +153,16 @@ public class JavaStringMethods {
 	    joinNames.add("JavaScript");
 	    
 	    System.out.println("\nNew String: " + joinNames);
+	    
+	    StringJoiner join2 = new StringJoiner(":", "[", "]");
+	    
+	    join2.add("Java1");
+	    join2.add("Python1");
+	    join2.add("HTML1");
+	    join2.add("JavaScript1");
+	    
+	    System.out.println(joinNames.merge(join2));
+	    // Will use the surrounding elements from the initial, but keep the separators for each
 	    
 	}
 

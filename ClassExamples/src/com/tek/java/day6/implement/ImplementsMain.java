@@ -35,6 +35,8 @@ public class ImplementsMain {
 		Circle c1 = new Circle();
 		c1.setShapeName("Circle 1");
 		c1.setRadius(3);
+		
+		Shape c3 = new Circle();
 
 		List<Shape> shapes = new ArrayList<>();
 		shapes.add(s1);
