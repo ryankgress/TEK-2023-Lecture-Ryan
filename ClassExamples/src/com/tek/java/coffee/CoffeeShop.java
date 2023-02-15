@@ -2,6 +2,7 @@ package com.tek.java.coffee;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -35,7 +36,7 @@ public class CoffeeShop {
 		item2.setPrice(5.99);
 		item2.setInStock(75);
 		
-		MenuItem item3 = new MenuItem("Choc Chip Cookie", 4.25, 30);
+		MenuItem item3 = new MenuItem("Choc Chip Cookie", 3.25, 30);
 		
 		menuItems.add(item1);
 		menuItems.add(item2);
@@ -43,6 +44,17 @@ public class CoffeeShop {
 
 		// Reducing the item addition to one line
 		menuItems.add(new MenuItem("Egg Sandwich", 14.30, 10));
+		
+		// in-line addition of a Comparator functionality.
+		menuItems.sort(new Comparator<MenuItem>() {
+			@Override
+			public int compare(MenuItem o1, MenuItem o2) {
+				Double p1 = o1.getPrice();
+				Double p2 = o2.getPrice();
+				
+				return p1.compareTo(p2);
+			}
+		});
 		
 	}
 	
