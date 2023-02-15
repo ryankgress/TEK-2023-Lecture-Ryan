@@ -164,6 +164,13 @@ public class JavaStringMethods {
 	    System.out.println(joinNames.merge(join2));
 	    // Will use the surrounding elements from the initial, but keep the separators for each
 	    
+	    StringBuilder sb = new StringBuilder("Hello!");
+	    sb.append("Hello!");
+	    System.out.println(sb.replace(6,sb.length(), " World!"));
+	    
+	    double testNum = 33.72;
+	    System.out.println((int)testNum);
+	    
 	}
 
 }
