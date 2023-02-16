@@ -18,10 +18,14 @@ public class ALMain {
 		// Append
 		int[] appArr = al.appendElement(insArr, 66);
 		
+		// Delete
+		int[] delArr = al.deleteElement(appArr, 4);
+		
 		// Output
 		al.printArray("Original:\t", numbers);
 		al.printArray("After Insert:\t", insArr);
 		al.printArray("After Append:\t", appArr);
+		al.printArray("After Delete:\t", delArr);
 		
 
 
