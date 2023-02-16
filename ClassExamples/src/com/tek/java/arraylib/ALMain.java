@@ -11,22 +11,35 @@ public class ALMain {
 		for(int i = 0; i < numbers.length; i++) {
 			numbers[i] = i+1;
 		}
+		al.printArray("Original:\t", numbers);
 		
 		// Insertion
-		int[] insArr = al.insertElement(numbers, 4, 33);
+		try {
+			numbers = al.insertElement(numbers, 30, 33);
+			al.printArray("After Insert:\t", numbers);
+		} catch (NegativePositionException npe) {
+			System.out.println("Negative! " + npe.getMessage());
+		} catch (PositionTooLargeException ptle) {
+			System.out.println("Too Big! " + ptle.getMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
 		
 		// Append
-		int[] appArr = al.appendElement(insArr, 66);
+		numbers = al.appendElement(numbers, 66);
+		al.printArray("After Append:\t", numbers);
 		
 		// Delete
-		int[] delArr = al.deleteElement(appArr, 4);
+		numbers = al.deleteElement(numbers, 4);
+		al.printArray("After Delete:\t", numbers);
+		
+		// Bubble sort
+		numbers = al.bubbleSort(numbers);
+		al.printArray("After sorting:\t", numbers);
 		
 		// Output
-		al.printArray("Original:\t", numbers);
-		al.printArray("After Insert:\t", insArr);
-		al.printArray("After Append:\t", appArr);
-		al.printArray("After Delete:\t", delArr);
 		
+		System.out.println("\nPosition of 6 is " + al.findValue(numbers, 6));
 
 
 	}

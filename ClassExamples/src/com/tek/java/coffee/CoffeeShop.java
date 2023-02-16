@@ -84,9 +84,18 @@ public class CoffeeShop {
 		System.out.println("   " + EXIT		  + ") Exit");
 		System.out.print("\nMake Selection: ");
 		
-		int selection = keyboard.nextInt();
+		int selection = PRINT_MENU;
+		// Is now infinite looping on bad input. Work on this.
+		try {
+			selection = keyboard.nextInt();
+			return selection;
+		} catch(Exception e) {
+			System.out.println("\nInvalid Input");
+//			return PRINT_MENU;
+		}
 		
 		return selection;
+		
 	}
 	
 	/**
