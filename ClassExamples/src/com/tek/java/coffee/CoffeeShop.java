@@ -46,15 +46,18 @@ public class CoffeeShop {
 		menuItems.add(new MenuItem("Egg Sandwich", 14.30, 10));
 		
 		// in-line addition of a Comparator functionality.
-		menuItems.sort(new Comparator<MenuItem>() {
-			@Override
-			public int compare(MenuItem o1, MenuItem o2) {
-				Double p1 = o1.getPrice();
-				Double p2 = o2.getPrice();
-				
-				return p1.compareTo(p2);
-			}
-		});
+//		menuItems.sort(new Comparator<MenuItem>() {
+//			@Override
+//			public int compare(MenuItem o1, MenuItem o2) {
+//				Double p1 = o1.getPrice();
+//				Double p2 = o2.getPrice();
+//				
+//				return p1.compareTo(p2);
+//			}
+//		});
+		
+		// Single line implementation of above, using streams
+		menuItems.sort(Comparator.comparing(MenuItem::getPrice));
 		
 	}
 	

@@ -14,14 +14,14 @@ public class StreamExamples {
 		names.add("Steven");
 		names.add("Eric");
 		names.add("Jessica");
-		names.add("Ellen");
+		names.add("ellen");
+		names.add("David");
 		
 		// Sort the original names list by length
 		// When length is the same, sort alphabetically
-		List<String> tempNames = names;
-		Collections.sort(tempNames);
 		List<String> lengthList = names.stream()
-				.sorted(Comparator.comparingInt(String::length))
+				.sorted(Comparator.comparingInt(String::length)
+						.thenComparing(x -> x.toLowerCase()))
 				.collect(Collectors.toList());
 		System.out.println(String.join("\n", lengthList) + "\n");
 		System.out.println("=========================");

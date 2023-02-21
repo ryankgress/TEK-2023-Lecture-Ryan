@@ -6,7 +6,6 @@ public class CoffeeMain {
 		CoffeeShop cs = new CoffeeShop();
 		cs.initialize();
 		
-		
 		while(true) {
 			int select = cs.menuPrompt();
 			
