@@ -58,7 +58,6 @@ public class CoffeeShop {
 		
 		// Single line implementation of above, using streams
 		menuItems.sort(Comparator.comparing(MenuItem::getPrice));
-		
 	}
 	
 	/**
