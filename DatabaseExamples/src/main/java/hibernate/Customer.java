@@ -1,5 +1,7 @@
 package hibernate;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -49,11 +51,20 @@ public class Customer {
 	@Column(name="salesRepEmployeeNumber")
 	private Integer salesRepEmployeeNumber;
 	
-	@Column(name="credit_limit")
+	@Column(name="credit_limit", columnDefinition="decimal", precision=10, scale=2)
 	private Double creditLimit;
 
 	
 	
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", customerName=" + customerName + ", contactLastName=" + contactLastName
+				+ ", contactFirstName=" + contactFirstName + ", phone=" + phone + ", addressLine1=" + addressLine1
+				+ ", addressLine2=" + addressLine2 + ", city=" + city + ", state=" + state + ", postalCode="
+				+ postalCode + ", country=" + country + ", salesRepEmployeeNumber=" + salesRepEmployeeNumber
+				+ ", creditLimit=" + creditLimit + "]";
+	}
+
 	public Integer getId() {
 		return id;
 	}
