@@ -54,7 +54,7 @@ public class Employee {
 	private Integer vacationHours;
 	
 	// Map 1 to many relationship from employee to customer
-	@OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "employee", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Customer> customers;
 	
 	

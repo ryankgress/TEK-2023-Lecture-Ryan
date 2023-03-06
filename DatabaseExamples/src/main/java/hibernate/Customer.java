@@ -1,5 +1,6 @@
 package hibernate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -55,7 +56,7 @@ public class Customer {
 	@Column(name="credit_limit", columnDefinition="decimal", precision=10, scale=2)
 	private Double creditLimit;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = true)
+	@ManyToOne(fetch = FetchType.EAGER, optional = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "salesRepEmployeeNumber", nullable = true)
     private Employee employee;
 	
