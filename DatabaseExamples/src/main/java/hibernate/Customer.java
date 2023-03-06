@@ -1,12 +1,13 @@
 package hibernate;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -48,13 +49,15 @@ public class Customer {
 	@Column(name="country")
 	private String country;
 	
-	@Column(name="salesRepEmployeeNumber")
+	@Column(name="salesRepEmployeeNumber", insertable=false, updatable=false)		// This will fix 'repeated column mapping' error
 	private Integer salesRepEmployeeNumber;
 	
 	@Column(name="credit_limit", columnDefinition="decimal", precision=10, scale=2)
 	private Double creditLimit;
 
-	
+	@ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "salesRepEmployeeNumber", nullable = true)
+    private Employee employee;
 	
 	@Override
 	public String toString() {
@@ -64,6 +67,20 @@ public class Customer {
 				+ postalCode + ", country=" + country + ", salesRepEmployeeNumber=" + salesRepEmployeeNumber
 				+ ", creditLimit=" + creditLimit + "]";
 	}
+
+	
+	
+	public Employee getEmployee() {
+		return employee;
+	}
+
+
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+
 
 	public Integer getId() {
 		return id;

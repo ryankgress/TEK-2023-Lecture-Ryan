@@ -12,6 +12,7 @@ public class HibernateExample {
 
 	public static void main(String[] args) {
 		CustomerDAO customerDao = new CustomerDAO();
+		EmployeeDAO employeeDao = new EmployeeDAO();
 		
 		/* Insert */
 //		Customer customer = new Customer();
@@ -35,7 +36,8 @@ public class HibernateExample {
 		
 		
 		/* Find by ID */
-//		System.out.println(customerDao.findById(501).toString());
+		System.out.println(customerDao.findById(502).toString());
+		System.out.println(employeeDao.findById(1702).toString());
 		
 		
 		/* Print list of findByFirstName rows */
