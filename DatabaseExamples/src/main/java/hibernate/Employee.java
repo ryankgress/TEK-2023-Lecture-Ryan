@@ -14,10 +14,12 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
+@ToString
 @Table(name = "employees")
 public class Employee {
 	
@@ -52,6 +54,7 @@ public class Employee {
 	private Integer vacationHours;
 	
 	// Map 1 to many relationship from employee to customer
+	@ToString.Exclude
 	@OneToMany(mappedBy = "employee", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Customer> customers;
 	

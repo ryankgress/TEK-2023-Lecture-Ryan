@@ -1,11 +1,16 @@
 package hibernate;
 
+import java.util.Date;
+
 public class OneToManyExample {
 
 	public static void main(String[] args) {
 		CustomerDAO customerDao = new CustomerDAO();
 		EmployeeDAO employeeDao = new EmployeeDAO();
 		PaymentDAO paymentDao = new PaymentDAO();
+		OrderDAO orderDao = new OrderDAO();
+		OrderDetailDAO orderDetailDao = new OrderDetailDAO();
+		ProductDAO productDao = new ProductDAO();
 		
 //		Employee e = employeeDao.findById(1166);
 //		System.out.println(e);
@@ -14,27 +19,80 @@ public class OneToManyExample {
 //			System.out.println(customer);
 //		}
 		
+		System.out.println(productDao.findById(2));
 		
 		
 		Customer c = customerDao.findById(112);
 		System.out.println(c);
+
+		/* Insert into Order */
+//		Order order = new Order();
+//		order.setOrderDate(new Date());
+//		order.setRequiredDate(new Date());
+//		order.setStatus("Hello");
+//		order.setCustomer(c);
+//		
+//		orderDao.insert(order);
+//		
+//		c.getOrders().add(order);
+//		customerDao.update(c);
 		
-		/* Insert */
-		Payment payment = new Payment();
-		payment.setCheckNumber("THIS10KAY");
-		payment.setPaymentDate(new java.sql.Date(3000000));
-		payment.setAmount(42000.00);
-		payment.setCustomerId(112);
-		payment.setCustomer(c);
+		Order order1 = orderDao.findById(10100);
 		
-		paymentDao.insert(payment);
+		/* Add Insert for Products */
+		// Need to make productLines
+//		Product product = new Product();
+//		product.setProductCode("Hello");
+//		product.setProductName("MemeCar");
+//		product.setProductLineId(2);
+//		product.setProductScale("Big");
+//		product.setProductVendor("Pepsi");
+//		product.setProductDescription("It's really great");
+//		product.setQuantityInStock(33);
+//		product.setBuyPrice(69.00);
+//		product.setMsrp(33.33);
+//		
+//		productDao.insert(product);
 		
-		c.getPayments().add(payment);
-		customerDao.update(c);
+//		System.out.println(productDao.findById(2));
 		
-		for( Payment p : c.getPayments()) {
-			System.out.println(p);
-		}
+		/* Add Insert for OrderDetails */
+		// Need to join on 2 foreign keys
+//		OrderDetail od1 = new OrderDetail();
+//		od1.setOrderLineNumber(3);
+//		od1.setPriceEach(42.00);
+		
+		/* --------------------------- */
+		
+		
+		
+//		for( OrderDetail od : order1.getOrderDetails()) {
+//			System.out.println(od);
+//		}
+		
+		
+		/* Print all orders for the customer above */
+//		for( Order o : c.getOrders()) {
+//			System.out.println(o);
+//		}
+		
+		/* Insert Payment linked to Customer */
+//		Payment payment = new Payment();
+//		payment.setCheckNumber("THIS10KAY");
+//		payment.setPaymentDate(new Date());
+//		payment.setAmount(42000.00);
+//		payment.setCustomerId(112);
+//		payment.setCustomer(c);
+//		
+//		paymentDao.insert(payment);
+//		
+//		c.getPayments().add(payment);
+//		customerDao.update(c);
+		
+		/* Print all payments for customer above */
+//		for( Payment p : c.getPayments()) {
+//			System.out.println(p);
+//		}
 		
 		
 		

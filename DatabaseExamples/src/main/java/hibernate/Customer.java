@@ -14,12 +14,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
+@ToString
 @Table(name = "customers")
 public class Customer {
 	
@@ -67,32 +72,22 @@ public class Customer {
 	
 	
 	/* To Employee */
+	@ToString.Exclude
 	@ManyToOne(fetch = FetchType.EAGER, optional = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "salesRepEmployeeNumber", nullable = true)
     private Employee employee;
 	
 	/* To Payment */
-	// Map 1 to many relationship from customer to payments
-	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ToString.Exclude
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
 	private List<Payment> payments;
 	
-	
-	
-	@Override
-	public String toString() {
-		return "Customer [id=" + id + ", customerName=" + customerName + ", contactLastName=" + contactLastName
-				+ ", contactFirstName=" + contactFirstName + ", phone=" + phone + ", addressLine1=" + addressLine1
-				+ ", addressLine2=" + addressLine2 + ", city=" + city + ", state=" + state + ", postalCode="
-				+ postalCode + ", country=" + country + ", salesRepEmployeeNumber=" + salesRepEmployeeNumber
-				+ ", creditLimit=" + creditLimit + "]";
-	}
-
-
-	
-	
-
-	
-	
+	/* To Order */
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@ToString.Exclude
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+	private List<Order> orders;
 	
 	
 	

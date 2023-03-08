@@ -23,5 +23,8 @@
         <mapping class="hibernate.Customer"/>
     	<mapping class="hibernate.Employee"/>
     	<mapping class="hibernate.Payment"/>
+    	<mapping class="hibernate.Order"/>
+    	<mapping class="hibernate.OrderDetail"/>
+    	<mapping class="hibernate.Product"/>
     </session-factory>
 </hibernate-configuration>
