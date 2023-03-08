@@ -22,7 +22,7 @@ public class OneToManyExample {
 		/* Insert */
 		Payment payment = new Payment();
 		payment.setCheckNumber("THIS10KAY");
-		payment.setPaymentDate(new java.sql.Date(300000));
+		payment.setPaymentDate(new java.sql.Date(3000000));
 		payment.setAmount(42000.00);
 		payment.setCustomerId(112);
 		payment.setCustomer(c);
