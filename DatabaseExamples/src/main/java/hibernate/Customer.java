@@ -1,5 +1,7 @@
 package hibernate;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -56,9 +59,19 @@ public class Customer {
 	@Column(name="credit_limit", columnDefinition="decimal", precision=10, scale=2)
 	private Double creditLimit;
 
+	
+	
+	/* To Employee */
 	@ManyToOne(fetch = FetchType.EAGER, optional = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "salesRepEmployeeNumber", nullable = true)
     private Employee employee;
+	
+	/* To Payment */
+	// Map 1 to many relationship from customer to payments
+	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Payment> payments;
+	
+	
 	
 	@Override
 	public String toString() {
@@ -69,13 +82,20 @@ public class Customer {
 				+ ", creditLimit=" + creditLimit + "]";
 	}
 
+
 	
 	
+	public List<Payment> getPayments() {
+		return payments;
+	}
+
+	public void setPayments(List<Payment> payments) {
+		this.payments = payments;
+	}
+
 	public Employee getEmployee() {
 		return employee;
 	}
-
-
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;

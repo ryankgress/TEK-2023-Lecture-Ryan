@@ -42,13 +42,6 @@ public class Employee {
 	@Column(name="job_title")
 	private String jobTitle;
 	
-	public List<Customer> getCustomers() {
-		return customers;
-	}
-
-	public void setCustomer(List<Customer> customer) {
-		this.customers = customer;
-	}
 
 	@Column(name="vacation_hours")
 	private Integer vacationHours;
@@ -135,6 +128,14 @@ public class Employee {
 
 	public void setVacationHours(Integer vacationHours) {
 		this.vacationHours = vacationHours;
+	}
+	
+	public List<Customer> getCustomers() {
+		return customers;
+	}
+
+	public void setCustomer(List<Customer> customer) {
+		this.customers = customer;
 	}
 	
 	

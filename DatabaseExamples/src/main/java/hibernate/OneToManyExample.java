@@ -5,13 +5,39 @@ public class OneToManyExample {
 	public static void main(String[] args) {
 		CustomerDAO customerDao = new CustomerDAO();
 		EmployeeDAO employeeDao = new EmployeeDAO();
+		PaymentDAO paymentDao = new PaymentDAO();
 		
-		Employee e = employeeDao.findById(1166);
-		System.out.println(e);
+//		Employee e = employeeDao.findById(1166);
+//		System.out.println(e);
+//		
+//		for( Customer customer : e.getCustomers()) {
+//			System.out.println(customer);
+//		}
 		
-		for( Customer customer : e.getCustomers()) {
-			System.out.println(customer);
+		
+		
+		Customer c = customerDao.findById(112);
+		System.out.println(c);
+		
+		/* Insert */
+		Payment payment = new Payment();
+		payment.setCheckNumber("THIS10KAY");
+		payment.setPaymentDate(new java.sql.Date(300000));
+		payment.setAmount(42000.00);
+		payment.setCustomerId(112);
+		payment.setCustomer(c);
+		
+		paymentDao.insert(payment);
+		
+		c.getPayments().add(payment);
+		customerDao.update(c);
+		
+		for( Payment p : c.getPayments()) {
+			System.out.println(p);
 		}
+		
+		
+		
 		
 		/** Insert Customer w/ employee number **/
 //		Customer customer = new Customer();
