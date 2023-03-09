@@ -37,8 +37,11 @@ public class Product {
 	@Column(name="product_name")
 	private String productName;
 	
-	@Column(name="productline_id", insertable=false, updatable=false)
+	@Column(name="productline_id")		// Removing FK constraint
 	private Integer productLineId;
+	
+//	@Column(name="productline_id", insertable=false, updatable=false)
+//	private Integer productLineId;
 	
 	@Column(name="product_scale")
 	private String productScale;
@@ -63,5 +66,6 @@ public class Product {
 	@ToString.Exclude
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
 	private List<OrderDetail> orderDetails;
+	
 	
 }

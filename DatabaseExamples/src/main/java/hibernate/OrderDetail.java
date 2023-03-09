@@ -44,21 +44,39 @@ public class OrderDetail {
 	@Column(name="price_each", columnDefinition="decimal", precision=10, scale=2)
 	private Double priceEach;
 	
-	@Column(name="quantity_ordered", insertable=false, updatable=false)
+	@Column(name="quantity_ordered")
 	private Integer quantityOrdered;
+	
+
 	
 	/* To Order */
 	@ToString.Exclude
-	@ManyToOne(fetch = FetchType.EAGER, optional = true, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
 	
 	/* To Product */
 	@ToString.Exclude
 //	@LazyCollection(LazyCollectionOption.FALSE)
-	@ManyToOne(fetch = FetchType.EAGER, optional = true, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
+	
+	
+	
+//	/* To Order */
+//	  @ToString.Exclude
+//	  @ManyToOne(fetch = FetchType.EAGER, optional = true, cascade = CascadeType.ALL)
+//  @JoinColumn(name = "order_id", nullable = false)
+//  private Order order;
+	
+//	/* To Product */
+//	@ToString.Exclude
+//	@ManyToOne(fetch = FetchType.EAGER, optional = true, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "product_id", nullable = false)
+//    private Product product;
+	
+
 	
 	
 }

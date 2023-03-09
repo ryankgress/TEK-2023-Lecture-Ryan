@@ -19,11 +19,11 @@ public class OneToManyExample {
 //			System.out.println(customer);
 //		}
 		
-		System.out.println(productDao.findById(2));
-		
-		
-		Customer c = customerDao.findById(112);
-		System.out.println(c);
+//		System.out.println(productDao.findById(2));
+//		
+//		
+//		Customer c = customerDao.findById(112);
+//		System.out.println(c);
 
 		/* Insert into Order */
 //		Order order = new Order();
@@ -37,7 +37,6 @@ public class OneToManyExample {
 //		c.getOrders().add(order);
 //		customerDao.update(c);
 		
-		Order order1 = orderDao.findById(10100);
 		
 		
 		/* Add Insert for Products */
@@ -58,14 +57,35 @@ public class OneToManyExample {
 //		System.out.println(productDao.findById(2));
 		
 		/* Add Insert for OrderDetails */
-		// Need to join on 2 foreign keys
-//		OrderDetail od1 = new OrderDetail();
-//		od1.setOrderLineNumber(3);
-//		od1.setPriceEach(42.00);
+		OrderDetail od1 = new OrderDetail();
+		Product prod = productDao.findById(111);	// Memecar
+		Order ord = orderDao.findById(10426);		// Hello
+		od1.setOrderLineNumber(3);
+		od1.setPriceEach(42.00);
+		od1.setQuantityOrdered(76);
+		od1.setProduct(prod);
+		od1.setOrder(ord);
+		od1.setProductId(111);
+		od1.setOrderId(10426);
+		orderDetailDao.insert(od1);
+		
+		prod.getOrderDetails().add(od1);
+		ord.getOrderDetails().add(od1);
+		
+		productDao.update(prod);
+		orderDao.update(ord);
+		
+		for( OrderDetail odd : prod.getOrderDetails()) {
+			System.out.println(odd);
+		}
+		
+		for( OrderDetail odd : ord.getOrderDetails()) {
+			System.out.println(odd);
+		}
 		
 		/* --------------------------- */
 		
-		
+//		Order order1 = orderDao.findById(10100);
 		
 //		for( OrderDetail od : order1.getOrderDetails()) {
 //			System.out.println(od);
