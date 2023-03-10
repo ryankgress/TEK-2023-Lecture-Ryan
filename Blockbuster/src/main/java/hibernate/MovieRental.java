@@ -1,5 +1,6 @@
 package hibernate;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -33,6 +36,14 @@ public class MovieRental {
 	
 	@Column(name="movie_id", insertable=false, updatable=false)
 	private Integer movieId;
+	
+	@Column(name="checkout_date")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date checkoutDate;
+	
+	@Column(name="checkin_date")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date checkinDate;
 	
 	/* To Movie */
 	@ToString.Exclude
