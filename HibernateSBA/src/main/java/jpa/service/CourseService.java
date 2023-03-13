@@ -25,5 +25,19 @@ public class CourseService implements CourseDAO {
 		session.close();
 		return results;
 	}
+	
+	public Course findCourseById(int id) {
+		SessionFactory factory = new Configuration().configure().buildSessionFactory();
+		Session session = factory.openSession();
+
+		String hql = "FROM Course c WHERE c.id = :idParam";
+		TypedQuery<Course> query = session.createQuery(hql, Course.class);
+		query.setParameter("idParam", id);
+		Course result = query.getSingleResult(); 
+
+		session.close();
+		return result;
+		
+	}
 
 }

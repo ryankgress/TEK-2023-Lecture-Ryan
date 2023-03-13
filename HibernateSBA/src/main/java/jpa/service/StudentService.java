@@ -1,6 +1,5 @@
 package jpa.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
@@ -12,6 +11,7 @@ import org.hibernate.cfg.Configuration;
 import jpa.dao.StudentDAO;
 import jpa.entitymodels.Course;
 import jpa.entitymodels.Student;
+import jpa.entitymodels.StudentCourse;
 
 public class StudentService implements StudentDAO {
 
@@ -57,12 +57,21 @@ public class StudentService implements StudentDAO {
 		
 		session.close();
 		
-	
 		return false;
 	}
 
 	public void registerStudentToCourse(Student student, Course course) {
-		// TODO Auto-generated method stub
+		SessionFactory factory = new Configuration().configure().buildSessionFactory();
+		Session session = factory.openSession();
+		StudentCourse studentCourse = new StudentCourse();
+		
+		studentCourse.setStudent(student);
+		studentCourse.setCourse(course);
+
+		session.getTransaction().begin();
+		session.save(studentCourse); 
+		session.getTransaction().commit();
+		session.close();
 
 	}
 
@@ -75,13 +84,6 @@ public class StudentService implements StudentDAO {
 		query.setParameter("idParam", student.getSId());
 		
 		List<Course> courseList = query.getResultList();
-//		if(courseList != null) {
-//			for(Course c : courseList) {
-//				System.out.printf("%-30s\t%s\n", c.getCName(), c.getCInstructorName());
-//			}
-//		} else {
-//			System.out.println("No active courses registered.");
-//		}
 		
 		session.close();
 		return courseList;
