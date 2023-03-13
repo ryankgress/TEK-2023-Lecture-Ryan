@@ -18,8 +18,18 @@ public class StudentService implements StudentDAO {
 	}
 
 	public Student getStudentByEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		SessionFactory factory = new Configuration().configure().buildSessionFactory();
+		Session session = factory.openSession();
+		
+		String hql = "FROM Student s WHERE s.sEmail = :idParam";
+		
+		TypedQuery<Student> query = session.createQuery(hql, Student.class);
+		query.setParameter("idParam", email);
+		Student result = query.getSingleResult();
+		
+		session.close();
+		
+		return result;
 	}
 
 	public boolean validateStudent(String email, String password) {

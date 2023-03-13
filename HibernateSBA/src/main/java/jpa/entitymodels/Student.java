@@ -3,12 +3,17 @@ package jpa.entitymodels;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -41,5 +46,12 @@ public class Student {
 	@Column(name = "password")
 	private String sPass;
 	
-	private List<Course> sCourses = new ArrayList<Course>();
+	/* To Course */		// Needs changed
+//	@ToString.Exclude
+//	@LazyCollection(LazyCollectionOption.FALSE)
+//	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+//	private List<Course> courses;
+	
+	
+	// Add a many to many joiner table?
 }
