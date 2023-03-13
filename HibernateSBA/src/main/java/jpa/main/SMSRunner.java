@@ -52,9 +52,7 @@ public class SMSRunner {
 					if (ss.validateStudent(email, password)) {
 						student = ss.getStudentByEmail(email);
 						return student;
-					} else {
-						System.out.println("Couldn't find you");
-					}
+					} 
 
 				} catch (Exception e) { // Catching invalid email/password
 					System.out.println("Email/Pass not found. Have a nice day.");
@@ -71,7 +69,6 @@ public class SMSRunner {
 			System.exit(0);
 		}
 
-		keyboard.close();
 		return null;
 
 	}
@@ -127,11 +124,9 @@ public class SMSRunner {
 
 					System.out.println("Here is your new Course List:\n");
 					printCourseList(courseList);
-					// Add to DB and courseList, then print new courselist and exit
 
 				} catch (Exception e) { // Catches non-integer input
 					System.out.println("Invalid Input. Have a nice day.");
-//					e.printStackTrace(); 
 				}
 
 			} else { // Catching invalid menu choice
