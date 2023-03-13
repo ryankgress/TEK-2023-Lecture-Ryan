@@ -46,12 +46,10 @@ public class Student {
 	@Column(name = "password")
 	private String sPass;
 	
-	/* To Course */		// Needs changed
-//	@ToString.Exclude
-//	@LazyCollection(LazyCollectionOption.FALSE)
-//	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
-//	private List<Course> courses;
+	/* To StudentCourse */
+	@ToString.Exclude
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+	private List<StudentCourse> studentCourses;
 	
-	
-	// Add a many to many joiner table?
 }

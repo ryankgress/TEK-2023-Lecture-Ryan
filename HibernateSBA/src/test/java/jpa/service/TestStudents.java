@@ -32,7 +32,7 @@ public class TestStudents {
 	}
 	
 	@Test
-	public void GetStudentByEmailTest() {
+	public void getStudentByEmailTest() {
 		
 		// Given
 		String email = "cstartin3@flickr.com";
@@ -47,5 +47,10 @@ public class TestStudents {
 		Assertions.assertEquals(student.getSName(), name);
 		Assertions.assertEquals(student.getSPass(), pass);
 		Assertions.assertNotEquals(student.getSPass(), fakePass);
+	}
+	
+	@Test
+	public void getStudentCoursesTest() {
+		ss.getStudentCourses(ss.getStudentByEmail("ryankgress@gmail.com"));
 	}
 }

@@ -1,5 +1,8 @@
 package jpa.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
@@ -63,9 +66,25 @@ public class StudentService implements StudentDAO {
 
 	}
 
-	public void getStudentCourses() {
-		// TODO Auto-generated method stub
-
+	public List<Course> getStudentCourses(Student student) {
+		SessionFactory factory = new Configuration().configure().buildSessionFactory();
+		Session session = factory.openSession();
+		
+		String hql = "FROM Course c WHERE c.id IN (SELECT sc.courseId FROM StudentCourse sc where sc.studentId = :idParam)";
+		TypedQuery<Course> query = session.createQuery(hql, Course.class);
+		query.setParameter("idParam", student.getSId());
+		
+		List<Course> courseList = query.getResultList();
+//		if(courseList != null) {
+//			for(Course c : courseList) {
+//				System.out.printf("%-30s\t%s\n", c.getCName(), c.getCInstructorName());
+//			}
+//		} else {
+//			System.out.println("No active courses registered.");
+//		}
+		
+		session.close();
+		return courseList;
 	}
 
 }
