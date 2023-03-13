@@ -33,8 +33,13 @@ public class StudentService implements StudentDAO {
 			query.setParameter("idParam1", email);
 			query.setParameter("idParam2", password);
 			Student result = query.getSingleResult();
+			
+			if(result != null) {
+				return true;
+			}
 		} catch(Exception e) {
-			// PUT HERE IF NO RESULT IS FOUND CODE
+			System.out.println("No student found with that result. Have a nice day.");
+			System.exit(0);
 		}
 		
 		session.close();
