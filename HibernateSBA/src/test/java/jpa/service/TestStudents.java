@@ -20,13 +20,12 @@ public class TestStudents {
 		// Given
 		String email = "cstartin3@flickr.com";
 		String pass = "XYHzJ1S";
-		String wrongPass = "NotIt";
 		
 		// When 
-		
+		boolean expectedTrue = ss.validateStudent(email, pass);
 		
 		// Then
-		Assertions.assertTrue(ss.validateStudent(email, pass));
+		Assertions.assertTrue(expectedTrue);
 //		Assertions.assertFalse(ss.validateStudent(email, wrongPass));
 		
 	}

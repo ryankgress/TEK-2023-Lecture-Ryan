@@ -15,8 +15,17 @@ import jpa.entitymodels.StudentCourse;
 
 public class StudentService implements StudentDAO {
 
-	public void getAllStudents() {
-		// TODO Auto-generated method stub
+	public List<Student> getAllStudents() {
+		SessionFactory factory = new Configuration().configure().buildSessionFactory();
+		Session session = factory.openSession();
+		String hql = "FROM Student";
+
+		TypedQuery<Student> query = session.createQuery(hql, Student.class);
+		
+		List<Student> results = query.getResultList();
+		
+		session.close();
+		return results;
 
 	}
 

@@ -16,14 +16,14 @@ public class TestCourses {
 	@Test
 	public void findCourseByIdTest() {
 		// Given
-				String name = "Digital Logic";
-				String instructor = "Glenden Reilingen";;
-				
-				// When
-				Course course = cs.findCourseById(6);
-				
-				// Then
-				Assertions.assertEquals(course.getCName(), name);
-				Assertions.assertEquals(course.getCInstructorName(), instructor);
+		String name = "Digital Logic";
+		String instructor = "Glenden Reilingen";;
+		
+		// When
+		Course course = cs.findCourseById(6);
+		
+		// Then
+		Assertions.assertEquals(course.getCName(), name);
+		Assertions.assertEquals(course.getCInstructorName(), instructor);
 	}
 }
