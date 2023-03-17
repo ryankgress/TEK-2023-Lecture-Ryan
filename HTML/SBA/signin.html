@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inquizitive - Sign In</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="min-vh-100 d-flex flex-column">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light px-3" style="background-color: #cc9cbe;">
+        <a class="navbar-brand d-lg-none mx-3" href="../HTML Intro/newindex.html"><img src="images/logo.png"
+                width="200px"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="nav#navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.html">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../HTML Intro/newindex.html">About</a>
+                </li>
+                <a class="d-none d-lg-block mx-3" href="index.html"><img src="images/logo.png" width="200px"></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Trivia List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="signin.html">Sign in</a>
+                </li>
+                <li class="nav-item">
+                    <br><br>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <section>
+        <div class="signin-main container mt-3 mb-5 d-flex flex-column border border-danger border-2 rounded-3 w-50 ">
+            <h1>Sign In</h1>
+            <form class="m-3">
+                <div class="mb-3">
+                    <label for="usernameInput" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="usernameInput" aria-describedby="usernameHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="passwordInput" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="passwordInput">
+                    <div id="passwordHelp" class="form-text" style="text-align: right;">New to Inquizitive? Create an
+                        account <a href="register.html">here</a></div>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+                </div>
+                <button type="submit" class="btn btn-dark">Log In</button>
+            </form>
+        </div>
+    </section>
+
+
+
+
+    <!-- Footer -->
+    <section class="Footer mt-auto">
+        <footer class="text-center text-white bg-dark navbar-fixed-bottom">
+            <div class="container p-4 pb-0">
+                <section class="">
+                    <p class="d-flex justify-content-center align-items-center">
+                        <span class="me-3">Create an account now</span>
+                        <button type="button" class="btn btn-outline-light btn-rounded">
+                            Sign up!
+                        </button>
+                    </p>
+                </section>
+            </div>
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2023 Copyright:
+                <a class="text-white"
+                    href="https://perscholas.instructure.com/courses/1312/pages/java-home">Inquizitive.com</a>
+            </div>
+        </footer>
+    </section>
+
+
+</body>
+
+</html>

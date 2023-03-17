@@ -1,3 +1,4 @@
+/* Index & General */
 nav a {
     font-size: 18pt;
     align-items: center;
@@ -35,7 +36,6 @@ nav {
 
 
 /* Profile Page */
-
 .profile-main {
     background-color: rgb(255, 255, 255);
 }
@@ -46,4 +46,44 @@ nav {
 
 .profile-main p {
     font-size: 20pt;
+}
+
+.profile-userinfo table {
+    width:400px;
+    font-size: 16pt;
+}
+
+.profile-header {
+    padding-right: 7%;
+    padding-left: 3%
+}
+
+.profile-teams h5{
+    color:rgb(223, 189, 118);
+    font-size: 18pt;
+    text-shadow:2px .5px 1px black;
+}
+
+.profile-recent a {
+    color: black;
+    text-decoration: none;
+    font-weight:bold;
+}
+
+.profile-recent a:hover {
+    color:#263B80
+}
+
+.profile-recent .placement {
+    text-align: center;
+}
+
+
+/* Login/Register */
+.signin-main, .register-main {
+    background-color: rgb(255, 255, 255);
+}
+
+.signin-main h1, .register-main h1 {
+    color:black;
 }
