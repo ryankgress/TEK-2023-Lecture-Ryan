@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printing Shapes</title>
+</head>
+
+<body>
+    <h1>hello</h1>
+    <script>
+
+        /* Box */
+        // var width = prompt("Width: ");
+        // var height = prompt("Height: ");
+        // for(let i = 0; i < height; i ++) {
+        //     let str = "";
+        //     for(let j = 0; j < width; j++) {
+        //         str += "*";
+        //     }
+        //     console.log(str);
+        // }
+
+        /* Checkerboard */
+        // var width = prompt("Width: ");
+        // var height = prompt("Height: ");
+        // for (let i = 0; i < height; i++) {
+        //     let str = "";
+        //     if (i % 2 == 0) {
+        //         for (let j = 0; j < width; j++) {
+        //             if(j % 2 == 0) {
+        //                 str += "*";
+        //             } else {
+        //                 str += " ";
+        //             }
+        //         }
+        //     } else {
+        //         for (let j = 0; j < width; j++) {
+        //             if(j % 2 != 0) {
+        //                 str += "*";
+        //             } else {
+        //                 str += " ";
+        //             }
+        //         }
+        //     }
+        //     console.log(str);
+        // }
+
+        /* Cross */
+        var size = prompt("Input size: ");
+        let str = [size];
+        for(let i = 0; i < size; i++) {
+            str.fill(" ");
+            str[i] = "*";
+            str[size-(i+1)] = "*";
+            console.log(str.join(""));
+        }
+
+        /* Lower Triangle */
+        // var side = prompt("Input side length: ");
+        // for(let i = 1; i <= side; i++) {
+        //     let str = "";
+        //     for(let j = 0; j < i; j++) {
+        //         str += "*";
+        //     }
+        //     console.log(str);
+        // }
+
+        /* Upper Triangle */
+        // var side = prompt("Input side length: ");
+
+        // for(let i = 0; i < side; i++) {
+        //     let str = "";
+        //     for(let k = side-(i+1); k < side; k++) {
+        //         str += " ";
+        //     }
+        //     for(let j = 0; j < side-(i); j++) {
+        //         str += "*";
+        //     }
+        //     console.log(str);
+        // }
+
+        /* Upside-down Trapezoid */
+        // var width = prompt("Input width: ");
+        // var height = prompt("Input height: ");
+
+        // if(height > (width / 2)) {
+        //     console.log("Impossible Shape!");
+        // } else {
+        //     let spaces = 0;
+        //     let stars = width;
+            
+        //     for(let i = 0; i < height; i++) {
+        //         let str = "";
+        //         for(let k = 0; k < spaces; k++) {
+        //             str += " ";
+        //         }
+        //         for(let k = 0; k < stars; k++) {
+        //             str += "*";
+        //         }
+        //         spaces += 1;
+        //         stars -= 2;
+        //         console.log(str);
+        //     }
+        // }
+
+
+
+    </script>
+</body>
+
+</html>
