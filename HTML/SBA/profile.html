@@ -19,8 +19,7 @@
 <body class="min-vh-100">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light px-3" style="background-color: #cc9cbe;">
-        <a class="navbar-brand d-lg-none mx-3" href="../HTML Intro/newindex.html"><img src="images/logo.png"
-                width="200px"></a>
+        <a class="navbar-brand d-lg-none mx-3" href="index.html"><img src="images/logo.png" width="200px"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="nav#navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -31,14 +30,17 @@
                     <a class="nav-link" href="profile.html">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../HTML Intro/newindex.html">About</a>
+                    <a class="nav-link" href="teams.html">Teams</a>
                 </li>
                 <a class="d-none d-lg-block mx-3" href="index.html"><img src="images/logo.png" width="200px"></a>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Trivia List</a>
+                    <a class="nav-link" href="trivialist.html">Trivia List</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="signin.html">Sign in</a>
+                </li>
+                <li class="nav-item">
+                    <br><br>
                 </li>
             </ul>
         </div>
@@ -167,7 +169,11 @@
 
 
 
-
+    <script>
+        function toRegister() {
+            location.href = "register.html";
+        }
+    </script>
 
 
 
@@ -178,7 +184,7 @@
                 <section class="">
                     <p class="d-flex justify-content-center align-items-center">
                         <span class="me-3">Create an account now</span>
-                        <button type="button" class="btn btn-outline-light btn-rounded">
+                        <button type="button" class="btn btn-outline-light btn-rounded" onclick="toRegister()">
                             Sign up!
                         </button>
                     </p>

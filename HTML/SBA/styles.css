@@ -5,33 +5,34 @@ nav a {
 }
 
 .nav-item {
-    color:black;
+    color: black;
 }
 
-h1, h5 {
+h1,
+h5 {
     text-align: center;
-    color:white;
-    text-shadow:1px 1px 2px black;
+    color: white;
+    text-shadow: 1px 1px 2px black;
 }
 
 #quiz {
-    color:#BECC9C;
+    color: #BECC9C;
 }
 
 .intro {
     background-image: url(images/bar-bg-1.jpg);
     background-repeat: no-repeat;
-    height:500px;
+    height: 500px;
 }
 
 body {
     background-image: url(images/dark-bg.jpg);
-    background-repeat:repeat-y;
+    background-repeat: repeat-y;
 }
 
 nav {
-    background: rgb(0,0,0);
-    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(103,96,96,1) 22%, rgba(237,242,244,1) 100%);
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(103, 96, 96, 1) 22%, rgba(237, 242, 244, 1) 100%);
 }
 
 
@@ -40,8 +41,8 @@ nav {
     background-color: rgb(255, 255, 255);
 }
 
-.profile-main h1{
-    color:black;
+.profile-main h1 {
+    color: black;
 }
 
 .profile-main p {
@@ -49,7 +50,7 @@ nav {
 }
 
 .profile-userinfo table {
-    width:400px;
+    width: 400px;
     font-size: 16pt;
 }
 
@@ -58,20 +59,20 @@ nav {
     padding-left: 3%
 }
 
-.profile-teams h5{
-    color:rgb(223, 189, 118);
+.profile-teams h5 {
+    color: rgb(223, 189, 118);
     font-size: 18pt;
-    text-shadow:2px .5px 1px black;
+    text-shadow: 2px .5px 1px black;
 }
 
 .profile-recent a {
     color: black;
     text-decoration: none;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 .profile-recent a:hover {
-    color:#263B80
+    color: #263B80
 }
 
 .profile-recent .placement {
@@ -80,10 +81,16 @@ nav {
 
 
 /* Login/Register */
-.signin-main, .register-main {
+.signin-main,
+.register-main {
     background-color: rgb(255, 255, 255);
 }
 
-.signin-main h1, .register-main h1 {
-    color:black;
+.signin-main h1,
+.register-main h1 {
+    color: black;
+}
+
+.register-main #lightText {
+    color: rgb(145, 144, 144);
 }

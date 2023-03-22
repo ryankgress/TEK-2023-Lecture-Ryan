@@ -16,10 +16,9 @@
 
 <body class="d-flex flex-column min-vh-100">
 
-    <!-- Navbar -->
+    <!-- Navbar - Maybe add Teams instead of About -->
     <nav class="navbar navbar-expand-lg navbar-light px-3" style="background-color: #cc9cbe;">
-        <a class="navbar-brand d-lg-none mx-3" href="../HTML Intro/newindex.html"><img src="images/logo.png"
-                width="200px"></a>
+        <a class="navbar-brand d-lg-none mx-3" href="index.html"><img src="images/logo.png" width="200px"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="nav#navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -30,26 +29,61 @@
                     <a class="nav-link" href="profile.html">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../HTML Intro/newindex.html">About</a>
+                    <a class="nav-link" href="teams.html">Teams</a>
                 </li>
                 <a class="d-none d-lg-block mx-3" href="index.html"><img src="images/logo.png" width="200px"></a>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Trivia List</a>
+                    <a class="nav-link" href="trivialist.html">Trivia List</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="signin.html">Sign in</a>
+                </li>
+                <li class="nav-item">
+                    <br><br>
                 </li>
             </ul>
         </div>
     </nav>
 
     <section>
-        <div class="register-main container mt-3 mb-5 d-flex flex-column border border-danger border-2 rounded-3">
-            <h1>Register</h1>
+        <div class="register-main container mt-3 mb-5 d-flex flex-column border border-danger border-2 rounded-3 w-50">
+            <h1 class="mt-3">Create New Account</h1>
+            <form class="m-3 d-flex flex-column justify-content-center">
+                <div class="mb-3 col-sm-9 mx-auto">
+                    <label for="nameInput" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="nameInput" aria-describedby="nameHelp">
+                </div>
+                <div class="mb-3 col-sm-9 mx-auto">
+                    <label for="usernameInput" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="usernameInput" aria-describedby="usernameHelp">
+                </div>
+                <div class="mb-3 col-sm-9 mx-auto">
+                    <label for="emailInput" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3 col-sm-9 mx-auto">
+                    <label for="passwordInput" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="passwordInput">
+                </div>
+                <div class="mb-3 col-sm-9 mx-auto">
+                    <label for="confirmPasswordInput" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirmpasswordInput">
+                </div>
+                <div class="mb-5 col-sm-9 mx-auto">
+                    <label for="formFile" class="form-label">Profile Picture <span
+                            id="lightText">(optional)</span></label>
+                    <input class="form-control" type="file" id="formFile">
+                </div>
+                <button type="submit" class="btn btn-dark mx-5">Register</button>
+            </form>
         </div>
     </section>
 
-
+    <script>
+        function toRegister() {
+            location.href = "register.html";
+        }
+    </script>
 
     <!-- Footer -->
     <section class="Footer mt-auto">
@@ -58,7 +92,7 @@
                 <section class="">
                     <p class="d-flex justify-content-center align-items-center">
                         <span class="me-3">Create an account now</span>
-                        <button type="button" class="btn btn-outline-light btn-rounded">
+                        <button type="button" class="btn btn-outline-light btn-rounded" onclick="toRegister()">
                             Sign up!
                         </button>
                     </p>
