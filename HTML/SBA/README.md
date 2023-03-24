@@ -1,3 +1,5 @@
+# **Inquizitive**
+
 Inquizitive is a site that allows you to make an account, register a quiz team, 
 and find/report local bar trivia in your area. It also aims to give people a 
 nice place to meet, compete, and find places to go every night of the week, in 
