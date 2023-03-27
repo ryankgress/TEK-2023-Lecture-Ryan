@@ -1,0 +1,15 @@
+.page-header {
+    color: rgb(69, 136, 114);
+    margin-top: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+a:hover {
+    color: green;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Playfair Display', serif;
+}

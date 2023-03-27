@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inquizitive - Register</title>
+    <title>Inquizitive - Trivia List</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -14,10 +14,8 @@
         crossorigin="anonymous"></script>
 </head>
 
-
-<body class="d-flex flex-column min-vh-100">
-
-    <!-- Navbar - Maybe add Teams instead of About -->
+<body class="min-vh-100 d-flex flex-column">
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light px-3" style="background-color: #cc9cbe;">
         <a class="navbar-brand d-lg-none mx-3" href="index.html"><img src="images/logo.png" width="200px"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -46,49 +44,16 @@
         </div>
     </nav>
 
-    <script src="register.js"></script>
+
 
     <section>
-        <div class="register-main container mt-3 mb-5 d-flex flex-column border border-danger border-2 rounded-3 w-50">
-            <h1 class="mt-3">Create New Account</h1>
-            <form class="m-3 d-flex flex-column justify-content-center">
-                <div class="mb-3 col-sm-9 mx-auto">
-                    <label for="nameInput" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="nameInput">
-                </div>
-                <div class="mb-3 col-sm-9 mx-auto">
-                    <label for="usernameInput" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="usernameInput">
-                </div>
-                <div class="mb-3 col-sm-9 mx-auto">
-                    <label for="emailInput" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="emailInput">
-                </div>
-                <div class="mb-3 col-sm-9 mx-auto" id="passField">
-                    <label for="passwordInput" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="passwordInput">
-                </div>
-                <div class="mb-3 col-sm-9 mx-auto">
-                    <label for="confirmPasswordInput" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" id="confirmpasswordInput">
-                </div>
-                <div class="mb-3 col-sm-9 mx-auto">
-                    <label for="formFile" class="form-label">Profile Picture <span
-                            id="lightText">(optional)</span></label>
-                    <input class="form-control" type="file" id="formFile">
-                </div>
-                <div>
-                    <select class="form-select mb-4 col-sm-9 mx-auto w-50" aria-label="Default select example">
-                        <option selected>Hosting?</option>
-                        <option value="H">Yes, I'll be hosting events</option>
-                        <option value="P">No, I'll just be a player</option>
-                      </select>
-                </div>
-                
-                <button type="button" class="btn btn-dark mx-5" onclick="validatePass()">Register</button>
-            </form>
+        <div class="container">
+            <h1>Trivia List Here</h1>
         </div>
     </section>
+
+
+
 
     <script>
         function toRegister() {
@@ -116,6 +81,7 @@
             </div>
         </footer>
     </section>
+
 </body>
 
 </html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inquizitive</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</head>
+
+<body class="min-vh-100">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light px-3" style="background-color: #cc9cbe;">
+    <a class="navbar-brand d-lg-none mx-3" href="index.html"><img src="images/logo.png" width="200px"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="nav#navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="profile.html">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="teams.html">Teams</a>
+        </li>
+        <a class="d-none d-lg-block mx-3" href="index.html"><img src="images/logo.png" width="200px"></a>
+        <li class="nav-item">
+          <a class="nav-link" href="trivialist.html">Trivia List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="signin.html">Sign in</a>
+        </li>
+        <li class="nav-item">
+          <br><br>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <section class="mainpage my-3">
+    <div class="container intro d-flex flex-column align-items-center justify-content-center">
+      <div>
+        <h1 class="display-1" style="font-weight:bold">Welcome to <span style="color:#263B80">In<span
+              id="quiz">quiz</span>itive</span>!</h1>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container w-75 mt-5">
+      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="images/option-1.jpg" class="d-block w-100" alt="carousel options">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>New Locations Everyday</h5>
+              <p>Check out our 'Submit a Location' page to show us where you're quizzing!</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="images/option-2.jpg" class="d-block w-100" alt="carousel options">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Check out the Top Teams</h5>
+              <p>See how you stand up against the top teams in the country!</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="images/option-3.jpg" class="d-block w-100" alt="carousel options">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Find a new quizzing home</h5>
+              <p>Track down a new trivia night near you.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+
+  <script>
+    function toRegister() {
+      location.href = "register.html";
+    }
+  </script>
+
+
+  <!-- Footer -->
+  <section class="Footer mt-5">
+    <footer class="text-center text-white bg-dark navbar-fixed-bottom">
+      <div class="container p-4 pb-0">
+        <section class="">
+          <p class="d-flex justify-content-center align-items-center">
+            <span class="me-3">Create an account now</span>
+            <button type="button" class="btn btn-outline-light btn-rounded" onclick="toRegister()">
+              Sign up!
+            </button>
+          </p>
+        </section>
+      </div>
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2023 Copyright:
+        <a class="text-white" href="https://perscholas.instructure.com/courses/1312/pages/java-home">Inquizitive.com</a>
+      </div>
+    </footer>
+  </section>
+
+</body>
+
+</html>
