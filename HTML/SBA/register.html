@@ -68,23 +68,53 @@
                     <label for="passwordInput" class="form-label">Password</label>
                     <input type="password" class="form-control" id="passwordInput">
                 </div>
-                <div class="mb-3 col-sm-9 mx-auto">
+                <div class="mb-3 col-sm-9 mx-auto" id="confirmField">
                     <label for="confirmPasswordInput" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" id="confirmpasswordInput">
+                    <input type="password" class="form-control" id="confirmPasswordInput">
                 </div>
+                <div class="mb-1 col-sm-9 mx-auto">
+                    I have:
+                </div>
+                
+                <div class="form-check mb-1 col-sm-9 mx-auto">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        No quizzing experience
+                    </label>
+                </div>
+                <div class="form-check mb-1 col-sm-9 mx-auto">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        1-2 years of quizzing experience
+                    </label>
+                </div>
+                <div class="form-check mb-3 col-sm-9 mx-auto">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        3+ years of quizzing experience
+                    </label>
+                </div>
+
                 <div class="mb-3 col-sm-9 mx-auto">
                     <label for="formFile" class="form-label">Profile Picture <span
                             id="lightText">(optional)</span></label>
                     <input class="form-control" type="file" id="formFile">
                 </div>
                 <div>
-                    <select class="form-select mb-4 col-sm-9 mx-auto w-50" aria-label="Default select example">
-                        <option selected>Hosting?</option>
+                    <select class="form-select mb-3 col-sm-9 mx-auto w-50" aria-label="Default select example">
+                        <option selected>Host Status</option>
                         <option value="H">Yes, I'll be hosting events</option>
                         <option value="P">No, I'll just be a player</option>
-                      </select>
+                    </select>
                 </div>
-                
+
+                <div class="form-check mb-4 col-sm-9 mx-auto">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Sign me up for the Inquizitive newsletter.
+                    </label>
+                </div>
+
                 <button type="button" class="btn btn-dark mx-5" onclick="validatePass()">Register</button>
             </form>
         </div>

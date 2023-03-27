@@ -1,25 +1,17 @@
-package hibernate;
+package springexamples.database.entity;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
+import jakarta.persistence.*;
+
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 
 @Entity
 @Getter
@@ -76,7 +68,7 @@ public class Customer {
 	@ManyToOne(fetch = FetchType.EAGER, optional = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "sales_rep_employee_id", nullable = true)
     private Employee employee;
-	
+
 	/* To Payment */
 	@ToString.Exclude
 	@LazyCollection(LazyCollectionOption.FALSE)
@@ -84,10 +76,10 @@ public class Customer {
 	private List<Payment> payments;
 	
 	/* To Order */
-	@LazyCollection(LazyCollectionOption.FALSE)
-	@ToString.Exclude
-	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-	private List<Order> orders;
+//	@LazyCollection(LazyCollectionOption.FALSE)
+//	@ToString.Exclude
+//	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+//	private List<Order> orders;
 	
 	
 	

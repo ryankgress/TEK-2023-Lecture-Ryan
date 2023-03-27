@@ -5,13 +5,13 @@ let team1 = {
 }
 
 let team2 = {
-    teamName: "Tigers",
+    teamName: "Quiz Tigers",
     playerList: ["Ryan", "Riley", "Eric", "Jack"],
     total_score: 200
 }
 
 let team3 = {
-    teamName: "Outside Spotlights",
+    teamName: "Outside Spotlights.",
     playerList: ["Ryan", "Kevin", "Katie", "Dana", "Ken"],
     total_score: 500
 }
