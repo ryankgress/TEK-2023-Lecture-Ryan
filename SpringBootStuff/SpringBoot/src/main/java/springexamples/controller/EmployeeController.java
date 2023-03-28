@@ -20,13 +20,16 @@ public class EmployeeController {
     private EmployeeDAO employeeDao;
 
     @RequestMapping(value = "/employee-search", method = RequestMethod.GET)
-    public ModelAndView employeeSearch(@RequestParam(required = false) String search) {     // grabbing search value from HTML
-        log.info("In the employee-search controller method with search = " + search);
+    public ModelAndView employeeSearch(@RequestParam(required = false) String firstSearch, @RequestParam(required = false) String lastSearch) {     // grabbing search value from HTML
+        log.info("In the employee-search controller method with search = " + firstSearch);
         ModelAndView response = new ModelAndView("employee/employee-search");         // Return value from employee-search.jsp
 
-        List<Employee> employees = employeeDao.getAllEmployees();
+        List<Employee> employees = employeeDao.findByFirstNameContainingOrLastNameContaining(firstSearch, lastSearch);
+//      List<Employee> employees = employeeDao.usingNativeQuery(search, search);
+//      List<Employee> employees = employeeDao.usingJPAQuery(firstSearch, lastSearch);
         response.addObject("employeesList", employees);
-
+        response.addObject("firstSearch", firstSearch);   // Pass things from controller to JSP
+        response.addObject("lastSearch", lastSearch);   // Pass things from controller to JSP
 
         return response;
     }
