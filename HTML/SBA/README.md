@@ -9,6 +9,7 @@ Current Specs:
     - Signin/Register pages (no functionality)
     - Landing page to discover Inquizitive features
     - Profile page (will be updated with user info eventually)
+    - Button to show teams (functionality will be added and fixed w/ backend stuffs)
 
 Coming Soon:
     - List of Trivia based on location, date, etc.
@@ -21,7 +22,7 @@ Coming Soon:
 
 Down the Pipeline:
     - Find trivia near YOU with Google Maps API
-    - Report 
+    - Add a rotating toast with jeopardy questions w/ jService
 
 
 > Author: Ryan Gress | github.com/ryankgress

@@ -13,9 +13,6 @@ function validatePass() {
     let passValue = passInput.value;
     let confirmPassInput = document.getElementById("confirmPasswordInput");
     let confirmPassValue = confirmPassInput.value;
-    // if (confirmPassInput != null) {
-    //     let confirmPassValue = confirmPassInput.value;
-    // }
 
     var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
     if (!passValue.match(passw)) {
