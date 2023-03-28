@@ -12,9 +12,6 @@ import springexamples.database.dao.EmployeeDAO;
 @Controller
 public class SlashController {
 
-    @Autowired
-    private EmployeeDAO employeeDao;
-
     @RequestMapping(value = "/index", method = RequestMethod.GET)      // executes when index.html is visited
     public ModelAndView index() {
         log.info("In the index controller method");
@@ -24,7 +21,7 @@ public class SlashController {
 
     @RequestMapping(value = "/signup", method = RequestMethod.GET)      // executes when signup.html is visited
     public ModelAndView setup() {
-        log.info("In the setup controller method");
+        log.info("In the signup controller method");
         ModelAndView response = new ModelAndView("signup");         // Return value from signup.jsp
         return response;
     }

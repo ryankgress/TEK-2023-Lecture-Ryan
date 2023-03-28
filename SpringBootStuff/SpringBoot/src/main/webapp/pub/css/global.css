@@ -11,5 +11,12 @@ a:hover {
 
 body {
     font-family: 'Montserrat', sans-serif;
-    font-family: 'Playfair Display', serif;
+}
+
+.bg-light-grey {
+    background-color: #d3d3d3;
+}
+
+.bg-bisque {
+    background-color: #ffe4c4;
 }
