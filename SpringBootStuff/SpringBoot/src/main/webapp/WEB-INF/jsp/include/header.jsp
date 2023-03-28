@@ -40,7 +40,7 @@
                             Account
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">email@address.com</a></li>
+                            <li><a class="dropdown-item" href="/employee-search">Employee Search</a></li>
                             <li><a class="dropdown-item" href="#">Logout</a></li>
                         </ul>
                     </li>

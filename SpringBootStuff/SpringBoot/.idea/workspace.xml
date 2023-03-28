@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="125f273d-822c-46de-a139-3e452039a732" name="Changes" comment="" />
+    <list default="true" id="125f273d-822c-46de-a139-3e452039a732" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/springexamples/controller/EmployeeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/springexamples/database/dao/EmployeeDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/employee/employee-search.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/springexamples/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/springexamples/controller/SlashController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/include/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/include/header.jsp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,6 +58,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "C:/Users/ryank/OneDrive - iup.edu/Desktop/TEK/Development/TEK-2023-Lecture/SpringBootStuff/SpringBoot/src/main/java/springexamples/database/entity",
     "settings.build.tools.auto.reload": "ALL",
     "settings.editor.selected.configurable": "build.tools"
@@ -58,6 +67,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ryank\OneDrive - iup.edu\Desktop\TEK\Development\TEK-2023-Lecture\SpringBootStuff\SpringBoot\src\main\java\springexamples\database\entity" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ryank\OneDrive - iup.edu\Desktop\TEK\Development\TEK-2023-Lecture\SpringBootStuff\SpringBoot\src\main\webapp\WEB-INF\jsp\Employee" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
