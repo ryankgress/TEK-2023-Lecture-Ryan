@@ -38,6 +38,8 @@ public class User {
     @Column(name="profile_pic")
     private String profilePic;
 
+    // May need to add a boolean flag for 'quiz_master' or something
+
     /* To Team Member */
     @ToString.Exclude
     @LazyCollection(LazyCollectionOption.FALSE)

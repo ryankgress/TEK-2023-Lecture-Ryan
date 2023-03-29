@@ -19,13 +19,13 @@ h1, h5 {
 }
 
 .intro {
-    background-image: url(images/bar-bg-1.jpg);
+    background-image: url(/pub/images/bar-bg-1.jpg);
     background-repeat: no-repeat;
     height: 500px;
 }
 
 body {
-    background-image: url(images/dark-bg.jpg);
+    background-image: url(/pub/images/dark-bg.jpg);
     background-repeat: repeat-y;
 }
 

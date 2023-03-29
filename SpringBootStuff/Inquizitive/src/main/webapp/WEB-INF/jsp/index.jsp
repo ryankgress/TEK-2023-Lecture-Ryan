@@ -22,21 +22,21 @@
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="images/option-1.jpg" class="d-block w-100" alt="carousel options">
+          <img src="/pub/images/option-1.jpg" class="d-block w-100" alt="carousel options">
           <div class="carousel-caption d-none d-md-block">
             <h5>New Locations Everyday</h5>
             <p>Check out our 'Submit a Location' page to show us where you're quizzing!</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="images/option-2.jpg" class="d-block w-100" alt="carousel options">
+          <img src="/pub/images/option-2.jpg" class="d-block w-100" alt="carousel options">
           <div class="carousel-caption d-none d-md-block">
             <h5>Check out the Top Teams</h5>
             <p>See how you stand up against the top teams in the country!</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="images/option-3.jpg" class="d-block w-100" alt="carousel options">
+          <img src="/pub/images/option-3.jpg" class="d-block w-100" alt="carousel options">
           <div class="carousel-caption d-none d-md-block">
             <h5>Find a new quizzing home</h5>
             <p>Track down a new trivia night near you.</p>
