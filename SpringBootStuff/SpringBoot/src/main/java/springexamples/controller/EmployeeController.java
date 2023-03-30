@@ -1,35 +1,72 @@
 package springexamples.controller;
 
+import jakarta.websocket.server.PathParam;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import springexamples.database.dao.EmployeeDAO;
 import springexamples.database.entity.Employee;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
 @Controller
+@RequestMapping("/employee")        // Only accepts url if it starts with /employee
 public class EmployeeController {
 
     @Autowired
     private EmployeeDAO employeeDao;
 
-    @RequestMapping(value = "/employee-search", method = RequestMethod.GET)
-    public ModelAndView employeeSearch(@RequestParam(required = false) String firstSearch, @RequestParam(required = false) String lastSearch) {     // grabbing search value from HTML
-        log.info("In the employee-search controller method with search = " + firstSearch);
-        ModelAndView response = new ModelAndView("employee/employee-search");         // Return value from employee-search.jsp
+    @GetMapping("/detail/{id}")
+    public ModelAndView detail(@PathVariable Integer id) {
+        ModelAndView response = new ModelAndView("employee/detail");
 
-        List<Employee> employees = employeeDao.findByFirstNameContainingOrLastNameContaining(firstSearch, lastSearch);
+        log.info("In employee detail controller method with id = " + id);
+
+        Employee employee = employeeDao.findById(id);
+        log.info(employee + " ");
+
+        response.addObject("employee", employee);
+
+        return response;
+    }
+
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public ModelAndView employeeSearch(@RequestParam(required = false) String firstName, @RequestParam(required = false) String lastName) {     // grabbing search value from HTML
+        log.info("In the employee-search controller method with first = " + firstName + " and last = " + lastName);
+        ModelAndView response = new ModelAndView("employee/search");         // Return value from search.jsp
+
+        List<Employee> employees = new ArrayList<>();
+
+        if (!StringUtils.isEmpty(firstName) && !StringUtils.isEmpty(lastName)) {
+            // if so run the query that works with both values
+            log.info("Both first name and last name have a value");
+            employees = employeeDao.findByFirstNameContainingOrLastNameContainingIgnoreCase(firstName, lastName);
+        }
+
+        // check if the first name is NOT empty and the last name is empty
+        if (!StringUtils.isEmpty(firstName) && StringUtils.isEmpty(lastName)) {
+            // we run our query that checks the fist name field only
+            log.info("First name has a value and last name is empty");
+            employees = employeeDao.findByFirstNameContainingIgnoreCase(firstName);
+        }
+
+        // check if the first name is empty and the last name is NOT empty
+        if (StringUtils.isEmpty(firstName) && !StringUtils.isEmpty(lastName)) {
+            // we run our query that checks the last name field only
+            log.info("Last name has a value and first name is empty");
+            employees = employeeDao.findByLastNameContainingIgnoreCase(lastName);
+        }
+
 //      List<Employee> employees = employeeDao.usingNativeQuery(search, search);
-//      List<Employee> employees = employeeDao.usingJPAQuery(firstSearch, lastSearch);
+//      List<Employee> employees = employeeDao.usingJPAQuery(firstName, lastName);
         response.addObject("employeesList", employees);
-        response.addObject("firstSearch", firstSearch);   // Pass things from controller to JSP
-        response.addObject("lastSearch", lastSearch);   // Pass things from controller to JSP
+        response.addObject("firstName", firstName);   // Pass things from controller to JSP
+        response.addObject("lastName", lastName);   // Pass things from controller to JSP
 
         return response;
     }

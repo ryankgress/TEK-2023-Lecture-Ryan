@@ -48,7 +48,6 @@ public class Employee {
 	
 	@Column(name="job_title")
 	private String jobTitle;
-	
 
 	@Column(name="vacation_hours")
 	private Integer vacationHours;

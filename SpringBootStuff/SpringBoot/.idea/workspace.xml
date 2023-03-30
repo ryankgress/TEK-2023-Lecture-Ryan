@@ -5,34 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="125f273d-822c-46de-a139-3e452039a732" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/database/dao/ResultDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/database/dao/TeamDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/database/dao/TeamMemberDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/database/dao/TriviaDetailDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/database/dao/UserDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/database/entity/Result.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/database/entity/TriviaDetail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/profile.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/register.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/signin.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/teams.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/trivialist.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/pub/js/register.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/pub/js/teams.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../HTML/Inquizitive/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../HTML/Inquizitive/register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inquizitive/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/InquizitiveApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/database/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/database/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/include/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/include/footer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/include/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/include/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/pub/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/pub/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inquizitive/src/test/java/com/capstone/Inquizitive/InquizitiveApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/test/java/com/capstone/Inquizitive/MainApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/employee/detail.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpringBoot.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/springexamples/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/springexamples/controller/EmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/springexamples/controller/SlashController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/springexamples/controller/SlashController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/springexamples/database/dao/EmployeeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/springexamples/database/dao/EmployeeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/springexamples/database/entity/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/springexamples/database/entity/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/employee/employee-search.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/employee/search.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/include/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/include/header.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,16 +55,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/ryank/OneDrive - iup.edu/Desktop/TEK/Development/TEK-2023-Lecture/SpringBootStuff/Inquizitive/pom.xml",
-    "settings.build.tools.auto.reload": "ALL",
-    "settings.editor.selected.configurable": "build.tools"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ryank/OneDrive - iup.edu/Desktop/TEK/Development/TEK-2023-Lecture/SpringBootStuff/Inquizitive/pom.xml&quot;,
+    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;build.tools&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ryank\OneDrive - iup.edu\Desktop\TEK\Development\TEK-2023-Lecture\SpringBootStuff\SpringBoot\src\main\java\springexamples\database\entity" />

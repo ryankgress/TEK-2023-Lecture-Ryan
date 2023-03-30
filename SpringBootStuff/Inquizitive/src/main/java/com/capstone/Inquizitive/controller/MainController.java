@@ -15,7 +15,7 @@ import java.util.List;
 @Controller
 public class MainController {
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)      // executes when index.html is visited
+    @RequestMapping(value = {"/index", "/", "/index.html"}, method = RequestMethod.GET)      // executes when index.html is visited
     public ModelAndView index() {
         log.info("In the index controller method");
         ModelAndView response = new ModelAndView("index");         // Return value from index.jsp

@@ -12,7 +12,10 @@ public interface EmployeeDAO extends JpaRepository<Employee, Long> {
     List<Employee> getAllEmployees();
 
     // Spring can infer queries based on method names
-    List<Employee> findByFirstNameContainingOrLastNameContaining(String firstName, String lastName);
+    List<Employee> findByFirstNameContainingIgnoreCase(String firstName);
+    List<Employee> findByLastNameContainingIgnoreCase(String lastName);
+
+    List<Employee> findByFirstNameContainingOrLastNameContainingIgnoreCase(String firstName, String lastName);
 
 
     @Query(value = "SELECT * FROM employees WHERE firstname LIKE %:firstName% OR lastname LIKE %:lastName% ;", nativeQuery = true)  // Uses SQL Conventions
@@ -20,4 +23,6 @@ public interface EmployeeDAO extends JpaRepository<Employee, Long> {
 
     @Query("SELECT e FROM Employee e WHERE e.firstName LIKE %:firstName% OR e.lastName LIKE %:lastName% ")    // Uses Employee object
     List<Employee> usingJPAQuery(String firstName, String lastName);          // Don't need setParam with Spring
+
+    Employee findById(Integer id);
 }
