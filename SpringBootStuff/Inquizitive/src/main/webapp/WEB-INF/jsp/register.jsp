@@ -8,19 +8,19 @@
                 <form class="m-3 d-flex flex-column justify-content-center">
                     <div class="mb-3 col-sm-9 mx-auto">
                         <label for="nameInput" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="nameInput" required>
+                        <input type="text" class="form-control" id="nameInput" name="name" required>
                     </div>
                     <div class="mb-3 col-sm-9 mx-auto">
                         <label for="usernameInput" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="usernameInput">
+                        <input type="text" class="form-control" id="usernameInput" name="username" required>
                     </div>
                     <div class="mb-3 col-sm-9 mx-auto">
                         <label for="emailInput" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="emailInput">
+                        <input type="email" class="form-control" id="emailInput" name="email" required>
                     </div>
                     <div class="mb-3 col-sm-9 mx-auto" id="passField">
                         <label for="passwordInput" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="passwordInput">
+                        <input type="password" class="form-control" id="passwordInput" name="password" required>
                     </div>
                     <div class="mb-3 col-sm-9 mx-auto" id="confirmField">
                         <label for="confirmPasswordInput" class="form-label">Confirm Password</label>

@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../include/header.jsp" />
 <style>
     body{
@@ -32,6 +33,15 @@
                 <label for="vacationHours" class="form-label" >Vacation Hours</label>
                 <input type="number" class="form-control" id="vacationHours" name="vacationHours">
             </div>
+            <!-- <h6>Office</h6> -->
+                <div class="mb-3">
+                    <label for="officeId" class="form-label" >Office</label>
+                    <select name="officeId" id="officeId" class="form-select">
+                        <c:forEach items="${offices}" var="off">
+                            <option value="${off.id}">${off.city}</option>
+                        </c:forEach>
+                    </select>
+                </div>
             <div class="d-flex flexcolumn justify-content-center">
                 <button class="btn btn-primary">Create Employee</button>
             </div>

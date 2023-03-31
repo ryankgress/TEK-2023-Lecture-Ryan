@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import springexamples.database.dao.EmployeeDAO;
+import springexamples.database.dao.OfficeDAO;
 import springexamples.database.entity.Employee;
+import springexamples.database.entity.Office;
 import springexamples.formbeans.EmployeeFormBean;
 
 import java.util.ArrayList;
@@ -21,6 +23,9 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeDAO employeeDao;
+
+    @Autowired
+    private OfficeDAO officeDao;
 
     @GetMapping("/detail/{id}")
     public ModelAndView detail(@PathVariable Integer id) {
@@ -40,6 +45,9 @@ public class EmployeeController {
     public ModelAndView create() {
         ModelAndView response = new ModelAndView("employee/create");
 
+        List<Office> offices = officeDao.getAllOffices();
+        response.addObject("offices", offices);
+
         log.info("In employee create controller method");
 
         return response;
@@ -48,6 +56,9 @@ public class EmployeeController {
     @RequestMapping(value = "/createSubmit", method = RequestMethod.GET)
     public ModelAndView createSubmit(EmployeeFormBean form) {
         ModelAndView response = new ModelAndView("employee/create");
+
+        List<Office> offices = officeDao.getAllOffices();
+        response.addObject("offices", offices);
 
         log.info("In employee controller create submit method");
         log.info(form.toString());
@@ -59,7 +70,7 @@ public class EmployeeController {
         emp.setExtension(form.getExtension());
         emp.setJobTitle(form.getJobTitle());
         emp.setVacationHours(form.getVacationHours());
-        emp.setOfficeId(1);
+        emp.setOfficeId(form.getOfficeId());
 
         employeeDao.save(emp);
 
