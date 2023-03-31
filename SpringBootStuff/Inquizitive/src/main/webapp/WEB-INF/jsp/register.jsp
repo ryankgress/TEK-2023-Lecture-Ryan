@@ -1,14 +1,14 @@
 <jsp:include page="include/header.jsp" />
 
 <script src="../pub/js/register.js"></script>
-
+<!-- Need to handle validation still. Submits no matter what now -->
     <section>
             <div class="register-main container mt-3 mb-5 d-flex flex-column border border-danger border-2 rounded-3 w-50">
                 <h1 class="mt-3">Create New Account</h1>
-                <form class="m-3 d-flex flex-column justify-content-center">
+                <form class="m-3 d-flex flex-column justify-content-center" action="/registerSubmit">
                     <div class="mb-3 col-sm-9 mx-auto">
                         <label for="nameInput" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="nameInput" name="name" required>
+                        <input type="text" class="form-control" placeholder="Ken Jennings" id="nameInput" name="name" required>
                     </div>
                     <div class="mb-3 col-sm-9 mx-auto">
                         <label for="usernameInput" class="form-label">Username</label>
@@ -40,7 +40,7 @@
                         </label>
                     </div>
 
-                    <button type="button" class="btn btn-dark mx-5" onclick="validatePass()">Register</button>
+                    <button class="btn btn-dark mx-5" onclick="validatePass()">Register</button>
                 </form>
             </div>
         </section>

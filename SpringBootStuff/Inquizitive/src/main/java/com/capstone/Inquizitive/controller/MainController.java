@@ -2,8 +2,10 @@ package com.capstone.Inquizitive.controller;
 
 import com.capstone.Inquizitive.database.dao.TeamDAO;
 import com.capstone.Inquizitive.database.dao.TeamMemberDAO;
+import com.capstone.Inquizitive.database.dao.UserDAO;
 import com.capstone.Inquizitive.database.entity.Team;
 import com.capstone.Inquizitive.database.entity.User;
+import com.capstone.Inquizitive.formbeans.UserRegisterBean;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,15 @@ import java.util.List;
 @Slf4j
 @Controller
 public class MainController {
+
+    @Autowired
+    private TeamMemberDAO teamMemberDao;
+
+    @Autowired
+    private TeamDAO teamDao;
+
+    @Autowired
+    private UserDAO userDao;
 
     @RequestMapping(value = {"/index", "/", "/index.html"}, method = RequestMethod.GET)      // executes when index.html is visited
     public ModelAndView index() {
@@ -35,6 +46,26 @@ public class MainController {
     public ModelAndView register() {
         log.info("In the register controller method");
         ModelAndView response = new ModelAndView("register");         // Return value from register.jsp
+
+        return response;
+    }
+
+    @RequestMapping(value = "/registerSubmit", method = RequestMethod.GET)      // executes when register.html is visited
+    public ModelAndView registerSubmit(UserRegisterBean form) {
+        log.info("In the register controller registerSubmit method");
+        ModelAndView response = new ModelAndView("register");         // Return value from register.jsp
+
+        User user = new User();
+        user.setName(form.getName());
+        user.setUsername(form.getUsername());
+        user.setEmail(form.getEmail());
+        user.setPassword(form.getPassword());
+
+        response.addObject("user", user);
+        log.info(user.toString());
+
+        userDao.save(user);
+
         return response;
     }
 
@@ -45,11 +76,7 @@ public class MainController {
         return response;
     }
 
-    @Autowired
-    private TeamMemberDAO teamMemberDao;
 
-    @Autowired
-    private TeamDAO teamDao;
 
     @RequestMapping(value = "/teams", method = RequestMethod.GET)      // executes when teams.html is visited
     public ModelAndView teams() {
