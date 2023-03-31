@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import springexamples.database.dao.EmployeeDAO;
 import springexamples.database.entity.Employee;
+import springexamples.formbeans.EmployeeFormBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,36 @@ public class EmployeeController {
         log.info(employee + " ");
 
         response.addObject("employee", employee);
+
+        return response;
+    }
+
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    public ModelAndView create() {
+        ModelAndView response = new ModelAndView("employee/create");
+
+        log.info("In employee create controller method");
+
+        return response;
+    }
+
+    @RequestMapping(value = "/createSubmit", method = RequestMethod.GET)
+    public ModelAndView createSubmit(EmployeeFormBean form) {
+        ModelAndView response = new ModelAndView("employee/create");
+
+        log.info("In employee controller create submit method");
+        log.info(form.toString());
+
+        Employee emp = new Employee();
+        emp.setFirstName(form.getFirstName());
+        emp.setLastName(form.getLastName());
+        emp.setEmail(form.getEmail());
+        emp.setExtension(form.getExtension());
+        emp.setJobTitle(form.getJobTitle());
+        emp.setVacationHours(form.getVacationHours());
+        emp.setOfficeId(1);
+
+        employeeDao.save(emp);
 
         return response;
     }

@@ -40,11 +40,11 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Account
+                            Employee
                         </a>
                         <ul class="dropdown-menu" aria-labeled="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="/employee/search">Employee Search</a></li>
-                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                            <li><a class="dropdown-item" href="/employee/create">Create Employee</a></li>
                         </ul>
                     </li>
                 </ul>

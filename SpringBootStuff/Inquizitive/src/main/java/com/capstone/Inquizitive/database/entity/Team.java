@@ -30,6 +30,12 @@ public class Team {
     @Column(name="team_pic")
     private String teamPic;
 
+    @Column(name="team_desc", columnDefinition = "TEXT")
+    private String teamDesc;
+
+    @Column(name="join_code")
+    private String joinCode;
+
     /* To Team Member */
     @ToString.Exclude
     @LazyCollection(LazyCollectionOption.FALSE)

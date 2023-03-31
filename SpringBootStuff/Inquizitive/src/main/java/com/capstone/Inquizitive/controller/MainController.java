@@ -1,6 +1,8 @@
 package com.capstone.Inquizitive.controller;
 
+import com.capstone.Inquizitive.database.dao.TeamDAO;
 import com.capstone.Inquizitive.database.dao.TeamMemberDAO;
+import com.capstone.Inquizitive.database.entity.Team;
 import com.capstone.Inquizitive.database.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +48,9 @@ public class MainController {
     @Autowired
     private TeamMemberDAO teamMemberDao;
 
+    @Autowired
+    private TeamDAO teamDao;
+
     @RequestMapping(value = "/teams", method = RequestMethod.GET)      // executes when teams.html is visited
     public ModelAndView teams() {
         String team = "Breakout1";      // Will eventually be replaced with a GET from the page
@@ -53,7 +58,9 @@ public class MainController {
         ModelAndView response = new ModelAndView("teams");         // Return value from teams.jsp
 
         List<User> members = teamMemberDao.getUsersByTeamName(team);
+        Team teamObj = teamDao.findByTeamName(team);
 
+        response.addObject("team", teamObj);
         response.addObject("t1List", members);
 
         return response;
