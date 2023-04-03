@@ -28,11 +28,11 @@
           <a class="nav-link" href="profile">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="teams">Teams</a>
+          <a class="nav-link" href="trivialist">Trivia List</a>
         </li>
         <a class="d-none d-lg-block mx-3" href="index"><img src="/pub/images/logo.png" width="200px"></a>
         <li class="nav-item">
-          <a class="nav-link" href="trivialist">Trivia List</a>
+          <a class="nav-link" href="teams">Teams</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="signin">Sign in</a>

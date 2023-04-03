@@ -28,32 +28,32 @@ public class MainController {
     @Autowired
     private UserDAO userDao;
 
-    @RequestMapping(value = {"/index", "/", "/index.html"}, method = RequestMethod.GET)      // executes when index.html is visited
+    @RequestMapping(value = {"/index", "/", "/index.html"}, method = RequestMethod.GET)
     public ModelAndView index() {
         log.debug("In the index controller method");
-        ModelAndView response = new ModelAndView("index");         // Return value from index.jsp
+        ModelAndView response = new ModelAndView("index");
         return response;
     }
 
-    @RequestMapping(value = "/profile", method = RequestMethod.GET)      // executes when profile.html is visited
+    @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public ModelAndView profile() {
         log.debug("In the profile controller method");
-        ModelAndView response = new ModelAndView("profile");         // Return value from profile.jsp
+        ModelAndView response = new ModelAndView("profile");
         return response;
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.GET)      // executes when register.html is visited
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView register() {
         log.debug("In the register controller method");
-        ModelAndView response = new ModelAndView("register");         // Return value from register.jsp
+        ModelAndView response = new ModelAndView("register");
 
         return response;
     }
 
-    @RequestMapping(value = "/registerSubmit", method = RequestMethod.GET)      // executes when register.html is visited
+    @RequestMapping(value = "/registerSubmit", method = RequestMethod.GET)
     public ModelAndView registerSubmit(UserRegisterBean form) {
         log.debug("In the register controller registerSubmit method");
-        ModelAndView response = new ModelAndView("register");         // Return value from register.jsp
+        ModelAndView response = new ModelAndView("register");
 
         User user = new User();
         user.setName(form.getName());
@@ -69,20 +69,20 @@ public class MainController {
         return response;
     }
 
-    @RequestMapping(value = "/signin", method = RequestMethod.GET)      // executes when signin.html is visited
+    @RequestMapping(value = "/signin", method = RequestMethod.GET)
     public ModelAndView signin() {
         log.debug("In the signin controller method");
-        ModelAndView response = new ModelAndView("signin");         // Return value from signin.jsp
+        ModelAndView response = new ModelAndView("signin");
         return response;
     }
 
 
 
-    @RequestMapping(value = "/teams", method = RequestMethod.GET)      // executes when teams.html is visited
+    @RequestMapping(value = "/teams", method = RequestMethod.GET)
     public ModelAndView teams() {
         String team = "Breakout1";      // Will eventually be replaced with a GET from the page
         log.debug("In the teams controller method with teamname = " + team);
-        ModelAndView response = new ModelAndView("teams");         // Return value from teams.jsp
+        ModelAndView response = new ModelAndView("teams");
 
         List<User> members = teamMemberDao.getUsersByTeamName(team);
         Team teamObj = teamDao.findByTeamName(team);
@@ -93,10 +93,10 @@ public class MainController {
         return response;
     }
 
-    @RequestMapping(value = "/trivialist", method = RequestMethod.GET)      // executes when trivialist.html is visited
+    @RequestMapping(value = "/trivialist", method = RequestMethod.GET)
     public ModelAndView trivialist() {
         log.debug("In the trivialist controller method");
-        ModelAndView response = new ModelAndView("trivialist");         // Return value from trivialist.jsp
+        ModelAndView response = new ModelAndView("trivialist");
         return response;
     }
 }

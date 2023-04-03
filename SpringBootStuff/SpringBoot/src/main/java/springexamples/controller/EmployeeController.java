@@ -53,6 +53,32 @@ public class EmployeeController {
         return response;
     }
 
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public ModelAndView edit(@PathVariable Integer id) {
+        ModelAndView response = new ModelAndView("employee/create");
+
+        List<Office> offices = officeDao.getAllOffices();
+        response.addObject("offices", offices);
+
+        Employee emp = employeeDao.findById(id);
+        EmployeeFormBean form = new EmployeeFormBean();
+
+        form.setId(emp.getId());
+        form.setFirstName(emp.getFirstName());
+        form.setLastName(emp.getLastName());
+        form.setEmail(emp.getEmail());
+        form.setExtension(emp.getExtension());
+        form.setJobTitle(emp.getJobTitle());
+        form.setVacationHours(emp.getVacationHours());
+        form.setOfficeId(emp.getOfficeId());
+
+        response.addObject("form", form);
+
+        log.debug("In employee edit controller method");
+
+        return response;
+    }
+
     @RequestMapping(value = "/createSubmit", method = RequestMethod.GET)
     public ModelAndView createSubmit(EmployeeFormBean form) {
         ModelAndView response = new ModelAndView("employee/create");
@@ -64,6 +90,11 @@ public class EmployeeController {
         log.debug(form.toString());
 
         Employee emp = new Employee();
+
+        if(form.getId() != null && form.getId() > 0) {
+            emp = employeeDao.findById(form.getId());
+        }
+
         emp.setFirstName(form.getFirstName());
         emp.setLastName(form.getLastName());
         emp.setEmail(form.getEmail());
@@ -73,6 +104,8 @@ public class EmployeeController {
         emp.setOfficeId(form.getOfficeId());
 
         employeeDao.save(emp);
+
+        response.addObject("form", form);
 
         return response;
     }

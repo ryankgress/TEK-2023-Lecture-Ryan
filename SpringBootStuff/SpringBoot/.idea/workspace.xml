@@ -6,11 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="125f273d-822c-46de-a139-3e452039a732" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/include/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/include/header.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/springexamples/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/springexamples/controller/EmployeeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/springexamples/controller/SlashController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/springexamples/controller/SlashController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/springexamples/formbeans/EmployeeFormBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/springexamples/formbeans/EmployeeFormBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/employee/create.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/employee/create.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/employee/search.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/employee/search.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
