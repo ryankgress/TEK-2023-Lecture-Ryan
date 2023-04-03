@@ -15,21 +15,28 @@ public class SlashController {
 
     @RequestMapping(value = {"/index", "/", "/index.html"}, method = RequestMethod.GET)  // defaults to index if left blank
     public ModelAndView index() {
-        log.info("In the index controller method");
+        log.debug("In the index controller method");
         ModelAndView response = new ModelAndView("index");         // Return value from index.jsp
+
+        log.trace("This is a trace log example");
+        log.debug("This is a debug log example");
+        log.info("This is an info log example");
+        log.error("This is an error log example");
+        log.warn("This is a warn log example");
+
         return response;
     }
 
     @GetMapping("/signup")              // Same as @RequestMapping(method = RequestMethod.GET)
     public ModelAndView setup() {
-        log.info("In the signup controller method");
+        log.debug("In the signup controller method");
         ModelAndView response = new ModelAndView("signup");         // Return value from signup.jsp
         return response;
     }
 
     @RequestMapping(value = "/bootstrap", method = RequestMethod.GET)      // executes when signup.html is visited
     public ModelAndView bootstrap() {
-        log.info("In the bootstrap controller method");
+        log.debug("In the bootstrap controller method");
         ModelAndView response = new ModelAndView("bootstrap");         // Return value from signup.jsp
         return response;
     }

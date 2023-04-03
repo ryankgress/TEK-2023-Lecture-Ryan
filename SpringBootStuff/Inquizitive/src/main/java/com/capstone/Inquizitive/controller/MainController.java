@@ -30,21 +30,21 @@ public class MainController {
 
     @RequestMapping(value = {"/index", "/", "/index.html"}, method = RequestMethod.GET)      // executes when index.html is visited
     public ModelAndView index() {
-        log.info("In the index controller method");
+        log.debug("In the index controller method");
         ModelAndView response = new ModelAndView("index");         // Return value from index.jsp
         return response;
     }
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)      // executes when profile.html is visited
     public ModelAndView profile() {
-        log.info("In the profile controller method");
+        log.debug("In the profile controller method");
         ModelAndView response = new ModelAndView("profile");         // Return value from profile.jsp
         return response;
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)      // executes when register.html is visited
     public ModelAndView register() {
-        log.info("In the register controller method");
+        log.debug("In the register controller method");
         ModelAndView response = new ModelAndView("register");         // Return value from register.jsp
 
         return response;
@@ -52,7 +52,7 @@ public class MainController {
 
     @RequestMapping(value = "/registerSubmit", method = RequestMethod.GET)      // executes when register.html is visited
     public ModelAndView registerSubmit(UserRegisterBean form) {
-        log.info("In the register controller registerSubmit method");
+        log.debug("In the register controller registerSubmit method");
         ModelAndView response = new ModelAndView("register");         // Return value from register.jsp
 
         User user = new User();
@@ -62,7 +62,7 @@ public class MainController {
         user.setPassword(form.getPassword());
 
         response.addObject("user", user);
-        log.info(user.toString());
+        log.debug(user.toString());
 
         userDao.save(user);
 
@@ -71,7 +71,7 @@ public class MainController {
 
     @RequestMapping(value = "/signin", method = RequestMethod.GET)      // executes when signin.html is visited
     public ModelAndView signin() {
-        log.info("In the signin controller method");
+        log.debug("In the signin controller method");
         ModelAndView response = new ModelAndView("signin");         // Return value from signin.jsp
         return response;
     }
@@ -81,7 +81,7 @@ public class MainController {
     @RequestMapping(value = "/teams", method = RequestMethod.GET)      // executes when teams.html is visited
     public ModelAndView teams() {
         String team = "Breakout1";      // Will eventually be replaced with a GET from the page
-        log.info("In the teams controller method with teamname = " + team);
+        log.debug("In the teams controller method with teamname = " + team);
         ModelAndView response = new ModelAndView("teams");         // Return value from teams.jsp
 
         List<User> members = teamMemberDao.getUsersByTeamName(team);
@@ -95,7 +95,7 @@ public class MainController {
 
     @RequestMapping(value = "/trivialist", method = RequestMethod.GET)      // executes when trivialist.html is visited
     public ModelAndView trivialist() {
-        log.info("In the trivialist controller method");
+        log.debug("In the trivialist controller method");
         ModelAndView response = new ModelAndView("trivialist");         // Return value from trivialist.jsp
         return response;
     }

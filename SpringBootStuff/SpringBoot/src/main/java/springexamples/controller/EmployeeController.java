@@ -31,10 +31,10 @@ public class EmployeeController {
     public ModelAndView detail(@PathVariable Integer id) {
         ModelAndView response = new ModelAndView("employee/detail");
 
-        log.info("In employee detail controller method with id = " + id);
+        log.debug("In employee detail controller method with id = " + id);
 
         Employee employee = employeeDao.findById(id);
-        log.info(employee + " ");
+        log.debug(employee + " ");
 
         response.addObject("employee", employee);
 
@@ -48,7 +48,7 @@ public class EmployeeController {
         List<Office> offices = officeDao.getAllOffices();
         response.addObject("offices", offices);
 
-        log.info("In employee create controller method");
+        log.debug("In employee create controller method");
 
         return response;
     }
@@ -60,8 +60,8 @@ public class EmployeeController {
         List<Office> offices = officeDao.getAllOffices();
         response.addObject("offices", offices);
 
-        log.info("In employee controller create submit method");
-        log.info(form.toString());
+        log.debug("In employee controller create submit method");
+        log.debug(form.toString());
 
         Employee emp = new Employee();
         emp.setFirstName(form.getFirstName());
@@ -79,28 +79,28 @@ public class EmployeeController {
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public ModelAndView employeeSearch(@RequestParam(required = false) String firstName, @RequestParam(required = false) String lastName) {     // grabbing search value from HTML
-        log.info("In the employee-search controller method with first = " + firstName + " and last = " + lastName);
+        log.debug("In the employee-search controller method with first = " + firstName + " and last = " + lastName);
         ModelAndView response = new ModelAndView("employee/search");         // Return value from search.jsp
 
         List<Employee> employees = new ArrayList<>();
 
         if (!StringUtils.isEmpty(firstName) && !StringUtils.isEmpty(lastName)) {
             // if so run the query that works with both values
-            log.info("Both first name and last name have a value");
+            log.debug("Both first name and last name have a value");
             employees = employeeDao.findByFirstNameContainingOrLastNameContainingIgnoreCase(firstName, lastName);
         }
 
         // check if the first name is NOT empty and the last name is empty
         if (!StringUtils.isEmpty(firstName) && StringUtils.isEmpty(lastName)) {
             // we run our query that checks the fist name field only
-            log.info("First name has a value and last name is empty");
+            log.debug("First name has a value and last name is empty");
             employees = employeeDao.findByFirstNameContainingIgnoreCase(firstName);
         }
 
         // check if the first name is empty and the last name is NOT empty
         if (StringUtils.isEmpty(firstName) && !StringUtils.isEmpty(lastName)) {
             // we run our query that checks the last name field only
-            log.info("Last name has a value and first name is empty");
+            log.debug("Last name has a value and first name is empty");
             employees = employeeDao.findByLastNameContainingIgnoreCase(lastName);
         }
 
