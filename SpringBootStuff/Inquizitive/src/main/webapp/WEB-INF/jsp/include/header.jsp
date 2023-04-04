@@ -17,7 +17,7 @@
 <body class="min-vh-100 d-flex flex-column">
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light px-3" style="background-color: #cc9cbe;">
-    <a class="navbar-brand d-lg-none mx-3" href="index"><img src="/pub/images/logo.png" width="200px"></a>
+    <a class="navbar-brand d-lg-none mx-3" href="/index"><img src="/pub/images/logo.png" width="200px"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
       aria-controls="nav#navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -25,17 +25,17 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav mx-auto">
         <li class="nav-item">
-          <a class="nav-link" href="profile">Profile</a>
+          <a class="nav-link" href="/profile">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="trivialist">Trivia List</a>
+          <a class="nav-link" href="/trivialist">Trivia List</a>
         </li>
-        <a class="d-none d-lg-block mx-3" href="index"><img src="/pub/images/logo.png" width="200px"></a>
+        <a class="d-none d-lg-block mx-3" href="/index"><img src="/pub/images/logo.png" width="200px"></a>
         <li class="nav-item">
-          <a class="nav-link" href="teams">Teams</a>
+          <a class="nav-link" href="/teams">Teams</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="signin">Sign in</a>
+          <a class="nav-link" href="/signin">Sign in</a>
         </li>
         <li class="nav-item">
           <br><br>

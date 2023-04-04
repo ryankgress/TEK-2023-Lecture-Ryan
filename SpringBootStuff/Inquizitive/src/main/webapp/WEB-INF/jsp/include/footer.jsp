@@ -1,7 +1,7 @@
 <!-- Footer -->
   <script>
     function toRegister() {
-      location.href = "register";
+      location.href = "/register";
     }
   </script>
 

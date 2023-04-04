@@ -3,78 +3,93 @@
 <!-- User Info -->
 <section>
     <div class="profile-main container mt-3 mb-5 d-flex flex-column border border-danger border-2 rounded-3">
-        <h1>Profile</h1>
-        <div class="row mx-5 align-items-center">
-            <div class="col">
-                <p>
-                    Welcome to <b>Ryan Gress</b>'s profile.
-                </p>
-                
+        <form action="">
+            <h1>Edit Profile</h1>
+            <div class="row mx-5 align-items-center">
+                <div class="col">
+                    <p>
+                        Welcome to <input type="text" name="name" id="name" value="${form.name}">'s profile.
+                    </p>
+
+                </div>
+                <div class="col text-center">
+                    <p style="font-size: 12pt;">
+                        <img src="/pub/images/default-pfp.png" alt="pfp" width="200px">
+                        <br>
+                        <label for="profilePic">Change your Profile Picture?</label><br>
+                        <input type="file" name="profilePic" id="profilePic">
+                    </p>
+                </div>
             </div>
-            <div class="col text-center">
-                <p>
-                    <img src="/pub/images/default-pfp.png" alt="pfp" width="200px">
-                </p>
-            </div>
-        </div>
-        <div class="row d-flex mx-5">
-            <div class="col profile-userinfo">
-                <h2>User Information</h2>
-                <p>
-                <table>
-                    <tr>
-                        <td><b>Username:</b></td>
-                        <td>ryankgress</td>
-                    </tr>
-                    <tr>
-                        <td><b>Email:</b></td>
-                        <td>ryankgress@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td><b>Home Field:</b></td>
-                        <td>Yellow Bridges, New Ken</td>
-                    </tr>
-                    <tr>
-                        <td><b>Total Points:</b></td>
-                        <td>1450</td>
-                    </tr>
-                </table>
-                </p>
-                <br>
-                <p style="font-size: 12pt;">
-                    See something wrong? Click <a href="editUser">here</a> to edit your profile
-                </p>
-            </div>
-            <div class="col profile-recent">
-                <h2 class="text-center">Recent Quizzes</h2>
-                <table class="table table-striped">
-                    <thead>
+            <div class="row d-flex mx-5">
+                <div class="col profile-userinfo">
+                    <h2>User Information</h2>
+
+                    <input type="hidden" name="id" value="${form.id}">
+                    <table>
                         <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col" style="text-align: center;">Placement</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><a href="index">Buzzworthy Thursday 3/9</a></td>
-                            <td class="placement">6th</td>
+                            <td><b>Username:</b></td>
+                            <td><input type="text" id="usernameInput" name="username" value="${form.username}"></td>
                         </tr>
                         <tr>
-                            <td><a href="index">Buzzworthy Thursday 3/16</a></td>
-                            <td class="placement">2nd</td>
+                            <td><b>Email:</b></td>
+                            <td><input type="email" id="emailInput" name="email" value="${form.email}"></td>
                         </tr>
                         <tr>
-                            <td><a href="index">HO1KB #63</a></td>
-                            <td class="placement">5th</td>
+                            <td><b>Home Field:</b></td>
+                            <td>Yellow Bridges, New Ken</td>
                         </tr>
                         <tr>
-                            <td><a href="index">Trivia Time Virtual 132</a></td>
-                            <td class="placement">2nd</td>
+                            <td><b>Total Points:</b></td>
+                            <td>1450</td>
                         </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                    </table>
+
+                    <br>
+                    <div class="text-center me-5">
+                        <button type="submit" class="btn btn-primary">Submit Changes</button>
+                        <button type="button" class="btn btn-dark" onclick="toProfile()">Undo Changes</button>
+                    </div>
+
+        </form>
+
+        <script>
+            function toProfile() {
+                location.href = "/profile";
+            }
+        </script>
+
+    </div>
+    <div class="col profile-recent">
+        <h2 class="text-center">Recent Quizzes</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col" style="text-align: center;">Placement</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="index">Buzzworthy Thursday 3/9</a></td>
+                    <td class="placement">6th</td>
+                </tr>
+                <tr>
+                    <td><a href="index">Buzzworthy Thursday 3/16</a></td>
+                    <td class="placement">2nd</td>
+                </tr>
+                <tr>
+                    <td><a href="index">HO1KB #63</a></td>
+                    <td class="placement">5th</td>
+                </tr>
+                <tr>
+                    <td><a href="index">Trivia Time Virtual 132</a></td>
+                    <td class="placement">2nd</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
     </div>
 
     <!-- Team Info -->
@@ -127,4 +142,4 @@
         </div>
     </section>
 
-<jsp:include page="include/footer.jsp" />
+    <jsp:include page="include/footer.jsp" />

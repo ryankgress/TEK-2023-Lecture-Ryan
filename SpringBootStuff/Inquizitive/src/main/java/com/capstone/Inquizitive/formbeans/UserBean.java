@@ -9,7 +9,8 @@ import lombok.ToString;
 @Setter
 @ToString
 @EqualsAndHashCode
-public class UserRegisterBean {
+public class UserBean {
+    private Integer id;
     private String name;
     private String username;
     private String email;

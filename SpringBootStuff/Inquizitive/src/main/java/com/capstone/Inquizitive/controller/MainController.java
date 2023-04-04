@@ -5,15 +5,15 @@ import com.capstone.Inquizitive.database.dao.TeamMemberDAO;
 import com.capstone.Inquizitive.database.dao.UserDAO;
 import com.capstone.Inquizitive.database.entity.Team;
 import com.capstone.Inquizitive.database.entity.User;
-import com.capstone.Inquizitive.formbeans.UserRegisterBean;
+import com.capstone.Inquizitive.formbeans.UserBean;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -44,10 +44,25 @@ public class MainController {
         return response;
     }
 
-    @RequestMapping(value = "/editProfile", method = RequestMethod.GET)
-    public ModelAndView editProfile() {
-        log.debug("In the editProfile controller method");
+    @RequestMapping(value = "/editProfile/{id}", method = RequestMethod.GET)
+    public ModelAndView edit(@PathVariable Integer id) {
         ModelAndView response = new ModelAndView("editProfile");
+
+
+        User user = userDao.findById(id);
+        UserBean form = new UserBean();
+
+        form.setId(user.getId());
+        form.setName(user.getName());
+        form.setUsername(user.getUsername());
+        form.setEmail(user.getEmail());
+        form.setPassword(user.getPassword());
+        form.setProfilePic(user.getProfilePic());
+
+        response.addObject("form", form);
+
+        log.debug("In edit profile controller method");
+
         return response;
     }
 
@@ -60,7 +75,7 @@ public class MainController {
     }
 
     @RequestMapping(value = "/registerSubmit", method = RequestMethod.GET)
-    public ModelAndView registerSubmit(UserRegisterBean form) {
+    public ModelAndView registerSubmit(UserBean form) {
         log.debug("In the register controller registerSubmit method");
         ModelAndView response = new ModelAndView("register");
 
