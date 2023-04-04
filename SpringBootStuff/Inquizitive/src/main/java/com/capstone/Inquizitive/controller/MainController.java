@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Controller
@@ -76,13 +78,48 @@ public class MainController {
         return response;
     }
 
-
-
     @RequestMapping(value = "/teams", method = RequestMethod.GET)
     public ModelAndView teams() {
-        String team = "Breakout1";      // Will eventually be replaced with a GET from the page
-        log.debug("In the teams controller method with teamname = " + team);
+        log.debug("In the teams controller method");
         ModelAndView response = new ModelAndView("teams");
+
+//        List<Team> allTeams = teamDao.getAllTeams();
+//        List<List<User>> members = new ArrayList<>();
+        List<Map<String,Object>> memberList = teamDao.getAllTeamsAndMembers();
+//        for(Team t : allTeams) {
+//            members.add(teamMemberDao.getUsersByTeamName(t.getTeamName()));
+//            log.debug(t.toString());
+//        }
+//        log.debug(members.toString());
+        log.debug(memberList.toString());
+        for(Map<String,Object> m : memberList) {
+//            for(String key : m.keySet()) {
+//                log.debug("Key = " + key + "  | Value = " + m.get(key));
+//            }
+            log.debug(m.get("team_name") + " - " + m.get("team_members"));
+        }
+        
+
+//        response.addObject("allTeams", allTeams);
+//        response.addObject("members", members);
+        response.addObject("memberList", memberList);
+        return response;
+    }
+
+
+
+    @RequestMapping(value = "/trivialist", method = RequestMethod.GET)
+    public ModelAndView trivialist() {
+        log.debug("In the trivialist controller method");
+        ModelAndView response = new ModelAndView("trivialist");
+        return response;
+    }
+
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public ModelAndView test() {
+        String team = "Breakout1";      // Will eventually be replaced with a GET from the page
+        log.debug("In the test controller method with teamname = " + team);
+        ModelAndView response = new ModelAndView("test");
 
         List<User> members = teamMemberDao.getUsersByTeamName(team);
         Team teamObj = teamDao.findByTeamName(team);
@@ -90,13 +127,6 @@ public class MainController {
         response.addObject("team", teamObj);
         response.addObject("t1List", members);
 
-        return response;
-    }
-
-    @RequestMapping(value = "/trivialist", method = RequestMethod.GET)
-    public ModelAndView trivialist() {
-        log.debug("In the trivialist controller method");
-        ModelAndView response = new ModelAndView("trivialist");
         return response;
     }
 }
