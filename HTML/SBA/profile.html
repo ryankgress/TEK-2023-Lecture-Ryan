@@ -50,17 +50,21 @@
     <section>
         <div class="profile-main container mt-3 mb-5 d-flex flex-column border border-danger border-2 rounded-3">
             <h1>Profile</h1>
-            <div class="profile-header d-flex justify-content-between align-items-center">
-                <p>
-                    Welcome to <b>Ryan Gress</b>'s profile.
-                </p>
-                <p>
-                    <img src="images/default-pfp.png" alt="pfp" width="200px">
-                </p>
+            <div class="row mx-5">
+                <div class="col">
+                    <p>
+                        Welcome to <b>Ryan Gress</b>'s profile.
+                    </p>
+                    
+                </div>
+                <div class="col text-center">
+                    <p>
+                        <img src="images/default-pfp.png" alt="pfp" width="200px">
+                    </p>
+                </div>
             </div>
-            <br>
-            <div class="profile-structure d-flex justify-content-between px-5">
-                <div class="profile-userinfo d-flex flex-column">
+            <div class="row d-flex mx-5">
+                <div class="col profile-userinfo">
                     <h2>User Information</h2>
                     <p>
                     <table>
@@ -82,9 +86,13 @@
                         </tr>
                     </table>
                     </p>
+                    <br>
+                    <p style="font-size: 12pt;">
+                        See something wrong? Click <a href="/editUser">here</a> to edit your profile
+                    </p>
                 </div>
-                <div class="profile-recent d-flex flex-column" style="width:40%">
-                    <h2>Recent Quizzes</h2>
+                <div class="col profile-recent">
+                    <h2 class="text-center">Recent Quizzes</h2>
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -112,6 +120,16 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+
+        <br>
+        <div class="profile-structure d-flex justify-content-between px-5">
+            <div class="profile-userinfo d-flex flex-column">
+
+            </div>
+            <div class="profile-recent d-flex flex-column" style="width:40%">
+
             </div>
 
         </div>

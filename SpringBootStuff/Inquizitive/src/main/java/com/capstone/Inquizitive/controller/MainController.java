@@ -44,6 +44,13 @@ public class MainController {
         return response;
     }
 
+    @RequestMapping(value = "/editProfile", method = RequestMethod.GET)
+    public ModelAndView editProfile() {
+        log.debug("In the editProfile controller method");
+        ModelAndView response = new ModelAndView("editProfile");
+        return response;
+    }
+
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView register() {
         log.debug("In the register controller method");

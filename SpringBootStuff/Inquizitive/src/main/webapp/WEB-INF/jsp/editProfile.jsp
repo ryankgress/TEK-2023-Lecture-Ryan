@@ -1,4 +1,3 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="include/header.jsp" />
 
 <!-- User Info -->
@@ -10,7 +9,7 @@
                 <p>
                     Welcome to <b>Ryan Gress</b>'s profile.
                 </p>
-
+                
             </div>
             <div class="col text-center">
                 <p>
@@ -21,34 +20,30 @@
         <div class="row d-flex mx-5">
             <div class="col profile-userinfo">
                 <h2>User Information</h2>
-
-                <form action="">
-                    <input type="hidden" name = "id" value="${form.id}">
-                    <table>
-                        <tr>
-                            <td><b>Username:</b></td>
-                            <td><input type="text"></td>
-                        </tr>
-                        <tr>
-                            <td><b>Email:</b></td>
-                            <td>ryankgress@gmail.com</td>
-                        </tr>
-                        <tr>
-                            <td><b>Home Field:</b></td>
-                            <td>Yellow Bridges, New Ken</td>
-                        </tr>
-                        <tr>
-                            <td><b>Total Points:</b></td>
-                            <td>1450</td>
-                        </tr>
-                    </table>
-
-                    <br>
-                    <p style="font-size: 12pt;">
-                        See something wrong? Click <a href="editProfile">here</a> to edit your profile
-                    </p>
-                </form>
-
+                <p>
+                <table>
+                    <tr>
+                        <td><b>Username:</b></td>
+                        <td>ryankgress</td>
+                    </tr>
+                    <tr>
+                        <td><b>Email:</b></td>
+                        <td>ryankgress@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <td><b>Home Field:</b></td>
+                        <td>Yellow Bridges, New Ken</td>
+                    </tr>
+                    <tr>
+                        <td><b>Total Points:</b></td>
+                        <td>1450</td>
+                    </tr>
+                </table>
+                </p>
+                <br>
+                <p style="font-size: 12pt;">
+                    See something wrong? Click <a href="editUser">here</a> to edit your profile
+                </p>
             </div>
             <div class="col profile-recent">
                 <h2 class="text-center">Recent Quizzes</h2>
@@ -132,4 +127,4 @@
         </div>
     </section>
 
-    <jsp:include page="include/footer.jsp" />
+<jsp:include page="include/footer.jsp" />

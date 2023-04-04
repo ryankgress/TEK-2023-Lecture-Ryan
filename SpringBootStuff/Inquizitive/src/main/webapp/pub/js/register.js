@@ -8,6 +8,7 @@ function validateUser() {
 /**
  * Checks if Password matches Confirm
  * Also confirms Password is of right length and uses required character types
+ * PREVENT DEFAULT
  */
 function validatePass() {
     let passInput = document.getElementById("passwordInput");
