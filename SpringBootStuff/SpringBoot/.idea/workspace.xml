@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="125f273d-822c-46de-a139-3e452039a732" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/test.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/controller/ErrorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/error/404.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/error/500.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/springexamples/controller/ErrorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/error/404.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/error/500.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/database/dao/TeamDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/database/dao/TeamDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/database/dao/TeamMemberDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/database/dao/TeamMemberDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/teams.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/teams.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/pub/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/pub/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -83,30 +83,15 @@ public class MainController {
         log.debug("In the teams controller method");
         ModelAndView response = new ModelAndView("teams");
 
-//        List<Team> allTeams = teamDao.getAllTeams();
-//        List<List<User>> members = new ArrayList<>();
         List<Map<String,Object>> memberList = teamDao.getAllTeamsAndMembers();
-//        for(Team t : allTeams) {
-//            members.add(teamMemberDao.getUsersByTeamName(t.getTeamName()));
-//            log.debug(t.toString());
-//        }
-//        log.debug(members.toString());
-        log.debug(memberList.toString());
+
         for(Map<String,Object> m : memberList) {
-//            for(String key : m.keySet()) {
-//                log.debug("Key = " + key + "  | Value = " + m.get(key));
-//            }
             log.debug(m.get("team_name") + " - " + m.get("team_members"));
         }
-        
 
-//        response.addObject("allTeams", allTeams);
-//        response.addObject("members", members);
         response.addObject("memberList", memberList);
         return response;
     }
-
-
 
     @RequestMapping(value = "/trivialist", method = RequestMethod.GET)
     public ModelAndView trivialist() {

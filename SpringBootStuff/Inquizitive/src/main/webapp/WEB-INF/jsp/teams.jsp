@@ -7,7 +7,7 @@
             <p class="text-white text-center">Check out the teams below! Feel free to join one below, or see where yours stacks up!</p>
 
             <c:forEach items="${memberList}" var="team">
-                <div class="card text-center bg-light mb-3">
+                <div class="card text-center bg-light mb-3" id="${team.get('team_name')}">
                     <div class="card-header">
                         ${team.get("team_name")}
                     </div>
@@ -18,7 +18,7 @@
                         <a href="#" class="btn btn-dark">View Join Code</a>
                     </div>
                     <div class="card-footer text-muted">
-                        ${team.get("total_score")}
+                        Total Points: ${team.get("total_score")}
                     </div>
                 </div>
             </c:forEach>
