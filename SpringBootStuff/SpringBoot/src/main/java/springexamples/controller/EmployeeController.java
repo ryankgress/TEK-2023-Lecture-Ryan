@@ -119,6 +119,12 @@ public class EmployeeController {
 
         List<Employee> employees = new ArrayList<>();
 
+        if (!StringUtils.isEmpty(firstName) && StringUtils.isEmpty(lastName)) {
+            // if so run the query that works with both values
+            log.debug("Both first name and last name are empty");
+            employees = employeeDao.findAll();
+        }
+
         if (!StringUtils.isEmpty(firstName) && !StringUtils.isEmpty(lastName)) {
             // if so run the query that works with both values
             log.debug("Both first name and last name have a value");

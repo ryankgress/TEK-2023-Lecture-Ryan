@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import springexamples.database.entity.Employee;
 
 import java.util.List;
+import java.util.Map;
 
 public interface EmployeeDAO extends JpaRepository<Employee, Long> {
 
@@ -23,6 +24,9 @@ public interface EmployeeDAO extends JpaRepository<Employee, Long> {
 
     @Query("SELECT e FROM Employee e WHERE e.firstName LIKE %:firstName% OR e.lastName LIKE %:lastName% ")    // Uses Employee object
     List<Employee> usingJPAQuery(String firstName, String lastName);          // Don't need setParam with Spring
+
+    @Query(value="select e.*, o.city from employees e, offices o where e.office_id = o.id ;", nativeQuery = true)
+    List<Map<String, Object>> findAllWithOfficeName();
 
     Employee findById(Integer id);
 }

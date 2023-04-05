@@ -20,6 +20,10 @@
                 </thead>
                 <tbody>
                     <tr>
+                        <td>Edit Employee</td>
+                        <td><a href="/employee/edit/${employee.id}">Edit</a></td>
+                    </tr>
+                    <tr>
                         <td>id</td>
                         <td>${employee.id}</td>
                     </tr>

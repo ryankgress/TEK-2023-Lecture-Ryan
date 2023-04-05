@@ -39,7 +39,9 @@
                         <th>Last Name</th>
                         <th>Email</th>
                         <th>Job Title</th>
+                        <th>Office City</th>
                         <th>Edit</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -50,6 +52,7 @@
                             <td>${emp.lastName}</td>
                             <td>${emp.email}</td>
                             <td>${emp.jobTitle}</td>
+                            <td>${emp.officeId}</td>
                             <td><a href="/employee/edit/${emp.id}">Edit</a></td>
                         </tr>
                     </c:forEach>

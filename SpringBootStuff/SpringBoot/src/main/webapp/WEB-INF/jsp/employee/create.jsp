@@ -5,6 +5,13 @@
             background-color: #d3d3d3;
         }
     </style>
+
+    <script>
+        function toDetails() {
+            location.href = "/employee/detail/${form.id}";
+        }
+    </script>
+
     <div class="container mt-3 col-5" style="margin-bottom: 20%;">
         <c:if test="${empty form.id}">
             <h1 class="text-center">Create Employee</h1>
@@ -15,6 +22,13 @@
         <!-- <h1 class="text-center">New Employee Form</h1> -->
         <form action="/employee/createSubmit">
             <input type="hidden" name="id" value="${form.id}">
+
+            <c:if test="${not empty form.id}">
+                <div class="d-flex flexcolumn justify-content-center">
+                    <button type="button" class="btn btn-light" onclick="toDetails()">Employee Details</button>
+                </div>
+            </c:if>
+
             <div class="mb-3">
                 <label for="firstName" class="form-label">First Name</label>
                 <input type="text" class="form-control" id="firstName" name="firstName" value="${form.firstName}">
@@ -60,7 +74,14 @@
                 </select>
             </div>
             <div class="d-flex flexcolumn justify-content-center">
-                <button class="btn btn-primary">Create Employee</button>
+                <button class="btn btn-primary">
+                    <c:if test="${empty form.id}">
+                        Create Employee
+                    </c:if>
+                    <c:if test="${not empty form.id}">
+                        Edit Employee
+                    </c:if>
+                </button>
             </div>
         </form>
     </div>
