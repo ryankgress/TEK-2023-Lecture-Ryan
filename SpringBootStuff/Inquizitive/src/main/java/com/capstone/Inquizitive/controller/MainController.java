@@ -66,6 +66,26 @@ public class MainController {
         return response;
     }
 
+    @RequestMapping(value = "/editProfileSubmit", method = RequestMethod.GET)
+    public ModelAndView editProfileSubmit(UserBean form) {
+        log.debug("In the editProfile controller submit method");
+        ModelAndView response = new ModelAndView("editLanding");
+
+        User user = userDao.findById(form.getId());
+
+        user.setName(form.getName());
+        user.setUsername(form.getUsername());
+        user.setEmail(form.getEmail());
+        user.setProfilePic(form.getProfilePic());   // Needs changed later
+
+        response.addObject("user", user);
+        log.debug(user.toString());
+
+        userDao.save(user);
+
+        return response;
+    }
+
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView register() {
         log.debug("In the register controller method");

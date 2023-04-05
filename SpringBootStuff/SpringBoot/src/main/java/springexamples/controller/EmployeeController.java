@@ -71,6 +71,7 @@ public class EmployeeController {
         form.setJobTitle(emp.getJobTitle());
         form.setVacationHours(emp.getVacationHours());
         form.setOfficeId(emp.getOfficeId());
+        form.setProfileImage(emp.getProfileImageUrl());
 
         response.addObject("form", form);
 
@@ -102,6 +103,7 @@ public class EmployeeController {
         emp.setJobTitle(form.getJobTitle());
         emp.setVacationHours(form.getVacationHours());
         emp.setOfficeId(form.getOfficeId());
+        emp.setProfileImageUrl(form.getProfileImage());
 
         employeeDao.save(emp);
 

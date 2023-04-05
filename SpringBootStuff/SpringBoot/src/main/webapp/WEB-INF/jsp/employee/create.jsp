@@ -38,6 +38,10 @@
                 <input type="text" class="form-control" id="jobTitle" name="jobTitle" value="${form.jobTitle}">
             </div>
             <div class="mb-3">
+                <label for="profileImage" class="form-label">Profile Image</label>
+                <input type="text" class="form-control" id="profileImage" name="profileImage" value="${form.profileImage}">
+            </div>
+            <div class="mb-3">
                 <label for="vacationHours" class="form-label">Vacation Hours</label>
                 <input type="number" class="form-control" id="vacationHours" name="vacationHours"
                     value="${form.vacationHours}">

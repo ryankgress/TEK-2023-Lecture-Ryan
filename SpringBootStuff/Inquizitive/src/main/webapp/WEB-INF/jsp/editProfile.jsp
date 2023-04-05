@@ -3,7 +3,7 @@
 <!-- User Info -->
 <section>
     <div class="profile-main container mt-3 mb-5 d-flex flex-column border border-danger border-2 rounded-3">
-        <form action="">
+        <form action="/editProfileSubmit">
             <h1>Edit Profile</h1>
             <div class="row mx-5 align-items-center">
                 <div class="col">
@@ -17,7 +17,7 @@
                         <img src="/pub/images/default-pfp.png" alt="pfp" width="200px">
                         <br>
                         <label for="profilePic">Change your Profile Picture?</label><br>
-                        <input type="file" name="profilePic" id="profilePic">
+                        <input type="file" name="profilePict" id="profilePict">
                     </p>
                 </div>
             </div>
@@ -26,6 +26,8 @@
                     <h2>User Information</h2>
 
                     <input type="hidden" name="id" value="${form.id}">
+                    <input type="hidden" name="password" value="${form.password}">
+                    <input type="hidden" name="profilePic" value="${form.profilePic}">
                     <table>
                         <tr>
                             <td><b>Username:</b></td>

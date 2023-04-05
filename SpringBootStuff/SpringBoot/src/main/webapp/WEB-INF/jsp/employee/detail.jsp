@@ -55,6 +55,10 @@
                         <td>Vacation Hours</td>
                         <td>${employee.vacationHours}</td>
                     </tr>
+                    <tr>
+                        <td>Profile Image</td>
+                        <td><img src="${employee.profileImageUrl}" width="50px" alt="pfp"></td>
+                    </tr>
                 </tbody>
             </table>
         </div>

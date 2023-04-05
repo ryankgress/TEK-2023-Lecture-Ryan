@@ -51,6 +51,9 @@ public class Employee {
 
 	@Column(name="vacation_hours")
 	private Integer vacationHours;
+
+	@Column(name="profile_image_url")
+	private String profileImageUrl;
 	
 	// Map 1 to many relationship from employee to customer
 	@ToString.Exclude
