@@ -8,13 +8,13 @@
             <div class="row mx-5 align-items-center">
                 <div class="col">
                     <p>
-                        Welcome to <b>Ryan Gress</b>'s profile.
+                        Welcome to <b>${profileInfo.name}</b>'s profile.
                     </p>
 
                 </div>
                 <div class="col text-center">
                     <p>
-                        <img src="/pub/images/default-pfp.png" alt="pfp" width="200px">
+                        <img src="${profileInfo.profile_pic}" alt="pfp" width="200px">
                     </p>
                 </div>
             </div>
@@ -26,11 +26,11 @@
                     <table>
                         <tr>
                             <td><b>Username:</b></td>
-                            <td>ryankgress</td>
+                            <td>${profileInfo.username}</td>
                         </tr>
                         <tr>
                             <td><b>Email:</b></td>
-                            <td>ryankgress@gmail.com</td>
+                            <td>${profileInfo.email}</td>
                         </tr>
                         <tr>
                             <td><b>Home Field:</b></td>
@@ -38,13 +38,13 @@
                         </tr>
                         <tr>
                             <td><b>Total Points:</b></td>
-                            <td>1450</td>
+                            <td>${profileInfo.user_total}</td>
                         </tr>
                     </table>
                     </p>
                     <br>
                     <p style="font-size: 12pt;">
-                        See something wrong? Click <a href="editProfile/1">here</a> to edit your profile
+                        See something wrong? Click <a href="editProfile/${profileInfo.id}">here</a> to edit your profile
                     </p>
 
                 </div>
@@ -83,7 +83,7 @@
         <!-- Team Info -->
         <section>
             <h1>Your Teams</h1>
-            <div class="profile-teams container d-flex mt-2 justify-content-evenly flex-wrap">
+            <div class="profile-teams container d-flex mt-4 justify-content-evenly flex-wrap">
                 <div class="card text-center mb-3" style="width: 18rem;">
                     <img src="/pub/images/team-logo.jpg" class="card-img-top" alt="...">
                     <div class="card-body">

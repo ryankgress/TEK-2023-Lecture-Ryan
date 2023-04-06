@@ -7,13 +7,18 @@ import com.capstone.Inquizitive.database.entity.Team;
 import com.capstone.Inquizitive.database.entity.User;
 import com.capstone.Inquizitive.formbeans.UserBean;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -31,16 +36,27 @@ public class MainController {
     private UserDAO userDao;
 
     @RequestMapping(value = {"/index", "/", "/index.html"}, method = RequestMethod.GET)
-    public ModelAndView index() {
-        log.debug("In the index controller method");
-        ModelAndView response = new ModelAndView("index");
-        return response;
+    public String index() {
+        return "index";
     }
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public ModelAndView profile() {
         log.debug("In the profile controller method");
         ModelAndView response = new ModelAndView("profile");
+
+        int thisUserInx = 1;       // Using this until spring security
+        Map<String, Object> profileInfo = teamMemberDao.getProfileInfo(thisUserInx);
+
+//        Map<String, Object> myTeams = profileInfo.get(0);
+//        String temp = myTeams.get("team_list").toString();
+//        String[] arr = temp.split(",");
+//        myTeams.put("team_list", arr);
+//        profileInfo.set(0,myTeams);
+//
+//        log.debug(arr.toString());
+
+        response.addObject("profileInfo", profileInfo);
         return response;
     }
 
@@ -66,17 +82,24 @@ public class MainController {
         return response;
     }
 
-    @RequestMapping(value = "/editProfileSubmit", method = RequestMethod.GET)
-    public ModelAndView editProfileSubmit(UserBean form) {
+    @RequestMapping(value = "/editProfileSubmit", method = RequestMethod.POST)
+    public ModelAndView editProfileSubmit(UserBean form, @RequestParam(required = false) MultipartFile profilePicture) throws IOException {
         log.debug("In the editProfile controller submit method");
         ModelAndView response = new ModelAndView("editLanding");
 
         User user = userDao.findById(form.getId());
+        File target;
+
+        if(!profilePicture.isEmpty()) {
+            target = new File("./src/main/webapp/pub/images/" + profilePicture.getOriginalFilename());
+            log.debug("Target path: " + target.getAbsolutePath());
+            FileUtils.copyInputStreamToFile(profilePicture.getInputStream(), target);
+            user.setProfilePic("/pub/images/" + profilePicture.getOriginalFilename());
+        }
 
         user.setName(form.getName());
         user.setUsername(form.getUsername());
         user.setEmail(form.getEmail());
-        user.setProfilePic(form.getProfilePic());   // Needs changed later
 
         response.addObject("user", user);
         log.debug(user.toString());
@@ -94,12 +117,21 @@ public class MainController {
         return response;
     }
 
-    @RequestMapping(value = "/registerSubmit", method = RequestMethod.GET)
-    public ModelAndView registerSubmit(UserBean form) {
+    @RequestMapping(value = "/registerSubmit", method = RequestMethod.POST)
+    public ModelAndView registerSubmit(UserBean form, @RequestParam(required = false) MultipartFile profilePicture) throws IOException {
         log.debug("In the register controller registerSubmit method");
-        ModelAndView response = new ModelAndView("register");
+        ModelAndView response = new ModelAndView("index");
 
+        File target;
         User user = new User();
+
+        if(!profilePicture.isEmpty()) {
+            target = new File("./src/main/webapp/pub/images/" + profilePicture.getOriginalFilename());
+            log.debug("Target path: " + target.getAbsolutePath());
+            FileUtils.copyInputStreamToFile(profilePicture.getInputStream(), target);
+            user.setProfilePic("/pub/images/" + profilePicture.getOriginalFilename());
+        }
+
         user.setName(form.getName());
         user.setUsername(form.getUsername());
         user.setEmail(form.getEmail());

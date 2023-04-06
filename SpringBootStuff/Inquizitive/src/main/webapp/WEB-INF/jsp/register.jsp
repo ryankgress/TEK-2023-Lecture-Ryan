@@ -5,7 +5,7 @@
     <section>
             <div class="register-main container mt-3 mb-5 d-flex flex-column border border-danger border-2 rounded-3 w-50">
                 <h1 class="mt-3">Create New Account</h1>
-                <form class="m-3 d-flex flex-column justify-content-center" action="/registerSubmit">
+                <form class="m-3 d-flex flex-column justify-content-center" action="/registerSubmit" method="post" enctype="multipart/form-data">
                     <div class="mb-3 col-sm-9 mx-auto">
                         <label for="nameInput" class="form-label">Name</label>
                         <input type="text" class="form-control" placeholder="Ken Jennings" id="nameInput" name="name" required>
@@ -28,9 +28,9 @@
                     </div>
 
                     <div class="mb-3 col-sm-9 mx-auto">
-                        <label for="formFile" class="form-label">Profile Picture <span
+                        <label for="profilePic" class="form-label">Profile Picture <span
                                 id="lightText">(optional)</span></label>
-                        <input class="form-control" type="file" id="formFile">
+                        <input class="form-control" type="file" id="profilePic" name="profilePicture">
                     </div>
 
                     <div class="form-check mb-4 col-sm-9 mx-auto">

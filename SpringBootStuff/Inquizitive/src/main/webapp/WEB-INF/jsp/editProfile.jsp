@@ -3,7 +3,7 @@
 <!-- User Info -->
 <section>
     <div class="profile-main container mt-3 mb-5 d-flex flex-column border border-danger border-2 rounded-3">
-        <form action="/editProfileSubmit">
+        <form action="/editProfileSubmit" method="post" enctype="multipart/form-data">
             <h1>Edit Profile</h1>
             <div class="row mx-5 align-items-center">
                 <div class="col">
@@ -16,8 +16,8 @@
                     <p style="font-size: 12pt;">
                         <img src="/pub/images/default-pfp.png" alt="pfp" width="200px">
                         <br>
-                        <label for="profilePic">Change your Profile Picture?</label><br>
-                        <input type="file" name="profilePict" id="profilePict">
+                        <label for="profilePicture">Change your Profile Picture?</label><br>
+                        <input type="file" name="profilePicture" id="profilePicture">
                     </p>
                 </div>
             </div>

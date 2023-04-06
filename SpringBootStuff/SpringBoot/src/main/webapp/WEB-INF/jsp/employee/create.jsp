@@ -20,7 +20,7 @@
             <h1 class="text-center">Edit Employee</h1>
         </c:if>
         <!-- <h1 class="text-center">New Employee Form</h1> -->
-        <form action="/employee/createSubmit">
+        <form action="/employee/createSubmit" method="post">
             <input type="hidden" name="id" value="${form.id}">
 
             <c:if test="${not empty form.id}">

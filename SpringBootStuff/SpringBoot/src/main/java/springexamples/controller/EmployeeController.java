@@ -80,7 +80,8 @@ public class EmployeeController {
         return response;
     }
 
-    @RequestMapping(value = "/createSubmit", method = RequestMethod.GET)
+    // Maybe need to add another parameter for createSubmit with @RequestParam MultipartFile pic
+    @RequestMapping(value = "/createSubmit", method = RequestMethod.POST)   // Change to post mapping
     public ModelAndView createSubmit(EmployeeFormBean form) {
         ModelAndView response = new ModelAndView("employee/create");
 
@@ -108,6 +109,9 @@ public class EmployeeController {
         employeeDao.save(emp);
 
         response.addObject("form", form);
+
+        // We can redirect to the edit page instead of processing a new JSP view
+//        response.setViewName("redirect:/employee/edit/" + emp.getId());
 
         return response;
     }
