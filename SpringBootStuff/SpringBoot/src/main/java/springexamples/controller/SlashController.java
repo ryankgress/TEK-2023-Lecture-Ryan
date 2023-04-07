@@ -3,16 +3,29 @@ package springexamples.controller;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import springexamples.database.dao.EmployeeDAO;
+import springexamples.database.dao.UserDAO;
+import springexamples.database.dao.UserRoleDAO;
 import springexamples.database.entity.User;
+import springexamples.database.entity.UserRole;
 import springexamples.formbeans.CreateUserFormBean;
 
 @Slf4j
 @Controller
 public class SlashController {
+
+    @Autowired
+    private UserDAO userDao;
+
+    @Autowired
+    private UserRoleDAO userRoleDao;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @RequestMapping(value = {"/index", "/", "/index.html"}, method = RequestMethod.GET)  // defaults to index if left blank
     public ModelAndView index(HttpSession session) {
@@ -48,10 +61,22 @@ public class SlashController {
 
         log.debug(form.toString());
 
-//        User u = new User();
-//
-//        u.setEmail(form.getEmail());
-//        u.setPassword(form.getPassword());
+        // Create user object
+        User user = new User();
+        user.setEmail(form.getEmail());
+        user.setFullName(form.getFullName());
+
+        // Encrypts the password
+        String encryptedPass = passwordEncoder.encode(form.getConfirmPassword());
+        user.setPassword(encryptedPass);
+
+        userDao.save(user);     // Populates the id field for user here
+
+        // Create user role object
+        UserRole userRole = new UserRole();
+        userRole.setRoleName("USER");
+        userRole.setUserId(user.getId());
+        userRoleDao.save(userRole);
 
         return response;
     }

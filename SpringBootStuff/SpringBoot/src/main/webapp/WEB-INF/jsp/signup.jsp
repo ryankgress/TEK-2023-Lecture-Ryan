@@ -6,20 +6,20 @@
         <div class="container mt-3" style="margin-bottom: 20%;">
             <h1 class="text-center">New User Form</h1>
             <form action="/signup" method="post">
-                <div class="mb-3">
+                <div class="mb-3 col-7">
                     <label for="email" class="form-label">Email address</label>
                     <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 col-7">
                     <label for="fullName" class="form-label">Full Name</label>
                     <input type="text" class="form-control" id="fullName" name="fullName">
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 col-7">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password">
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 col-7">
                     <label for="confirmPassword" class="form-label">Confirm Password</label>
                     <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
                 </div>
