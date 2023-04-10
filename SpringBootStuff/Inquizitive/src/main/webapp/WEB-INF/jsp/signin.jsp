@@ -3,14 +3,14 @@
 <section>
     <div class="signin-main container mt-3 mb-5 d-flex flex-column border border-danger border-2 rounded-3 w-50">
         <h1 class="mt-3">Sign In</h1>
-        <form class="m-3 d-flex flex-column justify-content-center">
+        <form class="m-3 d-flex flex-column justify-content-center" method="post" action="/signinpost">
             <div class="mb-3 col-sm-9 mx-auto">
-                <label for="usernameInput" class="form-label">Username</label>
-                <input type="text" class="form-control" id="usernameInput" aria-describedby="usernameHelp">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username">
             </div>
             <div class="mb-3 col-sm-9 mx-auto">
-                <label for="passwordInput" class="form-label">Password</label>
-                <input type="password" class="form-control" id="passwordInput">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password">
                 <div id="passwordHelp" class="form-text" style="text-align: right;">New to Inquizitive? Create an
                     account <a href="register">here</a></div>
             </div>

@@ -5,18 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4c1a5b1c-53b6-4b13-8d5e-6b2ad14266e4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/springexamples/config/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/springexamples/controller/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/springexamples/database/dao/UserRoleDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/springexamples/database/entity/UserRole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/springexamples/security/UserDetailsServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inquizitive/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/controller/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/database/dao/UserRoleDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/database/entity/UserRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/security/UserDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/database/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/database/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/formbeans/UserBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/formbeans/UserBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/signin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/signin.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/springexamples/controller/SlashController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/springexamples/controller/SlashController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/include/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/include/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/signup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/signup.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/springexamples/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/springexamples/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/springexamples/security/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/springexamples/security/UserDetailsServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

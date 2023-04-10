@@ -1,4 +1,4 @@
-package springexamples.config;
+package com.capstone.Inquizitive.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,20 +21,14 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                // Anything within the URL /employee/** will require authentication. Can include more with , separator
-            .authorizeHttpRequests().requestMatchers("/employee/**").authenticated()
-                // Anything else in the application is permitted
-            .anyRequest().permitAll()
-            .and()
+        http.csrf().disable().authorizeHttpRequests().requestMatchers("/profile").authenticated()
+                .anyRequest().permitAll().and()
                 .formLogin()
-                .loginPage("/login/loginPage")
-                .loginProcessingUrl("/login/loginpost")
+                .loginPage("/signin")
+                .loginProcessingUrl("/signinpost")
                 .defaultSuccessUrl("/");
 
         return http.build();
     }
-
-
 
 }

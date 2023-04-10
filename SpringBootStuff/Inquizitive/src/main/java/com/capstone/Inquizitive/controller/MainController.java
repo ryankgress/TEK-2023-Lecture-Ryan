@@ -3,12 +3,15 @@ package com.capstone.Inquizitive.controller;
 import com.capstone.Inquizitive.database.dao.TeamDAO;
 import com.capstone.Inquizitive.database.dao.TeamMemberDAO;
 import com.capstone.Inquizitive.database.dao.UserDAO;
+import com.capstone.Inquizitive.database.dao.UserRoleDAO;
 import com.capstone.Inquizitive.database.entity.Team;
 import com.capstone.Inquizitive.database.entity.User;
+import com.capstone.Inquizitive.database.entity.UserRole;
 import com.capstone.Inquizitive.formbeans.UserBean;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +37,12 @@ public class MainController {
 
     @Autowired
     private UserDAO userDao;
+
+    @Autowired
+    private UserRoleDAO userRoleDao;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @RequestMapping(value = {"/index", "/", "/index.html"}, method = RequestMethod.GET)
     public String index() {
@@ -135,22 +144,30 @@ public class MainController {
         user.setName(form.getName());
         user.setUsername(form.getUsername());
         user.setEmail(form.getEmail());
-        user.setPassword(form.getPassword());
+
+        String encPass = passwordEncoder.encode(form.getPassword());
+        user.setPassword(encPass);
 
         response.addObject("user", user);
         log.debug(user.toString());
 
         userDao.save(user);
 
+        // User Role Assignment
+        UserRole userRole = new UserRole();
+        userRole.setRoleName("USER");
+        userRole.setUserId(user.getId());
+        userRoleDao.save(userRole);
+
         return response;
     }
 
-    @RequestMapping(value = "/signin", method = RequestMethod.GET)
-    public ModelAndView signin() {
-        log.debug("In the signin controller method");
-        ModelAndView response = new ModelAndView("signin");
-        return response;
-    }
+//    @RequestMapping(value = "/signin", method = RequestMethod.GET)
+//    public ModelAndView signin() {
+//        log.debug("In the signin controller method");
+//        ModelAndView response = new ModelAndView("signin");
+//        return response;
+//    }
 
     @RequestMapping(value = "/teams", method = RequestMethod.GET)
     public ModelAndView teams() {
