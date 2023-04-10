@@ -55,17 +55,15 @@ public class MainController {
         ModelAndView response = new ModelAndView("profile");
 
         int thisUserInx = 1;       // Using this until spring security
-        Map<String, Object> profileInfo = teamMemberDao.getProfileInfo(thisUserInx);
 
-//        Map<String, Object> myTeams = profileInfo.get(0);
-//        String temp = myTeams.get("team_list").toString();
-//        String[] arr = temp.split(",");
-//        myTeams.put("team_list", arr);
-//        profileInfo.set(0,myTeams);
-//
-//        log.debug(arr.toString());
+        User user = userDao.findById(thisUserInx);
+        List<Map<String,Object>> teams = teamMemberDao.getTeamsByUserId(user.getId());
 
-        response.addObject("profileInfo", profileInfo);
+        Integer totScore = teamMemberDao.getUserTotalById(user.getId());
+
+        response.addObject("teams", teams);
+        response.addObject("user", user);
+        response.addObject("totScore", totScore);
         return response;
     }
 

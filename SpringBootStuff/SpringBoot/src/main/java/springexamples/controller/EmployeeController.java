@@ -4,6 +4,7 @@ import jakarta.websocket.server.PathParam;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,7 +19,8 @@ import java.util.List;
 
 @Slf4j
 @Controller
-@RequestMapping("/employee")        // Only accepts url if it starts with /employee
+@RequestMapping("/employee")                // Only accepts url if it starts with /employee
+@PreAuthorize("hasAuthority('ADMIN')")      //Only people with admin access can use these URLs
 public class EmployeeController {
 
     @Autowired

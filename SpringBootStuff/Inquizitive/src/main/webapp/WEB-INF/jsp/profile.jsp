@@ -8,13 +8,13 @@
             <div class="row mx-5 align-items-center">
                 <div class="col">
                     <p>
-                        Welcome to <b>${profileInfo.name}</b>'s profile.
+                        Welcome to <b>${user.name}</b>'s profile.
                     </p>
 
                 </div>
                 <div class="col text-center">
                     <p>
-                        <img src="${profileInfo.profile_pic}" alt="pfp" width="200px">
+                        <img src="${user.profilePic}" alt="pfp" width="200px">
                     </p>
                 </div>
             </div>
@@ -26,11 +26,11 @@
                     <table>
                         <tr>
                             <td><b>Username:</b></td>
-                            <td>${profileInfo.username}</td>
+                            <td>${user.username}</td>
                         </tr>
                         <tr>
                             <td><b>Email:</b></td>
-                            <td>${profileInfo.email}</td>
+                            <td>${user.email}</td>
                         </tr>
                         <tr>
                             <td><b>Home Field:</b></td>
@@ -38,13 +38,13 @@
                         </tr>
                         <tr>
                             <td><b>Total Points:</b></td>
-                            <td>${profileInfo.user_total}</td>
+                            <td>${totScore}</td>
                         </tr>
                     </table>
                     </p>
                     <br>
                     <p style="font-size: 12pt;">
-                        See something wrong? Click <a href="editProfile/${profileInfo.id}">here</a> to edit your profile
+                        See something wrong? Click <a href="editProfile/${user.id}">here</a> to edit your profile
                     </p>
 
                 </div>
@@ -80,54 +80,23 @@
             </div>
         </div>
 
+
+
         <!-- Team Info -->
         <section>
             <h1>Your Teams</h1>
             <div class="profile-teams container d-flex mt-4 justify-content-evenly flex-wrap">
-                <div class="card text-center mb-3" style="width: 18rem;">
-                    <img src="/pub/images/team-logo.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Quiz Tigers</h5>
-                        <p class="card-text">Ferocious in the jungle and the quiz field. They're grrrreat!</p>
-                        <a href="#" class="btn btn-dark">Team Page</a>
+                <c:forEach items="${teams}" var="team">
+                    <div class="card text-center mb-3" style="width: 18rem;">
+                        <img src="${team.team_pic}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">${team.team_name}</h5>
+                            <p class="card-text">${team.team_desc}</p>
+                            <a href="/teams#${team.team_name}" class="btn btn-dark">Team Page</a>
+                        </div>
                     </div>
-                </div>
-                <div class="card text-center mb-3" style="width: 18rem;">
-                    <img src="/pub/images/team-logo2.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Outside Spotlights.</h5>
-                        <p class="card-text">A disconnected family that unites solely to take the quizzing crown! ...
-                            Just
-                            leave motown out of it.</p>
-                        <a href="#" class="btn btn-dark">Team Page</a>
-                    </div>
-                </div>
+                </c:forEach>
 
-                <!-- Able to add more teams easily below -->
-                <!-- <div class="card text-center mb-3" style="width: 18rem;">
-                <img src="/pub/images/team-logo2.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Outside Spotlights.</h5>
-                    <p class="card-text">A disconnected family that unites solely to take the quizzing crown! ... Just leave motown out of it.</p>
-                    <a href="#" class="btn btn-dark">Team Page</a>
-                </div>
-            </div>
-            <div class="card text-center mb-3" style="width: 18rem;">
-                <img src="/pub/images/team-logo2.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Outside Spotlights.</h5>
-                    <p class="card-text">A disconnected family that unites solely to take the quizzing crown! ... Just leave motown out of it.</p>
-                    <a href="#" class="btn btn-dark">Team Page</a>
-                </div>
-            </div>
-            <div class="card text-center mb-3" style="width: 18rem;">
-                <img src="/pub/images/team-logo2.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Outside Spotlights.</h5>
-                    <p class="card-text">A disconnected family that unites solely to take the quizzing crown! ... Just leave motown out of it.</p>
-                    <a href="#" class="btn btn-dark">Team Page</a>
-                </div>
-            </div> -->
             </div>
         </section>
 

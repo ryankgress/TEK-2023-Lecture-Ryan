@@ -30,7 +30,12 @@ public class SecurityConfig {
                 .formLogin()
                 .loginPage("/login/loginPage")
                 .loginProcessingUrl("/login/loginpost")
-                .defaultSuccessUrl("/");
+                .defaultSuccessUrl("/")
+            .and()
+                .logout()
+                .invalidateHttpSession(true)
+                .logoutUrl("/login/logout")         // If navigate here, logs user out
+                .logoutSuccessUrl("/index");        // Kicks user to this page if logged out
 
         return http.build();
     }
