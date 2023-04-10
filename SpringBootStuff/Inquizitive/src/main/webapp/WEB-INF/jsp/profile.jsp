@@ -44,7 +44,7 @@
                     </p>
                     <br>
                     <p style="font-size: 12pt;">
-                        See something wrong? Click <a href="editProfile/${user.id}">here</a> to edit your profile
+                        See something wrong? Click <a href="/editProfile/${user.id}">here</a> to edit your profile
                     </p>
 
                 </div>

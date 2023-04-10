@@ -20,11 +20,6 @@ public interface TeamMemberDAO extends JpaRepository<TeamMember, Long> {
     @Query(value = "SELECT t.* FROM teams t, team_members tm WHERE t.id = tm.team_id AND tm.user_id = :id ;", nativeQuery = true)
     List<Map<String,Object>> getTeamsByUserId(Integer id);
 
-    /**
-     * Want to return name, username, email, profilePic, sum(points) etc etc, team(team1,team2,team3,team4)?
-     * @param id
-     * @return
-     */
     @Query(value =
             "SELECT SUM(t.total_score) AS user_total " +
             "FROM users u LEFT JOIN team_members tm ON u.id = tm.user_id LEFT JOIN teams t ON t.id = tm.team_id " +

@@ -26,7 +26,12 @@ public class SecurityConfig {
                 .formLogin()
                 .loginPage("/signin")
                 .loginProcessingUrl("/signinpost")
-                .defaultSuccessUrl("/");
+                .defaultSuccessUrl("/")
+                .and()
+                .logout()
+                .invalidateHttpSession(true)
+                .logoutUrl("/signin/signout")
+                .logoutSuccessUrl("/index");
 
         return http.build();
     }

@@ -44,7 +44,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         Collection<? extends GrantedAuthority> springRoles = buildGrantAuthorities(userRoles);
 
         // Returns a spring security user object w/ all the information we gathered. Used by spring security to auth
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
                 accountIsEnabled, accountNonExpired, credentialsNonExpired, accountNonLocked, springRoles);
     }
 

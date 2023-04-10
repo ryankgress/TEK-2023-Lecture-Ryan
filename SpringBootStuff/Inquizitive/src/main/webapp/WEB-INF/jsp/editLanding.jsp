@@ -6,7 +6,7 @@
         <h1 class="pb-3">Profile Changed</h1>
         <div>
             <p class="text-center">
-                You successfully changed your profile! Click <a href="/profile">here</a> to return to your Profile page, or anywhere above to visit the rest of the site!
+                You successfully changed your profile! Click <a href="/profile/${user.username}">here</a> to return to your Profile page, or anywhere above to visit the rest of the site!
             </p>
         </div>
     </div>

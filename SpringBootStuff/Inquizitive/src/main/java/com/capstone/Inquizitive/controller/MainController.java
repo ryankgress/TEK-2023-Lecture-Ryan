@@ -49,14 +49,14 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public ModelAndView profile() {
+    @RequestMapping(value = "/profile/{username}", method = RequestMethod.GET)
+    public ModelAndView profile(@PathVariable String username) {
         log.debug("In the profile controller method");
         ModelAndView response = new ModelAndView("profile");
 
         int thisUserInx = 1;       // Using this until spring security
 
-        User user = userDao.findById(thisUserInx);
+        User user = userDao.findByUsername(username);
         List<Map<String,Object>> teams = teamMemberDao.getTeamsByUserId(user.getId());
 
         Integer totScore = teamMemberDao.getUserTotalById(user.getId());
