@@ -151,6 +151,13 @@ public class MainController {
 
         userDao.save(user);
 
+        if(form.getHost() != null) {
+            UserRole userRoleHost = new UserRole();
+            userRoleHost.setRoleName("HOST");
+            userRoleHost.setUserId(user.getId());
+            userRoleDao.save(userRoleHost);
+        }
+
         // User Role Assignment
         UserRole userRole = new UserRole();
         userRole.setRoleName("USER");
@@ -160,12 +167,6 @@ public class MainController {
         return response;
     }
 
-//    @RequestMapping(value = "/signin", method = RequestMethod.GET)
-//    public ModelAndView signin() {
-//        log.debug("In the signin controller method");
-//        ModelAndView response = new ModelAndView("signin");
-//        return response;
-//    }
 
     @RequestMapping(value = "/teams", method = RequestMethod.GET)
     public ModelAndView teams() {

@@ -16,5 +16,6 @@ public class UserBean {
     private String email;
     private String password;
     private String profilePic;
+    private String host;
 
 }

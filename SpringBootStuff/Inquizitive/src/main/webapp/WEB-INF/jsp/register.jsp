@@ -34,8 +34,8 @@
                     </div>
 
                     <div class="form-check mb-4 col-sm-9 mx-auto">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="" id="host" name="host">
+                        <label class="form-check-label" for="host">
                             I will be hosting quizzes.
                         </label>
                     </div>
