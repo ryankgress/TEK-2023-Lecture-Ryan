@@ -105,6 +105,8 @@ public class EmployeeController {
             return response;
         }
 
+        // Everything after this assumes no errors in incoming data
+
         log.debug("In employee controller create submit method");
         log.debug(form.toString());
 
@@ -126,6 +128,12 @@ public class EmployeeController {
         employeeDao.save(emp);
 
         response.addObject("form", form);
+
+        // This will allow us to add a success message if we get this far
+        response.addObject("success", true);
+
+        // Set id of employee on the form bean to put page back into edit mode
+        form.setId(emp.getId());
 
         // We can redirect to the edit page instead of processing a new JSP view
 //        response.setViewName("redirect:/employee/edit/" + emp.getId());

@@ -8,11 +8,14 @@ import com.capstone.Inquizitive.database.entity.Team;
 import com.capstone.Inquizitive.database.entity.User;
 import com.capstone.Inquizitive.database.entity.UserRole;
 import com.capstone.Inquizitive.formbeans.UserBean;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -125,18 +128,28 @@ public class MainController {
     }
 
     @RequestMapping(value = "/registerSubmit", method = RequestMethod.POST)
-    public ModelAndView registerSubmit(UserBean form, @RequestParam(required = false) MultipartFile profilePicture) throws IOException {
+    public ModelAndView registerSubmit(@Valid UserBean form, BindingResult bindingResult) throws IOException {
         log.debug("In the register controller registerSubmit method");
-        ModelAndView response = new ModelAndView("index");
+        ModelAndView response = new ModelAndView("register");
+
+        if(bindingResult.hasErrors()) {
+            for(FieldError error : bindingResult.getFieldErrors()) {
+                log.debug("Validation Error on field : " + error.getField() + " with message : " + error.getDefaultMessage());
+            }
+
+            response.addObject("form", form);
+            response.addObject("bindingResult", bindingResult);
+            return response;
+        }
 
         File target;
         User user = new User();
 
-        if(!profilePicture.isEmpty()) {
-            target = new File("./src/main/webapp/pub/images/" + profilePicture.getOriginalFilename());
+        if(!form.getProfilePicture().isEmpty()) {
+            target = new File("./src/main/webapp/pub/images/" + form.getProfilePicture().getOriginalFilename());
             log.debug("Target path: " + target.getAbsolutePath());
-            FileUtils.copyInputStreamToFile(profilePicture.getInputStream(), target);
-            user.setProfilePic("/pub/images/" + profilePicture.getOriginalFilename());
+            FileUtils.copyInputStreamToFile(form.getProfilePicture().getInputStream(), target);
+            user.setProfilePic("/pub/images/" + form.getProfilePicture().getOriginalFilename());
         }
 
         user.setName(form.getName());
@@ -163,6 +176,9 @@ public class MainController {
         userRole.setRoleName("USER");
         userRole.setUserId(user.getId());
         userRoleDao.save(userRole);
+
+        // If successful, redirect to index
+        response.setViewName("redirect:/index");
 
         return response;
     }

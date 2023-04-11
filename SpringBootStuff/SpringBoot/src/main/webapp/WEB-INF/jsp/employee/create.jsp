@@ -19,8 +19,13 @@
         <c:if test="${not empty form.id}">
             <h1 class="text-center">Edit Employee</h1>
         </c:if>
-        <!-- <h1 class="text-center">New Employee Form</h1> -->
+
         <form action="/employee/createSubmit" method="post">
+            <c:if test="${success}">
+                <div class="alert alert-success" role="alert">
+                    Employee Created!
+                </div>
+            </c:if>
             <input type="hidden" name="id" value="${form.id}">
 
             <c:if test="${not empty form.id}">
@@ -78,7 +83,8 @@
             </div>
             <div class="mb-3">
                 <label for="profileImage" class="form-label">Profile Image</label>
-                <input type="text" class="form-control" id="profileImage" name="profileImage" value="${form.profileImage}">
+                <input type="text" class="form-control" id="profileImage" name="profileImage"
+                    value="${form.profileImage}">
                 <C:if test="${bindingResult.hasFieldErrors('profileImage')}">
                     <c:forEach items="${bindingResult.getFieldErrors('profileImage')}" var="error">
                         <div style="color:red">${error.getDefaultMessage()}</div>
@@ -89,7 +95,7 @@
                 <label for="vacationHours" class="form-label">Vacation Hours</label>
                 <input type="number" class="form-control" id="vacationHours" name="vacationHours"
                     value="${form.vacationHours}">
-                    <C:if test="${bindingResult.hasFieldErrors('vacationHours')}">
+                <C:if test="${bindingResult.hasFieldErrors('vacationHours')}">
                     <c:forEach items="${bindingResult.getFieldErrors('vacationHours')}" var="error">
                         <div style="color:red">${error.getDefaultMessage()}</div>
                     </c:forEach>
@@ -100,11 +106,10 @@
                 <label for="officeId" class="form-label">Office</label>
                 <select name="officeId" id="officeId" class="form-select">
                     <c:forEach items="${offices}" var="off">
-                        <option value="${off.id}" 
-                            <c:if test="${off.id eq form.officeId}">
-                                selected
+                        <option value="${off.id}" <c:if test="${off.id eq form.officeId}">
+                            selected
                             </c:if>
-                        >${off.city}</option>
+                            >${off.city}</option>
                     </c:forEach>
                 </select>
             </div>
