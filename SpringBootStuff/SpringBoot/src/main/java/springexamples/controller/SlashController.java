@@ -13,6 +13,7 @@ import springexamples.database.dao.UserRoleDAO;
 import springexamples.database.entity.User;
 import springexamples.database.entity.UserRole;
 import springexamples.formbeans.CreateUserFormBean;
+import springexamples.security.AuthenticatedUserService;
 
 @Slf4j
 @Controller
@@ -26,6 +27,9 @@ public class SlashController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private AuthenticatedUserService authenticatedUserService;
 
     @RequestMapping(value = {"/index", "/", "/index.html"}, method = RequestMethod.GET)  // defaults to index if left blank
     public ModelAndView index(HttpSession session) {
@@ -77,6 +81,8 @@ public class SlashController {
         userRole.setRoleName("USER");
         userRole.setUserId(user.getId());
         userRoleDao.save(userRole);
+
+        authenticatedUserService.changeLoggedInUsername(form.getEmail(), form.getPassword());
 
         return response;
     }

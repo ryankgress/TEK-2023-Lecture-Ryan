@@ -17,6 +17,7 @@ import springexamples.database.dao.OfficeDAO;
 import springexamples.database.entity.Employee;
 import springexamples.database.entity.Office;
 import springexamples.formbeans.EmployeeFormBean;
+import springexamples.security.AuthenticatedUserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,8 @@ public class EmployeeController {
 
     @Autowired
     private OfficeDAO officeDao;
+
+
 
     @GetMapping("/detail/{id}")
     public ModelAndView detail(@PathVariable Integer id) {

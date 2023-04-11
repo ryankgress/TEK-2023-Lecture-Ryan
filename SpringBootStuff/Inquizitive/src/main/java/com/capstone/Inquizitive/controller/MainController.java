@@ -8,10 +8,16 @@ import com.capstone.Inquizitive.database.entity.Team;
 import com.capstone.Inquizitive.database.entity.User;
 import com.capstone.Inquizitive.database.entity.UserRole;
 import com.capstone.Inquizitive.formbeans.UserBean;
+import com.capstone.Inquizitive.security.AuthenticatedUserService;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -46,6 +52,10 @@ public class MainController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private AuthenticatedUserService authenticatedUserService;
+
 
     @RequestMapping(value = {"/index", "/", "/index.html"}, method = RequestMethod.GET)
     public String index() {
@@ -128,7 +138,7 @@ public class MainController {
     }
 
     @RequestMapping(value = "/registerSubmit", method = RequestMethod.POST)
-    public ModelAndView registerSubmit(@Valid UserBean form, BindingResult bindingResult) throws IOException {
+    public ModelAndView registerSubmit(@Valid UserBean form, BindingResult bindingResult, HttpSession httpSession) throws IOException {
         log.debug("In the register controller registerSubmit method");
         ModelAndView response = new ModelAndView("register");
 
@@ -176,6 +186,10 @@ public class MainController {
         userRole.setRoleName("USER");
         userRole.setUserId(user.getId());
         userRoleDao.save(userRole);
+
+
+
+        authenticatedUserService.changeLoggedInUsername(httpSession, form.getUsername(), form.getPassword());
 
         // If successful, redirect to index
         response.setViewName("redirect:/index");
