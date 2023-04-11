@@ -1,11 +1,15 @@
 package springexamples.controller;
 
+import jakarta.validation.Valid;
 import jakarta.websocket.server.PathParam;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import springexamples.database.dao.EmployeeDAO;
@@ -84,11 +88,22 @@ public class EmployeeController {
 
     // Maybe need to add another parameter for createSubmit with @RequestParam MultipartFile pic
     @RequestMapping(value = "/createSubmit", method = RequestMethod.POST)   // Change to post mapping
-    public ModelAndView createSubmit(EmployeeFormBean form) {
+    public ModelAndView createSubmit(@Valid EmployeeFormBean form, BindingResult bindingResult) {   // @Valid allows validation
         ModelAndView response = new ModelAndView("employee/create");
 
         List<Office> offices = officeDao.getAllOffices();
         response.addObject("offices", offices);
+
+        // Will print any errors if some are found, based on FormBean annotations
+        if ( bindingResult.hasErrors() ) {
+            for ( FieldError error : bindingResult.getFieldErrors()) {
+                log.debug("Validation Error on field : " + error.getField() + " with message : " + error.getDefaultMessage());
+            }
+
+            response.addObject("form", form);
+            response.addObject("bindingResult", bindingResult);
+            return response;
+        }
 
         log.debug("In employee controller create submit method");
         log.debug(form.toString());
