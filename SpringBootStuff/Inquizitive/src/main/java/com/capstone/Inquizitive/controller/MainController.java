@@ -238,7 +238,7 @@ public class MainController {
         log.debug("In the teams controller method");
         ModelAndView response = new ModelAndView("teams");
 
-        List<Map<String,Object>> memberList = teamDao.getAllTeamsAndMembers();
+
 
         String thisName = authenticatedUserService.getCurrentUsername();
         log.debug(thisName);
@@ -254,10 +254,7 @@ public class MainController {
         log.debug("User ID: " + teamMember.getUserId() + " | Team ID: " + teamMember.getTeamId());
 
         teamMemberDao.save(teamMember);
-
-//        for(Map<String,Object> m : memberList) {
-//            log.debug(m.get("team_name") + " - " + m.get("team_members"));
-//        }
+        List<Map<String,Object>> memberList = teamDao.getAllTeamsAndMembers();
 
         response.addObject("memberList", memberList);
         return response;
