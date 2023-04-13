@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4c1a5b1c-53b6-4b13-8d5e-6b2ad14266e4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/include/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/include/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/teams.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/teams.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,14 +40,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ryank/OneDrive - iup.edu/Desktop/TEK/Development/TEK-2023-Lecture/SpringSoapDemo/SpringSoapDemo/pom.xml&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "patchwork",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/ryank/OneDrive - iup.edu/Desktop/TEK/Development/TEK-2023-Lecture/SpringSoapDemo/SpringSoapDemo/pom.xml"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="springexamples.Main" />

@@ -5,6 +5,7 @@ import com.capstone.Inquizitive.database.dao.TeamMemberDAO;
 import com.capstone.Inquizitive.database.dao.UserDAO;
 import com.capstone.Inquizitive.database.dao.UserRoleDAO;
 import com.capstone.Inquizitive.database.entity.Team;
+import com.capstone.Inquizitive.database.entity.TeamMember;
 import com.capstone.Inquizitive.database.entity.User;
 import com.capstone.Inquizitive.database.entity.UserRole;
 import com.capstone.Inquizitive.formbeans.UserBean;
@@ -217,14 +218,46 @@ public class MainController {
 
     @RequestMapping(value = "/teams", method = RequestMethod.GET)
     public ModelAndView teams() {
+        List<Team> teamsList = teamDao.getAllTeams();
         log.debug("In the teams controller method");
         ModelAndView response = new ModelAndView("teams");
 
         List<Map<String,Object>> memberList = teamDao.getAllTeamsAndMembers();
 
-        for(Map<String,Object> m : memberList) {
-            log.debug(m.get("team_name") + " - " + m.get("team_members"));
-        }
+//        for(Map<String,Object> m : memberList) {
+//            log.debug(m.get("team_name") + " - " + m.get("team_members"));
+//        }
+
+        response.addObject("memberList", memberList);
+        return response;
+    }
+
+    @RequestMapping(value = "/teams/{teamId}", method = RequestMethod.GET)
+    public ModelAndView teams(@PathVariable Integer teamId) {
+        List<Team> teamsList = teamDao.getAllTeams();
+        log.debug("In the teams controller method");
+        ModelAndView response = new ModelAndView("teams");
+
+        List<Map<String,Object>> memberList = teamDao.getAllTeamsAndMembers();
+
+        String thisName = authenticatedUserService.getCurrentUsername();
+        log.debug(thisName);
+
+        User user = userDao.findByUsername(authenticatedUserService.getCurrentUsername());
+
+        TeamMember teamMember = new TeamMember();
+        teamMember.setUserId(user.getId());
+        teamMember.setTeamId(teamId);
+        teamMember.setTeam(teamDao.findById(teamId));
+        teamMember.setUser(userDao.findById(user.getId()));
+
+        log.debug("User ID: " + teamMember.getUserId() + " | Team ID: " + teamMember.getTeamId());
+
+        teamMemberDao.save(teamMember);
+
+//        for(Map<String,Object> m : memberList) {
+//            log.debug(m.get("team_name") + " - " + m.get("team_members"));
+//        }
 
         response.addObject("memberList", memberList);
         return response;

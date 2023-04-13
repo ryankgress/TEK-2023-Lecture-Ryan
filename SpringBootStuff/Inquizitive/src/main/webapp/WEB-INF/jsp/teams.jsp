@@ -15,7 +15,10 @@
                         <h5 class="card-title">${team.team_name}</h5>
                         <p class="card-text">${team.team_desc}</p>
                         <p class="card-text">Members: ${team.team_members}</p>
-                        <a href="#" class="btn btn-dark">View Join Code</a>
+                        <input type="hidden" id="code" value="${team.join_code}">
+                        <!-- <c:set var="code" value="${team.join_code}" scope="page" /> -->
+                        <!-- <button class="btn btn-dark" onclick="showCode('${team.join_code}')">View Join Code</button> -->
+                        <a href="/teams/${team.id}" class="btn btn-dark">Join Team</a>
                     </div>
                     <div class="card-footer text-muted">
                         Total Points: ${team.total_score}
@@ -26,5 +29,12 @@
         </div>
 
     </section>
+
+    <script>
+        function showCode(codeVal) {
+            // let codeVal = document.getElementById("code").value;
+            console.log(codeVal);
+        }
+    </script>
 
     <jsp:include page="include/footer.jsp" />
