@@ -62,14 +62,26 @@ public class MainController {
         return "index";
     }
 
+
+//    @RequestMapping(value = "/profile/log/{username}", method = RequestMethod.GET)
+//    public ModelAndView profile(@PathVariable String username) {
+//        log.debug("In the pre-profile controller method");
+//
+//        User user = userDao.findByUsername(username);
+//        ModelAndView response = new ModelAndView("profile");
+//        response.addObject("user", user);
+//        response.setViewName("redirect:/profile/{" + user.getId() + "}");
+//        return response;
+//    }
+
     @RequestMapping(value = "/profile/{username}", method = RequestMethod.GET)
     public ModelAndView profile(@PathVariable String username) {
         log.debug("In the profile controller method");
         ModelAndView response = new ModelAndView("profile");
 
-        int thisUserInx = 1;       // Using this until spring security
 
         User user = userDao.findByUsername(username);
+//        User user = userDao.findById(id);
         List<Map<String,Object>> teams = teamMemberDao.getTeamsByUserId(user.getId());
 
         Integer totScore = teamMemberDao.getUserTotalById(user.getId());
@@ -103,18 +115,21 @@ public class MainController {
     }
 
     @RequestMapping(value = "/editProfileSubmit", method = RequestMethod.POST)
-    public ModelAndView editProfileSubmit(UserBean form, @RequestParam(required = false) MultipartFile profilePicture) throws IOException {
+    public ModelAndView editProfileSubmit(UserBean form, HttpSession httpSession) throws IOException {
         log.debug("In the editProfile controller submit method");
         ModelAndView response = new ModelAndView("editLanding");
 
         User user = userDao.findById(form.getId());
         File target;
 
-        if(!profilePicture.isEmpty()) {
-            target = new File("./src/main/webapp/pub/images/" + profilePicture.getOriginalFilename());
+
+        if(!form.getProfilePicture().isEmpty()) {
+            target = new File("./src/main/webapp/pub/images/" + form.getProfilePicture().getOriginalFilename());
             log.debug("Target path: " + target.getAbsolutePath());
-            FileUtils.copyInputStreamToFile(profilePicture.getInputStream(), target);
-            user.setProfilePic("/pub/images/" + profilePicture.getOriginalFilename());
+            FileUtils.copyInputStreamToFile(form.getProfilePicture().getInputStream(), target);
+            user.setProfilePic("/pub/images/" + form.getProfilePicture().getOriginalFilename());
+        } else {
+            user.setProfilePic("/pub/images/default-pfp.png");
         }
 
         user.setName(form.getName());
@@ -160,6 +175,8 @@ public class MainController {
             log.debug("Target path: " + target.getAbsolutePath());
             FileUtils.copyInputStreamToFile(form.getProfilePicture().getInputStream(), target);
             user.setProfilePic("/pub/images/" + form.getProfilePicture().getOriginalFilename());
+        } else {
+            user.setProfilePic("/pub/images/default-pfp.png");
         }
 
         user.setName(form.getName());

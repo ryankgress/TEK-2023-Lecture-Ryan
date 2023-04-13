@@ -28,6 +28,9 @@
           <ul class="navbar-nav mx-auto">
 
             <sec:authorize access="isAuthenticated()">
+            <!-- Assign username to a variable from auth with jstl, then query for the id somehow-->
+            <!-- Need to go from this username to its ID from the DB. How?-->
+            <c:set var="usernameAuth" value="<sec:authentication property='principal.username' />" scope="page"/>
               <li class="nav-item">
                 <a class="nav-link" href='/profile/<sec:authentication property="principal.username" />'>Profile</a>
               </li>
