@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="include/header.jsp" />
 
 <!-- User Info -->
@@ -50,6 +51,11 @@
                     <br>
                     <div class="text-center me-5">
                         <!-- <button type="submit" class="btn btn-primary">Submit Changes</button> -->
+                        <c:if test="${bindingResult.hasFieldErrors('password')}">
+                            <c:forEach items="${bindingResult.getFieldErrors('password')}" var="error">
+                                <div style="color:red" class="mb-2">${error.getDefaultMessage()}</div>
+                            </c:forEach>
+                        </c:if>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#enterPass">Submit Changes</button>
                         <button type="button" class="btn btn-dark" onclick="toProfile()">Undo Changes</button>
@@ -66,6 +72,7 @@
                                 <div class="modal-body">
                                     <label for="password" class="form-label">Password</label>
                                     <input type="password" class="form-control" id="password" name="password">
+
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
@@ -80,7 +87,7 @@
 
         <script>
             function toProfile() {
-                location.href = "/profile";
+                location.href = "/profile/${form.username}";
             }
         </script>
 

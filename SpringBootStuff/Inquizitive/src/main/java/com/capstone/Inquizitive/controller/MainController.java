@@ -79,7 +79,6 @@ public class MainController {
 
 
         User user = userDao.findByUsername(username);
-//        User user = userDao.findById(id);
         List<Map<String,Object>> teams = teamMemberDao.getTeamsByUserId(user.getId());
 
         Integer totScore = teamMemberDao.getUserTotalById(user.getId());
@@ -113,15 +112,22 @@ public class MainController {
     }
 
     @RequestMapping(value = "/editProfileSubmit", method = RequestMethod.POST)
-    public ModelAndView editProfileSubmit(UserBean form, HttpSession httpSession) throws IOException {
+    public ModelAndView editProfileSubmit(UserBean form, HttpSession httpSession, BindingResult bindingResult) throws IOException {
         log.debug("In the editProfile controller submit method");
-        ModelAndView response = new ModelAndView("editLanding");
-
+        ModelAndView response = new ModelAndView("editProfile");
 
 
         User user = userDao.findById(form.getId());
-        File target;
+        if(!passwordEncoder.matches(form.getPassword(), user.getPassword())) {
+            bindingResult.rejectValue("password", "error.password", "Please enter a valid password");
+            response.addObject("form", form);
+            response.addObject("bindingResult", bindingResult);
 
+            return response;
+        }
+
+
+        File target;
 
         if(!form.getProfilePicture().isEmpty()) {
             target = new File("./src/main/webapp/pub/images/" + form.getProfilePicture().getOriginalFilename());
@@ -143,6 +149,7 @@ public class MainController {
         // Need to access unencrypted password somehow
         authenticatedUserService.changeLoggedInUsername(httpSession, form.getUsername(), form.getPassword());
 
+        response.setViewName("editLanding");
         return response;
     }
 
