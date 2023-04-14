@@ -26,7 +26,7 @@
                     <h2>User Information</h2>
 
                     <input type="hidden" name="id" value="${form.id}">
-                    <input type="hidden" name="password" value="${form.password}">
+                    <!-- <input type="hidden" name="password" value="${form.password}"> -->
                     <input type="hidden" name="profilePic" value="${form.profilePic}">
                     <table>
                         <tr>
@@ -49,8 +49,31 @@
 
                     <br>
                     <div class="text-center me-5">
-                        <button type="submit" class="btn btn-primary">Submit Changes</button>
+                        <!-- <button type="submit" class="btn btn-primary">Submit Changes</button> -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#enterPass">Submit Changes</button>
                         <button type="button" class="btn btn-dark" onclick="toProfile()">Undo Changes</button>
+                    </div>
+
+                    <div class="modal fade" id="enterPass" tabindex="-1" aria-labelledby="enterPass" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="enterPass">Enter Password</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Submit Changes</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
         </form>

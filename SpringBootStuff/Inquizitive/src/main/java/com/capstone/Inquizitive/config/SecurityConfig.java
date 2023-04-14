@@ -38,7 +38,10 @@ public class SecurityConfig {
                 .logout()
                 .invalidateHttpSession(true)
                 .logoutUrl("/signin/signout")
-                .logoutSuccessUrl("/index");
+                .logoutSuccessUrl("/index")
+                ;
+
+        // May need to add editProfile to the .loginPage? Not sure. Must handle authenticating again in editProfile
 
         return http.build();
     }

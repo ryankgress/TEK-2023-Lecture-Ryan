@@ -141,7 +141,7 @@ public class MainController {
 
         userDao.save(user);
         // Need to access unencrypted password somehow
-        authenticatedUserService.changeLoggedInUsername(httpSession, user.getUsername(), user.getPassword());
+        authenticatedUserService.changeLoggedInUsername(httpSession, form.getUsername(), form.getPassword());
 
         return response;
     }
