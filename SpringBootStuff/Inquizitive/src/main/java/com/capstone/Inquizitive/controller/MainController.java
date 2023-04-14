@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -116,6 +117,8 @@ public class MainController {
         log.debug("In the editProfile controller submit method");
         ModelAndView response = new ModelAndView("editLanding");
 
+
+
         User user = userDao.findById(form.getId());
         File target;
 
@@ -155,6 +158,10 @@ public class MainController {
     public ModelAndView registerSubmit(@Valid UserBean form, BindingResult bindingResult, HttpSession httpSession) throws IOException {
         log.debug("In the register controller registerSubmit method");
         ModelAndView response = new ModelAndView("register");
+
+        if (!StringUtils.equals(form.getPassword(), form.getConfirmPassword())){
+            bindingResult.rejectValue("confirmPassword", "error.confirmPassword", "Passwords do not match");
+        }
 
         if(bindingResult.hasErrors()) {
             for(FieldError error : bindingResult.getFieldErrors()) {

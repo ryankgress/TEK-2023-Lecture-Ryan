@@ -34,6 +34,11 @@ public class UserBean {
     @NotEmpty(message = "Password is required")
     @Length(max = 45, message = "Password cannot be longer than 45 characters.")
     private String password;
+
+    @NotEmpty(message = "Confirm Password is required")
+    @Length(max = 45, message = "Password cannot be longer than 45 characters.")
+    private String confirmPassword;
+
     private String profilePic;
     private String host;
     private MultipartFile profilePicture;

@@ -48,7 +48,12 @@
                 </div>
                 <div class="mb-3 col-sm-9 mx-auto" id="confirmField">
                     <label for="confirmPasswordInput" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" id="confirmPasswordInput">
+                    <input type="password" class="form-control" id="confirmPasswordInput" name="confirmPassword" required>
+                    <c:if test="${bindingResult.hasFieldErrors('confirmPassword')}">
+                        <c:forEach items="${bindingResult.getFieldErrors('confirmPassword')}" var="error">
+                            <div style="color:red">${error.getDefaultMessage()}</div>
+                        </c:forEach>
+                    </c:if>
                 </div>
 
                 <div class="mb-3 col-sm-9 mx-auto">
