@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c1a5b1c-53b6-4b13-8d5e-6b2ad14266e4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/java/com/capstone/Inquizitive/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/editProfile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/editProfile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/teams.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../Inquizitive/src/main/webapp/WEB-INF/jsp/teams.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="4c1a5b1c-53b6-4b13-8d5e-6b2ad14266e4" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

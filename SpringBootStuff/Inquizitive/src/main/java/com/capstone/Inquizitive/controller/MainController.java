@@ -77,14 +77,15 @@ public class MainController {
         log.debug("In the profile controller method");
         ModelAndView response = new ModelAndView("profile");
 
+        User newUser = authenticatedUserService.loadCurrentUser();
 
         User user = userDao.findByUsername(username);
-        List<Map<String,Object>> teams = teamMemberDao.getTeamsByUserId(user.getId());
+        List<Map<String,Object>> teams = teamMemberDao.getTeamsByUserId(newUser.getId());
 
         Integer totScore = teamMemberDao.getUserTotalById(user.getId());
 
         response.addObject("teams", teams);
-        response.addObject("user", user);
+        response.addObject("user", newUser);
         response.addObject("totScore", totScore);
         return response;
     }
