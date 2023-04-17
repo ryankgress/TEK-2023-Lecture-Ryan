@@ -72,30 +72,68 @@ public class MainController {
 //        return response;
 //    }
 
-    @RequestMapping(value = "/profile/{username}", method = RequestMethod.GET)
-    public ModelAndView profile(@PathVariable String username) {
+//    @RequestMapping(value = "/profile/{username}", method = RequestMethod.GET)
+//    public ModelAndView profile(@PathVariable String username) {
+//        log.debug("In the profile controller method");
+//        ModelAndView response = new ModelAndView("profile");
+//
+//        User newUser = authenticatedUserService.loadCurrentUser();
+//
+//        User user = userDao.findByUsername(username);
+//        List<Map<String,Object>> teams = teamMemberDao.getTeamsByUserId(newUser.getId());
+//
+//        Integer totScore = teamMemberDao.getUserTotalById(user.getId());
+//
+//        response.addObject("teams", teams);
+//        response.addObject("user", newUser);
+//        response.addObject("totScore", totScore);
+//        return response;
+//    }
+
+    @RequestMapping(value = "/profile", method = RequestMethod.GET)
+    public ModelAndView profile() {
         log.debug("In the profile controller method");
         ModelAndView response = new ModelAndView("profile");
 
-        User newUser = authenticatedUserService.loadCurrentUser();
+        User user = authenticatedUserService.loadCurrentUser();
 
-        User user = userDao.findByUsername(username);
-        List<Map<String,Object>> teams = teamMemberDao.getTeamsByUserId(newUser.getId());
+        List<Map<String,Object>> teams = teamMemberDao.getTeamsByUserId(user.getId());
 
         Integer totScore = teamMemberDao.getUserTotalById(user.getId());
 
         response.addObject("teams", teams);
-        response.addObject("user", newUser);
+        response.addObject("user", user);
         response.addObject("totScore", totScore);
         return response;
     }
 
-    @RequestMapping(value = "/editProfile/{id}", method = RequestMethod.GET)
-    public ModelAndView edit(@PathVariable Integer id) {
+//    @RequestMapping(value = "/editProfile/{id}", method = RequestMethod.GET)
+//    public ModelAndView edit(@PathVariable Integer id) {
+//        ModelAndView response = new ModelAndView("editProfile");
+//
+//
+//        User user = userDao.findById(id);
+//        UserBean form = new UserBean();
+//
+//        form.setId(user.getId());
+//        form.setName(user.getName());
+//        form.setUsername(user.getUsername());
+//        form.setEmail(user.getEmail());
+//        form.setPassword(user.getPassword());
+//        form.setProfilePic(user.getProfilePic());
+//
+//        response.addObject("form", form);
+//
+//        log.debug("In edit profile controller method");
+//
+//        return response;
+//    }
+
+    @RequestMapping(value = "/editProfile", method = RequestMethod.GET)
+    public ModelAndView edit() {
         ModelAndView response = new ModelAndView("editProfile");
 
-
-        User user = userDao.findById(id);
+        User user = authenticatedUserService.loadCurrentUser();
         UserBean form = new UserBean();
 
         form.setId(user.getId());

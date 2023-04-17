@@ -32,7 +32,7 @@
             <!-- Need to go from this username to its ID from the DB. How?-->
             <c:set var="usernameAuth" value="<sec:authentication property='principal.username' />" scope="page"/>
               <li class="nav-item">
-                <a class="nav-link" href='/profile/<sec:authentication property="principal.username" />'>Profile</a>
+                <a class="nav-link" href='/profile'>Profile</a>
               </li>
             </sec:authorize>
             <sec:authorize access="!isAuthenticated()">
