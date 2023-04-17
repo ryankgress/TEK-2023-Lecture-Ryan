@@ -148,7 +148,7 @@ public class MainController {
             FileUtils.copyInputStreamToFile(form.getProfilePicture().getInputStream(), target);
             user.setProfilePic("/pub/images/" + form.getProfilePicture().getOriginalFilename());
         } else {
-            user.setProfilePic("/pub/images/default-pfp.png");
+            user.setProfilePic(form.getProfilePic());
         }
 
         user.setName(form.getName());

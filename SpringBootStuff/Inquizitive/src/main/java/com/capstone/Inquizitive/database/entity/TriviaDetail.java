@@ -44,8 +44,7 @@ public class TriviaDetail {
     private String zip;
 
     @Column(name="start_time")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date startTime;
+    private String startTime;
 
     @Column(name="display_pic")
     private String displayPic;
