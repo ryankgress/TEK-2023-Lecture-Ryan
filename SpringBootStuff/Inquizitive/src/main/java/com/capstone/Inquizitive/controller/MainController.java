@@ -107,6 +107,29 @@ public class MainController {
         return response;
     }
 
+    @RequestMapping(value = "/profile/{teamId}", method = RequestMethod.GET)
+    public ModelAndView profileRemoveTeam(@PathVariable Integer teamId) {
+        log.debug("In the profile controller method");
+        ModelAndView response = new ModelAndView("profile");
+
+        Team removeTeam = teamDao.findById(teamId);
+        User user = authenticatedUserService.loadCurrentUser();
+
+//        TeamMember tm = teamMemberDao.findByUserIdAndTeamId(user.getId(), teamId);
+//        teamMemberDao.remove(tm);
+
+        teamMemberDao.leaveTeam(user.getId(), teamId);
+
+        List<Map<String,Object>> teams = teamMemberDao.getTeamsByUserId(user.getId());
+
+        Integer totScore = teamMemberDao.getUserTotalById(user.getId());
+
+        response.addObject("teams", teams);
+        response.addObject("user", user);
+        response.addObject("totScore", totScore);
+        return response;
+    }
+
 //    @RequestMapping(value = "/editProfile/{id}", method = RequestMethod.GET)
 //    public ModelAndView edit(@PathVariable Integer id) {
 //        ModelAndView response = new ModelAndView("editProfile");

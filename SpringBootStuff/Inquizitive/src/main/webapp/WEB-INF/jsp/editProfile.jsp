@@ -15,7 +15,7 @@
                 </div>
                 <div class="col text-center">
                     <p style="font-size: 12pt;">
-                        <img src="/pub/images/default-pfp.png" alt="pfp" width="200px">
+                        <img src="${form.profilePic}" alt="pfp" width="200px">
                         <br>
                         <label for="profilePicture">Change your Profile Picture?</label><br>
                         <input type="file" name="profilePicture" id="profilePicture">

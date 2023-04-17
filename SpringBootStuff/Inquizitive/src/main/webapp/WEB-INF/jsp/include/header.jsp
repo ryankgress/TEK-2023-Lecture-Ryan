@@ -37,7 +37,7 @@
             </sec:authorize>
             <sec:authorize access="!isAuthenticated()">
               <li class="nav-item">
-                <a class="nav-link" href="/index">Filler</a>
+                <a class="nav-link" href="/register">Register</a>
               </li>
             </sec:authorize>
 

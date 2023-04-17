@@ -3,8 +3,11 @@ package com.capstone.Inquizitive.database.dao;
 import com.capstone.Inquizitive.database.entity.Team;
 import com.capstone.Inquizitive.database.entity.TeamMember;
 import com.capstone.Inquizitive.database.entity.User;
+import org.hibernate.annotations.SQLUpdate;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -26,4 +29,12 @@ public interface TeamMemberDAO extends JpaRepository<TeamMember, Long> {
             "WHERE u.id = :id " +
             "GROUP BY u.id ;", nativeQuery = true)
     Integer getUserTotalById(Integer id);
+
+    @Transactional
+    @Modifying
+    @Query("DELETE FROM TeamMember WHERE userId = :userId AND teamId = :teamId ")
+    void leaveTeam(Integer userId, Integer teamId);
+
+//    @Query(value = "SELECT * FROM TeamMember WHERE user_id = :userId AND team_id = :teamId ;", nativeQuery = true)
+//    TeamMember findByUserIdAndTeamId(Integer userId, Integer teamId);
 }

@@ -92,7 +92,12 @@
                         <div class="card-body">
                             <h5 class="card-title">${team.team_name}</h5>
                             <p class="card-text">${team.team_desc}</p>
+                            
+                            <!-- <a href="/teams#${team.team_name}" class="btn btn-dark">Team Page</a> -->
+                        </div>
+                        <div class="card-footer d-flex justify-content-evenly">
                             <a href="/teams#${team.team_name}" class="btn btn-dark">Team Page</a>
+                            <a href="/profile/${team.id}" class="btn btn-danger">Leave Team</a>
                         </div>
                     </div>
                 </c:forEach>
