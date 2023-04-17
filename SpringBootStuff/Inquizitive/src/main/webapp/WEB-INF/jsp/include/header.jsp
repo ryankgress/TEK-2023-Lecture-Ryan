@@ -28,9 +28,9 @@
           <ul class="navbar-nav mx-auto">
 
             <sec:authorize access="isAuthenticated()">
-            <!-- Assign username to a variable from auth with jstl, then query for the id somehow-->
-            <!-- Need to go from this username to its ID from the DB. How?-->
-            <c:set var="usernameAuth" value="<sec:authentication property='principal.username' />" scope="page"/>
+              <!-- Assign username to a variable from auth with jstl, then query for the id somehow-->
+              <!-- Need to go from this username to its ID from the DB. How?-->
+              <c:set var="usernameAuth" value="<sec:authentication property='principal.username' />" scope="page" />
               <li class="nav-item">
                 <a class="nav-link" href='/profile'>Profile</a>
               </li>
@@ -45,9 +45,18 @@
               <a class="nav-link" href="/trivialist">Trivia List</a>
             </li>
             <a class="d-none d-lg-block mx-3" href="/index"><img src="/pub/images/logo.png" width="200px"></a>
-            <li class="nav-item">
-              <a class="nav-link" href="/teams">Teams</a>
-            </li>
+
+            <sec:authorize access="isAuthenticated()">
+              <li class="nav-item">
+                <a class="nav-link" href="/teams">Teams</a>
+              </li>
+            </sec:authorize>
+            <sec:authorize access="!isAuthenticated()">
+              <li class="nav-item">
+                <a class="nav-link" href="/signin/redirect">Teams</a>
+              </li>
+            </sec:authorize>
+
             <sec:authorize access="isAuthenticated()">
               <li class="nav-item">
                 <a class="nav-link" href="/signin/signout">Sign Out</a>

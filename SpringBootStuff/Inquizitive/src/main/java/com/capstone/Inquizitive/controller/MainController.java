@@ -61,35 +61,6 @@ public class MainController {
     }
 
 
-//    @RequestMapping(value = "/profile/log/{username}", method = RequestMethod.GET)
-//    public ModelAndView profile(@PathVariable String username) {
-//        log.debug("In the pre-profile controller method");
-//
-//        User user = userDao.findByUsername(username);
-//        ModelAndView response = new ModelAndView("profile");
-//        response.addObject("user", user);
-//        response.setViewName("redirect:/profile/{" + user.getId() + "}");
-//        return response;
-//    }
-
-//    @RequestMapping(value = "/profile/{username}", method = RequestMethod.GET)
-//    public ModelAndView profile(@PathVariable String username) {
-//        log.debug("In the profile controller method");
-//        ModelAndView response = new ModelAndView("profile");
-//
-//        User newUser = authenticatedUserService.loadCurrentUser();
-//
-//        User user = userDao.findByUsername(username);
-//        List<Map<String,Object>> teams = teamMemberDao.getTeamsByUserId(newUser.getId());
-//
-//        Integer totScore = teamMemberDao.getUserTotalById(user.getId());
-//
-//        response.addObject("teams", teams);
-//        response.addObject("user", newUser);
-//        response.addObject("totScore", totScore);
-//        return response;
-//    }
-
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public ModelAndView profile() {
         log.debug("In the profile controller method");
@@ -115,8 +86,6 @@ public class MainController {
         Team removeTeam = teamDao.findById(teamId);
         User user = authenticatedUserService.loadCurrentUser();
 
-//        TeamMember tm = teamMemberDao.findByUserIdAndTeamId(user.getId(), teamId);
-//        teamMemberDao.remove(tm);
 
         teamMemberDao.leaveTeam(user.getId(), teamId);
 
@@ -130,27 +99,6 @@ public class MainController {
         return response;
     }
 
-//    @RequestMapping(value = "/editProfile/{id}", method = RequestMethod.GET)
-//    public ModelAndView edit(@PathVariable Integer id) {
-//        ModelAndView response = new ModelAndView("editProfile");
-//
-//
-//        User user = userDao.findById(id);
-//        UserBean form = new UserBean();
-//
-//        form.setId(user.getId());
-//        form.setName(user.getName());
-//        form.setUsername(user.getUsername());
-//        form.setEmail(user.getEmail());
-//        form.setPassword(user.getPassword());
-//        form.setProfilePic(user.getProfilePic());
-//
-//        response.addObject("form", form);
-//
-//        log.debug("In edit profile controller method");
-//
-//        return response;
-//    }
 
     @RequestMapping(value = "/editProfile", method = RequestMethod.GET)
     public ModelAndView edit() {
@@ -167,6 +115,9 @@ public class MainController {
         form.setProfilePic(user.getProfilePic());
 
         response.addObject("form", form);
+
+        Integer userScore = teamMemberDao.getUserTotalById(user.getId());
+        response.addObject("userScore", userScore);
 
         log.debug("In edit profile controller method");
 
@@ -279,58 +230,11 @@ public class MainController {
         userRole.setUserId(user.getId());
         userRoleDao.save(userRole);
 
-
-
         authenticatedUserService.changeLoggedInUsername(httpSession, form.getUsername(), form.getPassword());
 
         // If successful, redirect to index
         response.setViewName("redirect:/index");
 
-        return response;
-    }
-
-
-    @RequestMapping(value = "/teams", method = RequestMethod.GET)
-    public ModelAndView teams() {
-        List<Team> teamsList = teamDao.getAllTeams();
-        log.debug("In the teams controller method");
-        ModelAndView response = new ModelAndView("teams");
-
-        List<Map<String,Object>> memberList = teamDao.getAllTeamsAndMembers();
-
-//        for(Map<String,Object> m : memberList) {
-//            log.debug(m.get("team_name") + " - " + m.get("team_members"));
-//        }
-
-        response.addObject("memberList", memberList);
-        return response;
-    }
-
-    @RequestMapping(value = "/teams/{teamId}", method = RequestMethod.GET)
-    public ModelAndView teams(@PathVariable Integer teamId) {
-        List<Team> teamsList = teamDao.getAllTeams();
-        log.debug("In the teams controller method");
-        ModelAndView response = new ModelAndView("teams");
-
-
-
-        String thisName = authenticatedUserService.getCurrentUsername();
-        log.debug(thisName);
-
-        User user = userDao.findByUsername(authenticatedUserService.getCurrentUsername());
-
-        TeamMember teamMember = new TeamMember();
-        teamMember.setUserId(user.getId());
-        teamMember.setTeamId(teamId);
-        teamMember.setTeam(teamDao.findById(teamId));
-        teamMember.setUser(userDao.findById(user.getId()));
-
-        log.debug("User ID: " + teamMember.getUserId() + " | Team ID: " + teamMember.getTeamId());
-
-        teamMemberDao.save(teamMember);
-        List<Map<String,Object>> memberList = teamDao.getAllTeamsAndMembers();
-
-        response.addObject("memberList", memberList);
         return response;
     }
 
@@ -341,18 +245,4 @@ public class MainController {
         return response;
     }
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public ModelAndView test() {
-        String team = "Breakout1";      // Will eventually be replaced with a GET from the page
-        log.debug("In the test controller method with teamname = " + team);
-        ModelAndView response = new ModelAndView("test");
-
-        List<User> members = teamMemberDao.getUsersByTeamName(team);
-        Team teamObj = teamDao.findByTeamName(team);
-
-        response.addObject("team", teamObj);
-        response.addObject("t1List", members);
-
-        return response;
-    }
 }

@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <jsp:include page="include/header.jsp" />
 
 <section class="mainpage my-3">
@@ -31,7 +33,12 @@
         <div class="carousel-item">
           <img src="/pub/images/option-2.jpg" class="d-block w-100" alt="carousel options">
           <div class="carousel-caption d-none d-md-block">
-            <h5>Check out the Top Teams</h5>
+            <sec:authorize access="isAuthenticated()">
+              <h5><a href="/teams/score" style="text-decoration: none; color:white">Check out the Top Teams</a></h5>
+            </sec:authorize>
+            <sec:authorize access="!isAuthenticated()">
+              <h5>Check out the Top Teams</h5>
+            </sec:authorize>
             <p>See how you stand up against the top teams in the country!</p>
           </div>
         </div>

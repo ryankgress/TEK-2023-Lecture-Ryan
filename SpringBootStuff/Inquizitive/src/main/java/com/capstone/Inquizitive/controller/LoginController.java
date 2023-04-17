@@ -15,5 +15,12 @@ public class LoginController {
         return response;
     }
 
+    @GetMapping("/signin/redirect")
+    public ModelAndView signinRedirect() {
+        log.debug("In the signin controller method");
+        ModelAndView response = new ModelAndView("signinRedirect");
+        return response;
+    }
+
 
 }

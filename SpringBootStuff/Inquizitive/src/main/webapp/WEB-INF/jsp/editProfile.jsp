@@ -44,7 +44,7 @@
                         </tr>
                         <tr>
                             <td><b>Total Points:</b></td>
-                            <td>1450</td>
+                            <td>${userScore}</td>
                         </tr>
                     </table>
 

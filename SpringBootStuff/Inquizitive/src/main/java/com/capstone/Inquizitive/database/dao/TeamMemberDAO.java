@@ -35,6 +35,4 @@ public interface TeamMemberDAO extends JpaRepository<TeamMember, Long> {
     @Query("DELETE FROM TeamMember WHERE userId = :userId AND teamId = :teamId ")
     void leaveTeam(Integer userId, Integer teamId);
 
-//    @Query(value = "SELECT * FROM TeamMember WHERE user_id = :userId AND team_id = :teamId ;", nativeQuery = true)
-//    TeamMember findByUserIdAndTeamId(Integer userId, Integer teamId);
 }
