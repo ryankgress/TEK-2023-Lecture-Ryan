@@ -130,6 +130,5 @@
             </div>
         </div>
 
-        <script src="/pub/js/teams.js"></script>
 
         <jsp:include page="include/footer.jsp" />

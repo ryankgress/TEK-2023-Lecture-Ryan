@@ -9,17 +9,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
     @GetMapping("/signin")
-    public ModelAndView signin() {
-        log.debug("In the signin controller method");
-        ModelAndView response = new ModelAndView("signin");
-        return response;
+    public String signin() {
+        return "signin";
     }
 
     @GetMapping("/signin/redirect")
-    public ModelAndView signinRedirect() {
-        log.debug("In the signin controller method");
-        ModelAndView response = new ModelAndView("signinRedirect");
-        return response;
+    public String signinRedirect() {
+        return "signinRedirect";
     }
 
 
