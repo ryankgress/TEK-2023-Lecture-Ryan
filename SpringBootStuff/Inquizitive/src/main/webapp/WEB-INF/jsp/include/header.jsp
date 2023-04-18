@@ -41,9 +41,16 @@
               </li>
             </sec:authorize>
 
-            <li class="nav-item">
-              <a class="nav-link" href="/trivialist">Trivia List</a>
-            </li>
+            <sec:authorize access="isAuthenticated()">
+              <li class="nav-item">
+                <a class="nav-link" href="/trivia">Trivia</a>
+              </li>
+            </sec:authorize>
+            <sec:authorize access="!isAuthenticated()">
+              <li class="nav-item">
+                <a class="nav-link" href="/signin/redirect">Trivia</a>
+              </li>
+            </sec:authorize>
             <a class="d-none d-lg-block mx-3" href="/index"><img src="/pub/images/logo.png" width="200px"></a>
 
             <sec:authorize access="isAuthenticated()">

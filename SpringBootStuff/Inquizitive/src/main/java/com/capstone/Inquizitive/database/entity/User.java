@@ -45,4 +45,10 @@ public class User {
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<TeamMember> teamMembers;
+
+    /* To Trivia Detail */
+    @ToString.Exclude
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "host", cascade = CascadeType.ALL)
+    private List<TriviaDetail> triviaDetails;
 }

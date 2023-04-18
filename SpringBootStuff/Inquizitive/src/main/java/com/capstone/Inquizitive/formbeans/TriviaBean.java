@@ -45,4 +45,6 @@ public class TriviaBean {
     @Length(max = 100, message = "Cannot exceed 100 characters.")
     private String startTime;
 
+    private Integer hostId;
+
 }

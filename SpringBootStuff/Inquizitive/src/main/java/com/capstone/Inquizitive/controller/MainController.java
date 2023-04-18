@@ -1,13 +1,8 @@
 package com.capstone.Inquizitive.controller;
 
-import com.capstone.Inquizitive.database.dao.TeamDAO;
-import com.capstone.Inquizitive.database.dao.TeamMemberDAO;
-import com.capstone.Inquizitive.database.dao.UserDAO;
-import com.capstone.Inquizitive.database.dao.UserRoleDAO;
-import com.capstone.Inquizitive.database.entity.Team;
-import com.capstone.Inquizitive.database.entity.TeamMember;
-import com.capstone.Inquizitive.database.entity.User;
-import com.capstone.Inquizitive.database.entity.UserRole;
+import com.capstone.Inquizitive.database.dao.*;
+import com.capstone.Inquizitive.database.entity.*;
+import com.capstone.Inquizitive.formbeans.TriviaBean;
 import com.capstone.Inquizitive.formbeans.UserBean;
 import com.capstone.Inquizitive.security.AuthenticatedUserService;
 import jakarta.servlet.http.HttpSession;
@@ -53,6 +48,9 @@ public class MainController {
 
     @Autowired
     private AuthenticatedUserService authenticatedUserService;
+
+    @Autowired
+    private TriviaDetailDAO triviaDetailDao;
 
 
     @RequestMapping(value = {"/index", "/", "/index.html"}, method = RequestMethod.GET)
@@ -238,10 +236,51 @@ public class MainController {
         return response;
     }
 
-    @RequestMapping(value = "/trivialist", method = RequestMethod.GET)
+    @RequestMapping(value = "/trivia", method = RequestMethod.GET)
     public ModelAndView trivialist() {
         log.debug("In the trivialist controller method");
-        ModelAndView response = new ModelAndView("trivialist");
+        ModelAndView response = new ModelAndView("trivia");
+        return response;
+    }
+    @RequestMapping(value = "/newTrivia", method = RequestMethod.POST)
+    public ModelAndView newTrivia(@Valid TriviaBean form, BindingResult bindingResult, HttpSession httpSession) throws IOException {
+        log.debug("In the register controller registerSubmit method");
+        ModelAndView response = new ModelAndView("trivia");
+
+        if(bindingResult.hasErrors()) {
+            for(FieldError error : bindingResult.getFieldErrors()) {
+                log.debug("Validation Error on field : " + error.getField() + " with message : " + error.getDefaultMessage());
+            }
+
+            response.addObject("form", form);
+            response.addObject("bindingResult", bindingResult);
+            return response;
+        }
+
+        TriviaDetail triviaDetail = new TriviaDetail();
+
+        triviaDetail.setTriviaName(form.getTriviaName());
+        triviaDetail.setLocationName(form.getLocationName());
+        triviaDetail.setAddress1(form.getAddress1());
+        triviaDetail.setAddress2(form.getAddress2());
+        triviaDetail.setCity(form.getCity());
+        triviaDetail.setZip(form.getZip());
+        triviaDetail.setState(form.getState());
+        triviaDetail.setStartTime(form.getStartTime());
+
+        User user = authenticatedUserService.loadCurrentUser();
+        triviaDetail.setHostId(user.getId());
+        triviaDetail.setHost(user);
+
+        response.addObject("triviaDetail",triviaDetail);
+
+        log.debug(triviaDetail.toString());
+
+        triviaDetailDao.save(triviaDetail);
+
+        // If successful, redirect to trivia homepage
+        response.setViewName("redirect:/trivia");
+
         return response;
     }
 

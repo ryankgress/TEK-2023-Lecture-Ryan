@@ -1,6 +1,7 @@
 package com.capstone.Inquizitive.database.entity;
 
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -46,15 +47,20 @@ public class TriviaDetail {
     @Column(name="start_time")
     private String startTime;
 
-    @Column(name="display_pic")
-    private String displayPic;
+    @Column(name="host_id", insertable = false, updatable = false)
+    private Integer hostId;
 
-    @Column(name="category")
-    private String category;
 
     /* To Result */
     @ToString.Exclude
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "triviaDetail", cascade = CascadeType.ALL)
     private List<Result> results;
+
+    /* To User/Host */
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @ManyToOne(fetch = FetchType.EAGER, optional = true /*, cascade = CascadeType.ALL*/)
+    @JoinColumn(name = "host_id", nullable = false)
+    private User host;
 }

@@ -24,15 +24,22 @@
 
 
         <!--Create Trivia Listing Sidebar-->
+
         <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
             id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+            <c:if test="${bindingResult.hasFieldErrors()}">
+                <script>
+                    var newTeamForm = document.getElementById('offcanvasScrolling');
+                    newTeamForm.classList.add('show');
+                </script>
+            </c:if>
             <div class="offcanvas-header">
                 <h4 class="offcanvas-title text-center" id="offcanvasScrollingLabel">Trivia Details</h4>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                     aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                <form class="m-3 d-flex flex-column justify-content-center" action="/registerSubmit" method="post"
+                <form class="m-3 d-flex flex-column justify-content-center" action="/newTrivia" method="post"
                     enctype="multipart/form-data">
                     <div class="mb-3 col-sm-9 mx-auto">
                         <label for="triviaNameInput" class="form-label">Trivia Name</label>
@@ -122,5 +129,7 @@
                 </form>
             </div>
         </div>
+
+        <script src="/pub/js/teams.js"></script>
 
         <jsp:include page="include/footer.jsp" />
