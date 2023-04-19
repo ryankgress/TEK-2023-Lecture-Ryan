@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.List;
@@ -44,8 +45,10 @@ public class TriviaDetail {
     @Column(name="zip")
     private String zip;
 
-    @Column(name="start_time")
-    private String startTime;
+    @Column(name="date_time")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateTime;
+
 
     @Column(name="host_id", insertable = false, updatable = false)
     private Integer hostId;

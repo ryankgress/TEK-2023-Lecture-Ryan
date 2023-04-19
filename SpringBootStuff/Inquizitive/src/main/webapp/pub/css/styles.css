@@ -9,7 +9,7 @@ nav a {
 }
 
 h1,
-h5 {
+.home-carousel h5 {
     text-align: center;
     color: white;
     text-shadow: 1px 1px 2px black;

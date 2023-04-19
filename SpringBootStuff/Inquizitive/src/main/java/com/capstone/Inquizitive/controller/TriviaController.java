@@ -20,6 +20,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -43,10 +47,14 @@ public class TriviaController {
     public ModelAndView trivialist() {
         log.debug("In the trivialist controller method");
         ModelAndView response = new ModelAndView("trivia");
+
+        List<TriviaDetail> triviaDetailList = triviaDetailDao.getAllRecords();
+
+        response.addObject("triviaDetailList", triviaDetailList);
         return response;
     }
     @RequestMapping(value = "/newTrivia", method = RequestMethod.POST)
-    public ModelAndView newTrivia(@Valid TriviaBean form, BindingResult bindingResult, HttpSession httpSession) throws IOException {
+    public ModelAndView newTrivia(@Valid TriviaBean form, BindingResult bindingResult, HttpSession httpSession) throws IOException, ParseException {
         log.debug("In the register controller registerSubmit method");
         ModelAndView response = new ModelAndView("trivia");
 
@@ -69,7 +77,17 @@ public class TriviaController {
         triviaDetail.setCity(form.getCity());
         triviaDetail.setZip(form.getZip());
         triviaDetail.setState(form.getState());
-        triviaDetail.setStartTime(form.getDate() + " at " + form.getTime());
+
+        // Date/Time Stuff
+        String dateTime = form.getDate() + " " + form.getTime();
+        log.debug(dateTime);
+        // This will be 04/19/2023 11:58 am (verify)
+
+        // Verify this
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+        Date date = sdf.parse(dateTime);
+
+        triviaDetail.setDateTime(date);
 
         User user = authenticatedUserService.loadCurrentUser();
         triviaDetail.setHostId(user.getId());

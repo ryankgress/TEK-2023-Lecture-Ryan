@@ -7,6 +7,8 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @ToString
@@ -41,13 +43,15 @@ public class TriviaBean {
     @Length(max = 10, message = "Improper zip format.")
     private String zip;
 
+    @NotEmpty(message = "Date is Required.")
+    @Length(max = 100, message = "Cannot exceed 100 characters.")
+    private String date;
+
     @NotEmpty(message = "Start Time is Required.")
     @Length(max = 100, message = "Cannot exceed 100 characters.")
     private String time;
 
-    @NotEmpty(message = "Date is Required.")
-    @Length(max = 100, message = "Cannot exceed 100 characters.")
-    private String date;
+
 
     private Integer hostId;
 
