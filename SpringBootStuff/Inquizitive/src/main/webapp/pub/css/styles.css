@@ -8,7 +8,8 @@ nav a {
     color: black;
 }
 
-h1, h5 {
+h1,
+h5 {
     text-align: center;
     color: white;
     text-shadow: 1px 1px 2px black;
@@ -96,8 +97,8 @@ nav {
 }
 
 /* Teams */
-.teams-main h5{
-    color:black;
+.teams-main h5 {
+    color: black;
     text-shadow: 0 0 0 black;
 }
 
@@ -107,3 +108,7 @@ nav {
 
 
 /* Trivia List */
+.trivia-host {
+    background: rgb(255, 255, 255);
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(208, 224, 222, 1) 60%);
+}

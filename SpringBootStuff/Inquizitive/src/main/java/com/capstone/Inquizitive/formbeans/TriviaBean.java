@@ -43,7 +43,11 @@ public class TriviaBean {
 
     @NotEmpty(message = "Start Time is Required.")
     @Length(max = 100, message = "Cannot exceed 100 characters.")
-    private String startTime;
+    private String time;
+
+    @NotEmpty(message = "Date is Required.")
+    @Length(max = 100, message = "Cannot exceed 100 characters.")
+    private String date;
 
     private Integer hostId;
 

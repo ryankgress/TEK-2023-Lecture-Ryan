@@ -9,7 +9,7 @@
                     yours
                     stacks up!</p>
 
-                <div class="text-center d-flex justify-content-around mb-3">
+                <div class="text-center d-flex justify-content-evenly mb-3">
                     <a href="/teams/name" class="btn btn-warning">Sort by Team Name</a>
                     <a href="/teams/score" class="btn btn-warning">Sort by Score</a>
                 </div>

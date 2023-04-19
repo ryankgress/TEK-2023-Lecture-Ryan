@@ -4,15 +4,40 @@
 
         <section>
             <div class="container">
-                <h1>Trivia List Here</h1>
+                <h1>Inquizitive Trivia Hub</h1>
             </div>
         </section>
 
 
         <section>
-            <div class="container d-flex-column justify-content-center">
+            <div class="container mt-3 mb-5 d-flex flex-column justify-content-center text-center">
+                <div>
+                    <h2 class="text-white">Upcoming Trivia</h2>
+                    <p>
+                        For owners of bars, pubs, fire halls, and more! If you've got space and wanna host some nerds,
+                        you're more than welcome. Fill out the details here and get your event posted!
+                    </p>
+                </div>
                 <div class="text-center">
-                    <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas"
+                    <button class="btn btn-warning btn-lg" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><b>Host An
+                            Event</b></button>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div
+                class="trivia-host container mt-3 mb-5 d-flex flex-column border border-danger border-2 rounded-3 justify-content-center text-center p-3">
+                <div>
+                    <h2>Host Your Own!</h2>
+                    <p>
+                        For owners of bars, pubs, fire halls, and more! If you've got space and wanna host some nerds,
+                        you're more than welcome. Fill out the details here and get your event posted!
+                    </p>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-warning btn-lg" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><b>Host An
                             Event</b></button>
                 </div>
@@ -23,8 +48,9 @@
 
 
 
-        <!--Create Trivia Listing Sidebar-->
 
+
+        <!--Create Trivia Listing Sidebar-->
         <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
             id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
             <c:if test="${bindingResult.hasFieldErrors()}">
@@ -115,11 +141,19 @@
                     </div>
 
                     <div class="mb-3 col-sm-9 mx-auto" id="startTimeField">
-                        <label for="startInput" class="form-label">Trivia Start</label>
-                        <input type="text" class="form-control" id="startInput" name="startTime"
-                            placeholder="i.e. 7:00pm on 5/14/23">
-                        <c:if test="${bindingResult.hasFieldErrors('startTime')}">
-                            <c:forEach items="${bindingResult.getFieldErrors('startTime')}" var="error">
+                        <label for="dateInput" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="dateInput" name="date">
+                        <c:if test="${bindingResult.hasFieldErrors('date')}">
+                            <c:forEach items="${bindingResult.getFieldErrors('date')}" var="error">
+                                <div style="color:red">${error.getDefaultMessage()}</div>
+                            </c:forEach>
+                        </c:if>
+                    </div>
+                    <div class="mb-3 col-sm-9 mx-auto" id="startTimeField">
+                        <label for="timeInput" class="form-label">Start Time</label>
+                        <input type="time" class="form-control" id="timeInput" name="time">
+                        <c:if test="${bindingResult.hasFieldErrors('time')}">
+                            <c:forEach items="${bindingResult.getFieldErrors('time')}" var="error">
                                 <div style="color:red">${error.getDefaultMessage()}</div>
                             </c:forEach>
                         </c:if>

@@ -6,4 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TriviaDetailDAO extends JpaRepository<TriviaDetail, Long> {
     TriviaDetail findById(int id);
+
+
 }
