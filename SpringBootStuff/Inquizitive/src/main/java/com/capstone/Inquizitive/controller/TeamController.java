@@ -84,7 +84,7 @@ public class TeamController {
         String thisName = authenticatedUserService.getCurrentUsername();
         log.debug(thisName);
 
-        User user = userDao.findByUsername(authenticatedUserService.getCurrentUsername());
+        User user = authenticatedUserService.loadCurrentUser();
 
         TeamMember teamMember = new TeamMember();
         teamMember.setUserId(user.getId());
@@ -97,7 +97,10 @@ public class TeamController {
         teamMemberDao.save(teamMember);
         List<Map<String,Object>> memberList = teamDao.getAllTeamsAndMembers();
 
+        response.addObject("user", user);
+
         response.addObject("memberList", memberList);
+
         return response;
     }
 }

@@ -5,6 +5,7 @@ import com.capstone.Inquizitive.database.dao.UserDAO;
 import com.capstone.Inquizitive.database.dao.UserRoleDAO;
 import com.capstone.Inquizitive.database.entity.TriviaDetail;
 import com.capstone.Inquizitive.database.entity.User;
+import com.capstone.Inquizitive.database.entity.UserRole;
 import com.capstone.Inquizitive.formbeans.TriviaBean;
 import com.capstone.Inquizitive.security.AuthenticatedUserService;
 import jakarta.servlet.http.HttpSession;
@@ -48,9 +49,21 @@ public class TriviaController {
         log.debug("In the trivialist controller method");
         ModelAndView response = new ModelAndView("trivia");
 
-        List<TriviaDetail> triviaDetailList = triviaDetailDao.getAllRecords();
+        List<TriviaDetail> activeTriviaDetailList = triviaDetailDao.getAllActiveRecords();
+        List<TriviaDetail> inactiveTriviaDetailList = triviaDetailDao.getAllInactiveRecords();
 
-        response.addObject("triviaDetailList", triviaDetailList);
+        User u = authenticatedUserService.loadCurrentUser();
+        List<UserRole> userRoles = userRoleDao.findByUserId(u.getId());
+        boolean isHost = false;
+        for(UserRole role : userRoles) {
+            if(role.getRoleName().equals("HOST")) {
+                isHost = true;
+            }
+        }
+
+        response.addObject("isHost", isHost);
+        response.addObject("activeTriviaDetailList", activeTriviaDetailList);
+        response.addObject("inactiveTriviaDetailList", inactiveTriviaDetailList);
         return response;
     }
     @RequestMapping(value = "/newTrivia", method = RequestMethod.POST)
@@ -77,6 +90,7 @@ public class TriviaController {
         triviaDetail.setCity(form.getCity());
         triviaDetail.setZip(form.getZip());
         triviaDetail.setState(form.getState());
+        triviaDetail.setActive("true");
 
         // Date/Time Stuff
         String dateTime = form.getDate() + " " + form.getTime();

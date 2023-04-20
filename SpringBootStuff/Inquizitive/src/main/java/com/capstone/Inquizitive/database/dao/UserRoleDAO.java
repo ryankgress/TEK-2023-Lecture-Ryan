@@ -8,4 +8,5 @@ import java.util.List;
 public interface UserRoleDAO extends JpaRepository<UserRole, Long> {
 
     List<UserRole> findByUserId(Integer id);
+
 }

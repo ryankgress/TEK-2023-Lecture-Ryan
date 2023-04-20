@@ -1,86 +1,86 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <jsp:include page="include/header.jsp" />
+    <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+        <jsp:include page="include/header.jsp" />
 
-    <!-- User Info -->
-    <section>
-        <div class="profile-main container mt-3 mb-5 d-flex flex-column border border-danger border-2 rounded-3">
-            <h1>Profile</h1>
-            <div class="row mx-5 align-items-center">
-                <div class="col">
-                    <p>
-                        Welcome to <b>${user.name}</b>'s profile.
-                    </p>
+        <!-- User Info -->
+        <section>
+            <div class="profile-main container mt-3 mb-5 d-flex flex-column border border-danger border-2 rounded-3">
+                <h1>Profile</h1>
+                <div class="row mx-5 align-items-center">
+                    <div class="col">
+                        <p>
+                            Welcome to <b>${user.name}</b>'s profile.
+                        </p>
 
+                    </div>
+                    <div class="col text-center">
+                        <p>
+                            <img src="${user.profilePic}" alt="pfp" width="200px">
+                        </p>
+                    </div>
                 </div>
-                <div class="col text-center">
-                    <p>
-                        <img src="${user.profilePic}" alt="pfp" width="200px">
-                    </p>
+                <div class="row d-flex mx-5">
+                    <div class="col profile-userinfo">
+                        <h2>User Information</h2>
+
+                        <p>
+                        <table>
+                            <tr>
+                                <td><b>Username:</b></td>
+                                <td>${user.username}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Email:</b></td>
+                                <td>${user.email}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Home Field:</b></td>
+                                <td>Yellow Bridges, New Ken</td>
+                            </tr>
+                            <tr>
+                                <td><b>Total Points:</b></td>
+                                <td>${totScore}</td>
+                            </tr>
+                        </table>
+                        </p>
+                        <br>
+                        <p style="font-size: 12pt;">
+                            See something wrong? Click <a href="/editProfile">here</a> to edit your profile
+                        </p>
+
+                    </div>
+                    <div class="col profile-recent">
+                        <h2 class="text-center">Recent Quizzes</h2>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col" style="text-align: center;">Placement</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="index">Buzzworthy Thursday 3/9</a></td>
+                                    <td class="placement">6th</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="index">Buzzworthy Thursday 3/16</a></td>
+                                    <td class="placement">2nd</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="index">HO1KB #63</a></td>
+                                    <td class="placement">5th</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="index">Trivia Time Virtual 132</a></td>
+                                    <td class="placement">2nd</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <div class="row d-flex mx-5">
-                <div class="col profile-userinfo">
-                    <h2>User Information</h2>
-
-                    <p>
-                    <table>
-                        <tr>
-                            <td><b>Username:</b></td>
-                            <td>${user.username}</td>
-                        </tr>
-                        <tr>
-                            <td><b>Email:</b></td>
-                            <td>${user.email}</td>
-                        </tr>
-                        <tr>
-                            <td><b>Home Field:</b></td>
-                            <td>Yellow Bridges, New Ken</td>
-                        </tr>
-                        <tr>
-                            <td><b>Total Points:</b></td>
-                            <td>${totScore}</td>
-                        </tr>
-                    </table>
-                    </p>
-                    <br>
-                    <p style="font-size: 12pt;">
-                        See something wrong? Click <a href="/editProfile">here</a> to edit your profile
-                    </p>
-
-                </div>
-                <div class="col profile-recent">
-                    <h2 class="text-center">Recent Quizzes</h2>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col" style="text-align: center;">Placement</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><a href="index">Buzzworthy Thursday 3/9</a></td>
-                                <td class="placement">6th</td>
-                            </tr>
-                            <tr>
-                                <td><a href="index">Buzzworthy Thursday 3/16</a></td>
-                                <td class="placement">2nd</td>
-                            </tr>
-                            <tr>
-                                <td><a href="index">HO1KB #63</a></td>
-                                <td class="placement">5th</td>
-                            </tr>
-                            <tr>
-                                <td><a href="index">Trivia Time Virtual 132</a></td>
-                                <td class="placement">2nd</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-
+        </section>
 
         <!-- Team Info -->
         <section>
@@ -92,7 +92,7 @@
                         <div class="card-body">
                             <h5 class="card-title">${team.team_name}</h5>
                             <p class="card-text">${team.team_desc}</p>
-                            
+
                             <!-- <a href="/teams#${team.team_name}" class="btn btn-dark">Team Page</a> -->
                         </div>
                         <div class="card-footer d-flex justify-content-evenly">
@@ -105,8 +105,31 @@
             </div>
         </section>
 
+        <!-- Trivia Info -->
+        <sec:authorize access="hasAnyAuthority('HOST')">
+            <section>
+                <div class="pt-3">
+                    <h1>Your Trivias</h1>
+                    <div class="container d-flex flex-wrap justify-content-evenly mt-4">
+                        <c:forEach items="${myTrivias}" var="trivia">
+                            <div class="card text-center mb-3" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">${trivia.triviaName}</h5>
+                                    <p class="card-text">${trivia.locationName}</p>
+                                </div>
+                                <div class="card-footer d-flex justify-content-evenly">
+                                    <a href="#" class="btn btn-dark">Trivia Listing</a>
+                                    <a href="#" class="btn btn-danger">Report Results</a>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+
+
+            </section>
+        </sec:authorize>
+
+
+
         <jsp:include page="include/footer.jsp" />
-
-
-
-        

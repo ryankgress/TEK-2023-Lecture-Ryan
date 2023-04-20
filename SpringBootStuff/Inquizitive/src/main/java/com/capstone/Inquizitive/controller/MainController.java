@@ -41,6 +41,9 @@ public class MainController {
     private UserRoleDAO userRoleDao;
 
     @Autowired
+    private TriviaDetailDAO triviaDetailDao;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
@@ -66,9 +69,12 @@ public class MainController {
 
         Integer totScore = teamMemberDao.getUserTotalById(user.getId());
 
+        List<TriviaDetail> myTrivias = triviaDetailDao.getTriviaDetailsByHostId(user.getId());
+
         response.addObject("teams", teams);
         response.addObject("user", user);
         response.addObject("totScore", totScore);
+        response.addObject("myTrivias", myTrivias);
         return response;
     }
 

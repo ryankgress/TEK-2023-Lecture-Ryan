@@ -49,9 +49,11 @@ public class TriviaDetail {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateTime;
 
-
     @Column(name="host_id", insertable = false, updatable = false)
     private Integer hostId;
+
+    @Column(name="active")
+    private String active;
 
 
     /* To Result */

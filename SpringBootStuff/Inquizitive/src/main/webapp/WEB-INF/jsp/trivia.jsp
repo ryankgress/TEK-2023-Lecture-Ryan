@@ -5,8 +5,8 @@
 <jsp:include page="include/header.jsp" />
 
 <section>
-    <div class="container">
-        <h1>Inquizitive Trivia Hub</h1>
+    <div class="container trivia-head mt-3" style="width:30%;">
+        <h1>Trivia Hub</h1>
     </div>
 </section>
 
@@ -86,15 +86,19 @@
             </p>
         </div>
         <div class="text-center">
-            <button class="btn btn-warning btn-lg" type="button" data-bs-toggle="offcanvas"
+            <button class="btn btn-warning btn-lg" type="button" onclick="checkHost('${isHost}')"data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><b>Host An
                     Event</b></button>
         </div>
+        <div id="notHost" class="text-center pt-3"></div>
     </div>
 </section>
 
+<section>
+    
+</section>
 
-
+<script src="../../pub/js/trivia.js"></script>
 
 
 

@@ -10,8 +10,14 @@ import java.util.List;
 public interface TriviaDetailDAO extends JpaRepository<TriviaDetail, Long> {
     TriviaDetail findById(int id);
 
-    @Query(value="SELECT * FROM trivia_details order by date_time;", nativeQuery = true)
-    List<TriviaDetail> getAllRecords();
+    @Query(value="SELECT * FROM trivia_details where active = 'true' order by date_time;", nativeQuery = true)
+    List<TriviaDetail> getAllActiveRecords();
 
+    @Query(value="SELECT * FROM trivia_details where active = 'false' order by date_time;", nativeQuery = true)
+    List<TriviaDetail> getAllInactiveRecords();
+    // Likely want to add more to this query
+
+    @Query
+    List<TriviaDetail> getTriviaDetailsByHostId(Integer id);
 
 }

@@ -61,7 +61,7 @@
                                         <a href="#" class="btn btn-success">Already Joined!</a>
                                     </c:if>
                                     <c:if test="${!fn:contains(team.team_members, user.username) }">
-                                        <a href="/teams/${team.id}#${team.id}" class="btn btn-dark">Join Team</a>
+                                        <a href="/teams/join/${team.id}#${team.id}" class="btn btn-dark">Join Team</a>
                                     </c:if>
                                 </div>
                                 <div class="col-4">
