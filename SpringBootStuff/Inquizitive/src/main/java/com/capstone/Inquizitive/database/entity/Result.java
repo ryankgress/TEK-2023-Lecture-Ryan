@@ -28,6 +28,9 @@ public class Result {
     @Column(name="points_awarded")
     private Integer pointsAwarded;
 
+    @Column(name="placement")
+    private String placement;
+
     /* To Trivia Detail */
     @EqualsAndHashCode.Exclude
     @ToString.Exclude

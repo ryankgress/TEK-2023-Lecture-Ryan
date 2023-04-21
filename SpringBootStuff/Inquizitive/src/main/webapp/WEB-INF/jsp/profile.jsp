@@ -118,8 +118,8 @@
                                     <p class="card-text">${trivia.locationName}</p>
                                 </div>
                                 <div class="card-footer d-flex justify-content-evenly">
-                                    <a href="#" class="btn btn-dark">Trivia Listing</a>
-                                    <a href="#" class="btn btn-danger">Report Results</a>
+                                    <a href="/trivia#heading${trivia.id}" class="btn btn-dark">Trivia Listing</a>
+                                    <a href="/results/${trivia.id}" class="btn btn-success">Report Results</a>
                                 </div>
                             </div>
                         </c:forEach>

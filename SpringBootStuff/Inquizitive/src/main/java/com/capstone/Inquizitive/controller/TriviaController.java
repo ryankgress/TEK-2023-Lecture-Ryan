@@ -1,11 +1,8 @@
 package com.capstone.Inquizitive.controller;
 
-import com.capstone.Inquizitive.database.dao.TriviaDetailDAO;
-import com.capstone.Inquizitive.database.dao.UserDAO;
-import com.capstone.Inquizitive.database.dao.UserRoleDAO;
-import com.capstone.Inquizitive.database.entity.TriviaDetail;
-import com.capstone.Inquizitive.database.entity.User;
-import com.capstone.Inquizitive.database.entity.UserRole;
+import com.capstone.Inquizitive.database.dao.*;
+import com.capstone.Inquizitive.database.entity.*;
+import com.capstone.Inquizitive.formbeans.RsvpBean;
 import com.capstone.Inquizitive.formbeans.TriviaBean;
 import com.capstone.Inquizitive.security.AuthenticatedUserService;
 import jakarta.servlet.http.HttpSession;
@@ -16,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,12 +23,16 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Controller
 public class TriviaController {
     @Autowired
     private UserDAO userDao;
+
+    @Autowired
+    private TeamMemberDAO teamMemberDao;
 
     @Autowired
     private UserRoleDAO userRoleDao;
@@ -44,6 +46,12 @@ public class TriviaController {
     @Autowired
     private TriviaDetailDAO triviaDetailDao;
 
+    @Autowired
+    private ResultDAO resultDao;
+
+    @Autowired
+    private TeamDAO teamDao;
+
     @RequestMapping(value = "/trivia", method = RequestMethod.GET)
     public ModelAndView trivialist() {
         log.debug("In the trivialist controller method");
@@ -53,6 +61,8 @@ public class TriviaController {
         List<TriviaDetail> inactiveTriviaDetailList = triviaDetailDao.getAllInactiveRecords();
 
         User u = authenticatedUserService.loadCurrentUser();
+        List<Map<String,Object>> myTeams = teamMemberDao.getTeamsByUserId(u.getId());
+
         List<UserRole> userRoles = userRoleDao.findByUserId(u.getId());
         boolean isHost = false;
         for(UserRole role : userRoles) {
@@ -61,11 +71,32 @@ public class TriviaController {
             }
         }
 
+        response.addObject("myTeams", myTeams);
         response.addObject("isHost", isHost);
         response.addObject("activeTriviaDetailList", activeTriviaDetailList);
         response.addObject("inactiveTriviaDetailList", inactiveTriviaDetailList);
         return response;
     }
+
+    @PostMapping(value = "/triviaRegister")
+    public ModelAndView triviaRegister(RsvpBean form) {
+        ModelAndView response = new ModelAndView("trivia");
+        log.debug("In the trivia register controller method");
+
+        Result result = new Result();
+        result.setTriviaId(form.getTriviaId());
+        result.setTeamId(form.getTeamId());
+        result.setTriviaDetail(triviaDetailDao.findById(form.getTriviaId()));
+        result.setTeam(teamDao.findById(form.getTeamId()));
+
+        resultDao.save(result);
+        log.debug(result.toString());
+
+        response.setViewName("redirect:/trivia");
+
+        return response;
+    }
+
     @RequestMapping(value = "/newTrivia", method = RequestMethod.POST)
     public ModelAndView newTrivia(@Valid TriviaBean form, BindingResult bindingResult, HttpSession httpSession) throws IOException, ParseException {
         log.debug("In the register controller registerSubmit method");
