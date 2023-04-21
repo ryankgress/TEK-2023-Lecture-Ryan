@@ -1,0 +1,2 @@
+- er diagram screenshot
+- talk about project

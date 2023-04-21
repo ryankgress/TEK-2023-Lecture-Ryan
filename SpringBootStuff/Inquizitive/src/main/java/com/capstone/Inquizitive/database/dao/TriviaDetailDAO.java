@@ -20,4 +20,6 @@ public interface TriviaDetailDAO extends JpaRepository<TriviaDetail, Long> {
     @Query
     List<TriviaDetail> getTriviaDetailsByHostId(Integer id);
 
+    TriviaDetail findByTriviaName(String name);
+
 }

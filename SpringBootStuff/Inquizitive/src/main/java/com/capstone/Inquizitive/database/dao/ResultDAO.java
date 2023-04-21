@@ -15,4 +15,7 @@ public interface ResultDAO extends JpaRepository<Result, Long> {
             "SELECT t.* FROM results r JOIN teams t ON(t.id = r.team_id) " +
             "WHERE r.trivia_id = :triviaId ;", nativeQuery = true)
     List<Map<String,Object>> getTeamsByTriviaId(Integer triviaId);
+
+    @Query(value = "SELECT * FROM results r WHERE r.team_id = :teamId AND r.trivia_id = :triviaId ;", nativeQuery = true)
+    Result getResultfromTeamIdAndTriviaId(Integer teamId, Integer triviaId);
 }

@@ -14,7 +14,10 @@ import java.util.Map;
 @ToString
 @EqualsAndHashCode
 public class ResultsBean {
+
     private TriviaDetail triviaDetail;
-    private String teams;   // Potentially, add all teams to hidden field on selections
+
+    // Potentially, add all teams to hidden field on selections
+    private String teams;
 
 }
