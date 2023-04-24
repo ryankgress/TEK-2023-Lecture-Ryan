@@ -128,7 +128,98 @@
             </section>
 
             <section>
+                <div class="container mt-3 mb-5 d-flex flex-column justify-content-center text-center">
+                    <div>
+                        <h2 class="text-white">Recent Results</h2>
 
+
+                        <div class="accordion mt-3" id="accordionPanelsStayOpenExample">
+                            <c:forEach items="${inactiveTriviaDetailList}" var="trivia">
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="heading${trivia.id}">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#panelsStayOpen-collapse${trivia.id}" aria-expanded="false"
+                                            aria-controls="panelsStayOpen-collapse${trivia.id}">
+                                            <h4><strong>${trivia.triviaName}</strong> @ ${trivia.locationName}</h4>
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapse${trivia.id}" class="accordion-collapse collapse"
+                                        aria-labelledby="heading${trivia.id}">
+                                        <div class="accordion-body">
+                                            <form action="/triviaRegister" method="post">
+                                                <div class="d-flex row align-items-center">
+                                                    <div
+                                                        class="d-flex flex-column text-center align-items-center justify-content-center col-3">
+                                                        <p>Check out <strong>${trivia.triviaName}</strong> at
+                                                            <em>${trivia.locationName}</em> coming soon!
+                                                        </p>
+                                                    </div>
+                                                    <div
+                                                        class="d-flex flex-column align-items-center justify-content-center col-3">
+                                                        <table class="text-start">
+                                                            <tr>
+                                                                <td class="pe-3"><strong>Date: </strong></td>
+                                                                <td>
+                                                                    <fmt:formatDate pattern="MMMM d, yyyy"
+                                                                        value="${trivia.dateTime}" />
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>Time: </strong></td>
+                                                                <td>
+                                                                    <fmt:formatDate pattern="h:mm"
+                                                                        value="${trivia.dateTime}" />
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                    <div
+                                                        class="d-flex flex-column text-center align-items-center justify-content-center col-3">
+                                                        <h5 class="m-1">Location Details</h5>
+                                                        <table>
+                                                            <tr>
+                                                                <td>${trivia.locationName}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>${trivia.address1}</td>
+                                                            </tr>
+                                                            <c:if test="${not empty trivia.address2}">
+                                                                <tr>
+                                                                    <td>${trivia.address2}</td>
+                                                                </tr>
+                                                            </c:if>
+                                                            <tr>
+                                                                <td>${trivia.city}, ${trivia.state} ${trivia.zip}</td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                    <div
+                                                        class="d-flex flex-column text-center align-items-center justify-content-center col-3">
+                                                        <div class="pb-2">
+                                                            <select name="teamId" id="teamId" class="form-select">
+                                                                <c:forEach items="${myTeams}" var="team">
+                                                                    <option value="${team.id}">${team.team_name}
+                                                                    </option>
+                                                                </c:forEach>
+                                                            </select>
+                                                        </div>
+                                                        <input type="hidden" name="triviaId" value="${trivia.id}">
+                                                        <button class="btn btn-dark">Register Team</button>
+                                                    </div>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </div>
+
+                    </div>
+
+                </div>
             </section>
 
             <script src="../../pub/js/trivia.js"></script>

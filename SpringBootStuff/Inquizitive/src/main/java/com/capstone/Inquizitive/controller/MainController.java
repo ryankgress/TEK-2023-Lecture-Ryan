@@ -164,7 +164,7 @@ public class MainController {
         log.debug(user.toString());
 
         userDao.save(user);
-        // Need to access unencrypted password somehow
+
         authenticatedUserService.changeLoggedInUsername(httpSession, form.getUsername(), form.getPassword());
 
         response.setViewName("editLanding");

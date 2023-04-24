@@ -113,13 +113,12 @@
                     <div class="container d-flex flex-wrap justify-content-evenly mt-4">
                         <c:forEach items="${myTrivias}" var="trivia">
                             <div class="card text-center mb-3" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">${trivia.triviaName}</h5>
+                                <div class="card-body profile-trivia">
+                                    <h5 class="card-title"><a href="/trivia#heading${trivia.id}">${trivia.triviaName}</a> </h5>
                                     <p class="card-text">${trivia.locationName}</p>
                                 </div>
                                 <div class="card-footer d-flex justify-content-evenly">
-                                    <a href="/trivia#heading${trivia.id}" class="btn btn-dark">Trivia Listing</a>
-                                    <a href="/results/${trivia.id}" class="btn btn-success">Report Results</a>
+                                    <a href="/results/${trivia.id}" class="btn btn-success col-6">Report Results</a>
                                 </div>
                             </div>
                         </c:forEach>

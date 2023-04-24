@@ -59,6 +59,7 @@ public class TriviaController {
 
         List<TriviaDetail> activeTriviaDetailList = triviaDetailDao.getAllActiveRecords();
         List<TriviaDetail> inactiveTriviaDetailList = triviaDetailDao.getAllInactiveRecords();
+        List<Map<String, Object>> allStandings = resultDao.getAllResultsOrdered();
 
         User u = authenticatedUserService.loadCurrentUser();
         List<Map<String,Object>> myTeams = teamMemberDao.getTeamsByUserId(u.getId());
@@ -71,10 +72,13 @@ public class TriviaController {
             }
         }
 
+
+
         response.addObject("myTeams", myTeams);
         response.addObject("isHost", isHost);
         response.addObject("activeTriviaDetailList", activeTriviaDetailList);
         response.addObject("inactiveTriviaDetailList", inactiveTriviaDetailList);
+        response.addObject("allStandings", allStandings);
         return response;
     }
 
