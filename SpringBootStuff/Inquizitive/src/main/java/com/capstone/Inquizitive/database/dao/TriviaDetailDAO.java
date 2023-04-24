@@ -20,6 +20,9 @@ public interface TriviaDetailDAO extends JpaRepository<TriviaDetail, Long> {
     @Query
     List<TriviaDetail> getTriviaDetailsByHostId(Integer id);
 
+    @Query(value = "SELECT * FROM trivia_details WHERE active = 'true' AND host_id = :id ;", nativeQuery = true)
+    List<TriviaDetail> getActiveTriviaByHostId(Integer id);
+
     TriviaDetail findByTriviaName(String name);
 
 }

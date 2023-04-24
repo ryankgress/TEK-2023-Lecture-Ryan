@@ -59,22 +59,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><a href="index">Buzzworthy Thursday 3/9</a></td>
-                                    <td class="placement">6th</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="index">Buzzworthy Thursday 3/16</a></td>
-                                    <td class="placement">2nd</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="index">HO1KB #63</a></td>
-                                    <td class="placement">5th</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="index">Trivia Time Virtual 132</a></td>
-                                    <td class="placement">2nd</td>
-                                </tr>
+                                <c:forEach items="${recentStandings}" var="result">
+                                    <tr>
+                                        <td><a href="/trivia#heading${result.id}">${result.trivia_name}</a></td>
+                                        <td class="placement">${result.placement}</td>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                         </table>
                     </div>
