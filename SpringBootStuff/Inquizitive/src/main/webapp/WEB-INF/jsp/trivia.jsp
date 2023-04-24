@@ -171,7 +171,7 @@
 
                                                 <div
                                                     class="d-flex flex-column text-center align-items-center justify-content-center col-4">
-                                                    <table class="table table-striped">
+                                                    <table class="table table-striped table-bordered">
                                                         <tr>
                                                             <th>Placement</th>
                                                             <th>Team</th>
